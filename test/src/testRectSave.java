@@ -23,7 +23,6 @@ public class testRectSave {
         slide.add(testRect4);
         testShow.add(slide);
 
-        //beep
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 	 }
