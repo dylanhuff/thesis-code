@@ -13,8 +13,8 @@ public class testRectSave {
         PPRect testRect2 = new PPRect(100,100,100,100);
         PPRect testRect3 = new PPRect(300,200,300,100);
         PPRect testRect4 = new PPRect(000,200,300,100);
-        testRect.setFillColor(Color.YELLOW);
-	    testRect3.setFillColor(Color.BLUE);
+        testRect.setFillColor(Color.BLACK);
+	    testRect3.setFillColor(Color.BLACK);
 	    testRect4.setFillColor(Color.RED);
 
         slide.add(testRect);
@@ -23,6 +23,7 @@ public class testRectSave {
         slide.add(testRect4);
         testShow.add(slide);
 
+        //beep
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 	 }

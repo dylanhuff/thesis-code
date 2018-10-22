@@ -7,13 +7,13 @@ function testSave(){
 	body.appendChild(canvas);
 	var ctx = canvas.getContext('2d');
 	ctx.rect(400,0,100,100);
-	ctx.fillStyle = '#ffff00';
+	ctx.fillStyle = '#000000';
 	ctx.fillRect(400,0,100,100);
 	ctx.rect(100,100,100,100);
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(100,100,100,100);
 	ctx.rect(300,200,300,100);
-	ctx.fillStyle = '#0000ff';
+	ctx.fillStyle = '#000000';
 	ctx.fillRect(300,200,300,100);
 	ctx.rect(0,200,300,100);
 	ctx.fillStyle = '#ff0000';
