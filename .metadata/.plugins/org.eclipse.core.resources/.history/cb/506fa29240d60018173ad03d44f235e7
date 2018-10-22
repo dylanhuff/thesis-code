@@ -15,11 +15,11 @@ public class testRectSave {
         PPRect testRect4 = new PPRect(000,200,300,100);
 	    testRect.setFillColor(Color.RED);
 	    testRect3.setFillColor(Color.YELLOW);
-	    testRect4.setFillColor(Color.BLUE);
+	    testRect3.setFillColor(Color.BLUE);
 
 
         slide.add(testRect);
-        slide.add(testRect2);	
+        slide.add(testRect2);
         slide.add(testRect3);
         slide.add(testRect4);
         testShow.add(slide);

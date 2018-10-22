@@ -15,5 +15,8 @@ function testSave(){
 	ctx.rect(300,200,300,100);
 	ctx.fillStyle = '#ffff00';
 	ctx.fillRect(300,200,300,100);
+	ctx.rect(0,200,300,100);
+	ctx.fillStyle = '#0000ff';
+	ctx.fillRect(0,200,300,100);
 	ctx.stroke();
 }

@@ -19,7 +19,7 @@ public class testRectSave {
 
 
         slide.add(testRect);
-        slide.add(testRect2);	
+        slide.add(testRect2);
         slide.add(testRect3);
         slide.add(testRect4);
         testShow.add(slide);
