@@ -53,7 +53,7 @@ public class PPSaveJS {
             fop.write("\tvar body = document.getElementsByTagName('body')[0];\n".getBytes());
             fop.write("\tbody.appendChild(canvas);\n".getBytes());
             fop.write("\tvar ctx = canvas.getContext('2d');\n".getBytes());
-            //how about now
+            //how about
             //not sure if there is a better way to get correct length for rectShapes array
             //add a couple objects then start adding animations
             //add move animations, along curves
