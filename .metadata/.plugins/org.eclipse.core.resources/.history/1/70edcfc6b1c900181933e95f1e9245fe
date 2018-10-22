@@ -1,0 +1,19 @@
+import edu.stanford.cs.pptx.*;
+
+public class testRectSave {
+
+	 public static void main(String[] args){
+		 
+        PPShow testShow = new PPShow();
+        PPSlide slide = new PPSlide();
+        slide.addTitle("Testing yo");
+        PPRect testRect = new PPRect(100,100);
+        PPRect testRect = new PPRect(100,100,100,100);
+        slide.add(testRect);
+        testShow.add(slide);
+
+        PPSaveJS testSave = new PPSaveJS(testShow);
+        testSave.save("example.js");
+	 }
+}
+	 
