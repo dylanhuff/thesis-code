@@ -23,6 +23,7 @@ CLASSES = \
     classes/edu/stanford/cs/csslib/CSSFont.class \
     classes/edu/stanford/cs/pptx/PPArc.class \
     classes/edu/stanford/cs/pptx/PPAutoShape.class \
+    classes/edu/stanford/cs/pptx/PPDumpShapeJS.class \
     classes/edu/stanford/cs/pptx/PPFreeform.class \
     classes/edu/stanford/cs/pptx/PPGroup.class \
     classes/edu/stanford/cs/pptx/PPLine.class \
@@ -176,6 +177,7 @@ classes/edu/stanford/cs/pptx/PPArc.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
 	      src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -203,6 +205,7 @@ classes/edu/stanford/cs/pptx/PPAutoShape.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
 	      src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -231,6 +234,7 @@ classes/edu/stanford/cs/pptx/PPFreeform.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
 	      src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -258,6 +262,7 @@ classes/edu/stanford/cs/pptx/PPGroup.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -285,6 +290,7 @@ classes/edu/stanford/cs/pptx/PPLine.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -313,6 +319,7 @@ classes/edu/stanford/cs/pptx/PPOval.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -341,6 +348,7 @@ classes/edu/stanford/cs/pptx/PPOvalCallout.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -375,6 +383,7 @@ classes/edu/stanford/cs/pptx/PPPicture.class: \
           src/edu/stanford/cs/csslib/CSSColor.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -403,6 +412,7 @@ classes/edu/stanford/cs/pptx/PPPie.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -432,6 +442,7 @@ classes/edu/stanford/cs/pptx/PPPointer.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -461,6 +472,7 @@ classes/edu/stanford/cs/pptx/PPPolygon.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -489,6 +501,7 @@ classes/edu/stanford/cs/pptx/PPRect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -517,6 +530,7 @@ classes/edu/stanford/cs/pptx/PPRectCallout.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -541,6 +555,7 @@ classes/edu/stanford/cs/pptx/PPRectCallout.class: \
 classes/edu/stanford/cs/pptx/PPSavePPTX.class: \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/csslib/CSSColor.java \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPShape.java \
@@ -570,6 +585,7 @@ classes/edu/stanford/cs/pptx/PPShape.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
           src/edu/stanford/cs/pptx/PPSimpleShape.java \
@@ -596,6 +612,7 @@ classes/edu/stanford/cs/pptx/PPShapeFactory.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -623,6 +640,7 @@ classes/edu/stanford/cs/pptx/PPShapeOptionParser.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShow.java \
           src/edu/stanford/cs/pptx/PPSimpleShape.java \
@@ -649,6 +667,7 @@ classes/edu/stanford/cs/pptx/PPShow.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPSimpleShape.java \
@@ -675,6 +694,7 @@ classes/edu/stanford/cs/pptx/PPSimpleShape.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -701,6 +721,7 @@ classes/edu/stanford/cs/pptx/PPSimpleShapeOptionParser.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -727,6 +748,7 @@ classes/edu/stanford/cs/pptx/PPSlide.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -754,6 +776,7 @@ classes/edu/stanford/cs/pptx/PPStar.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -783,6 +806,7 @@ classes/edu/stanford/cs/pptx/PPTextBox.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -810,6 +834,7 @@ classes/edu/stanford/cs/pptx/PPTextShape.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -836,6 +861,7 @@ classes/edu/stanford/cs/pptx/PPTextShapeOptionParser.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -862,6 +888,7 @@ classes/edu/stanford/cs/pptx/PPTitle.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -888,6 +915,7 @@ classes/edu/stanford/cs/pptx/animation/PPShapeAnimator.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -919,6 +947,7 @@ classes/edu/stanford/cs/pptx/chart/PPChart.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeFactory.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
@@ -955,6 +984,7 @@ classes/edu/stanford/cs/pptx/chart/PPLineChart.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeFactory.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
@@ -990,6 +1020,7 @@ classes/edu/stanford/cs/pptx/chart/PPPieChart.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeFactory.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
@@ -1024,6 +1055,7 @@ classes/edu/stanford/cs/pptx/code/PPArray.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1054,6 +1086,7 @@ classes/edu/stanford/cs/pptx/code/PPCodeDisplaySlide.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1083,6 +1116,7 @@ classes/edu/stanford/cs/pptx/code/PPCodeImage.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1114,6 +1148,7 @@ classes/edu/stanford/cs/pptx/code/PPCodeTraceSlide.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1155,6 +1190,7 @@ classes/edu/stanford/cs/pptx/code/PPConsole.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1187,6 +1223,7 @@ classes/edu/stanford/cs/pptx/code/PPFunction.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1228,6 +1265,7 @@ classes/edu/stanford/cs/pptx/code/PPHeapStackViewer.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1266,6 +1304,7 @@ classes/edu/stanford/cs/pptx/code/PPJSSyntaxColorer.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1298,6 +1337,7 @@ classes/edu/stanford/cs/pptx/code/PPMonospacedLabel.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1326,6 +1366,7 @@ classes/edu/stanford/cs/pptx/code/PPPythonSyntaxColorer.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1358,6 +1399,7 @@ classes/edu/stanford/cs/pptx/code/PPStackFrame.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1396,6 +1438,7 @@ classes/edu/stanford/cs/pptx/code/PPSyntaxColorer.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1429,6 +1472,7 @@ classes/edu/stanford/cs/pptx/code/PPValueTag.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1460,6 +1504,7 @@ classes/edu/stanford/cs/pptx/code/PPVar.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1494,6 +1539,7 @@ classes/edu/stanford/cs/pptx/code/PPVariable.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1524,6 +1570,7 @@ classes/edu/stanford/cs/pptx/code/PPWindowImage.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1554,6 +1601,7 @@ classes/edu/stanford/cs/pptx/code/PPWord.class: \
           src/edu/stanford/cs/pptx/PPRect.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1583,6 +1631,7 @@ classes/edu/stanford/cs/pptx/effect/AnimationEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1609,6 +1658,7 @@ classes/edu/stanford/cs/pptx/effect/AppearEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1636,6 +1686,7 @@ classes/edu/stanford/cs/pptx/effect/BezierMotionEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1662,6 +1713,7 @@ classes/edu/stanford/cs/pptx/effect/ChangeFillColorEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1689,6 +1741,7 @@ classes/edu/stanford/cs/pptx/effect/ChangeFontColorEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1716,6 +1769,7 @@ classes/edu/stanford/cs/pptx/effect/ChangeLineColorEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1743,6 +1797,7 @@ classes/edu/stanford/cs/pptx/effect/CheckerboardInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1770,6 +1825,7 @@ classes/edu/stanford/cs/pptx/effect/CheckerboardOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1797,6 +1853,7 @@ classes/edu/stanford/cs/pptx/effect/DisappearEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1824,6 +1881,7 @@ classes/edu/stanford/cs/pptx/effect/FadeInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1851,6 +1909,7 @@ classes/edu/stanford/cs/pptx/effect/FadeOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1878,6 +1937,7 @@ classes/edu/stanford/cs/pptx/effect/FadedZoomInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1905,6 +1965,7 @@ classes/edu/stanford/cs/pptx/effect/FadedZoomOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1932,6 +1993,7 @@ classes/edu/stanford/cs/pptx/effect/FlyInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1959,6 +2021,7 @@ classes/edu/stanford/cs/pptx/effect/FlyOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -1986,6 +2049,7 @@ classes/edu/stanford/cs/pptx/effect/GrowEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2013,6 +2077,7 @@ classes/edu/stanford/cs/pptx/effect/LinearMotionEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2054,6 +2119,7 @@ classes/edu/stanford/cs/pptx/effect/RotateEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2081,6 +2147,7 @@ classes/edu/stanford/cs/pptx/effect/ShrinkEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2118,6 +2185,7 @@ classes/edu/stanford/cs/pptx/effect/SpinEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2145,6 +2213,7 @@ classes/edu/stanford/cs/pptx/effect/WipeInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2172,6 +2241,7 @@ classes/edu/stanford/cs/pptx/effect/WipeOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2199,6 +2269,7 @@ classes/edu/stanford/cs/pptx/effect/ZoomInEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
@@ -2226,6 +2297,7 @@ classes/edu/stanford/cs/pptx/effect/ZoomOutEffect.class: \
           src/edu/stanford/cs/pptx/PPPicture.java \
           src/edu/stanford/cs/pptx/PPSavePPTX.java \
           src/edu/stanford/cs/pptx/PPSaveJS.java \
+          src/edu/stanford/cs/pptx/PPDumpShapeJS.java \
           src/edu/stanford/cs/pptx/PPShape.java \
           src/edu/stanford/cs/pptx/PPShapeOptionParser.java \
           src/edu/stanford/cs/pptx/PPShow.java \
