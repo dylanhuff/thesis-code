@@ -202,3 +202,10 @@ JavaPPTX/classes/edu/stanford/cs/pptx/util/HexByteInputStream.class
 JavaPPTX/classes/edu/stanford/cs/pptx/util/OptionParser.class
 JavaPPTX/classes/edu/stanford/cs/pptx/util/PPOutputStream.class
 JavaPPTX/classes/edu/stanford/cs/pptx/util/PPUtil.class
+test/.metadata/.plugins/org.eclipse.core.resources/.root/3.tree
+test/.DS_Store
+test/bin/~$example.pptx
+test/src/example
+test/src/example.pptx
+test/src/~$example.pptx
+test/.DS_Store

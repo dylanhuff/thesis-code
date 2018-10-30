@@ -6,7 +6,10 @@ function testSave(){
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(canvas);
 	var ctx = canvas.getContext('2d');
-	ctx.rect(400,0,100,100);
+	ctx.beginPath();
+	ctx.ellipse(300.0,300.0,100.0,50.0,0,0,6.283185307179586);
+	ctx.fillStyle = '#ffffff';
+	ctx.fill();	ctx.rect(400,0,100,100);
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(400,0,100,100);
 	ctx.rect(100,100,100,100);
@@ -18,11 +21,7 @@ function testSave(){
 	ctx.rect(200,400,100,100);
 	ctx.fillStyle = '#ff0000';
 	ctx.fillRect(200,400,100,100);
-	ctx.beginPath();
 	ctx.moveTo(300,300);
 	ctx.lineTo(0,0);
-	ctx.beginPath();
-	ctx.moveTo(0,0);
-	ctx.lineTo(100,300);
 	ctx.stroke();
 }
