@@ -62,9 +62,7 @@ public class PPSaveJS {
             //go throught the object list backl to front, then calls something to display
             
             fop.write("\tctx.stroke();\n".getBytes());
-
             fop.write("}".getBytes());
-
             fop.flush();
             fop.close();
 
