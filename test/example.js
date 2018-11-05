@@ -9,9 +9,12 @@ function testSave(){
 	ctx.beginPath();
 	ctx.ellipse(300.0,300.0,100.0,50.0,0,0,6.283185307179586);
 	ctx.fillStyle = '#ffffff';
-	ctx.fill();	ctx.rect(400,0,100,100);
-	ctx.fillStyle = '#000000';
-	ctx.fillRect(400,0,100,100);
+	ctx.fill();
+	canvas.addEventListener('click', function() {
+		ctx.rect(400,0,100,100);
+		ctx.fillStyle = '#000000';
+		ctx.fillRect(400,0,100,100);
+	}, false);
 	ctx.rect(100,100,100,100);
 	ctx.fillStyle = '#ffff00';
 	ctx.fillRect(100,100,100,100);

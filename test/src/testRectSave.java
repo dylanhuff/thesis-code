@@ -21,6 +21,8 @@ public class testRectSave {
 	    testRect3.setFillColor(Color.BLUE);
         testRect4.setFillColor(Color.RED);
         testOval1.setFillColor(Color.WHITE);
+
+        
         
         PPLine testLine = new PPLine(0, 0, 300, 300);
 
@@ -33,10 +35,13 @@ public class testRectSave {
         //slide.add(testLine2);
         testShow.add(slide);
 
+
+        testRect.appear("/onClick");
+        //testRect2.appear("/onClick");
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 
-        testShow.save("example.pptx");
+        testShow.save("../example.pptx");
 	 }
 }
 	 
