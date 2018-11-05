@@ -209,3 +209,9 @@ test/src/example
 test/src/example.pptx
 test/src/~$example.pptx
 test/.DS_Store
+JavaPPTX/lib/pptx.jar
+test/bin/pptx.jar
+test/example.pptx
+test/~$example.pptx
+test/bin/example.pptx
+JavaPPTX/.DS_Store

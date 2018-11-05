@@ -12,13 +12,21 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 import java.lang.Math;
 
+import edu.stanford.cs.pptx.effect.AnimationEffect;
+import java.util.ArrayList;
+
 public class PPDumpShapeJS {
 
-    public PPDumpShapeJS(){
+    ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
 
+    public PPDumpShapeJS(){
+        
     }
 
-    public void writeShapes(FileOutputStream fop, PPShape[] shapes){
+    public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
+
+        this.animations = slide.getAnimationList();
+        
         boolean startPath = true;
         for(PPShape shape: shapes){
             if(shape.getTypeName().equals("PPRect")){
@@ -49,23 +57,49 @@ public class PPDumpShapeJS {
 
     private void writeRect(FileOutputStream fop, PPRect rect){
         try{
-            fop.write("\tctx.rect(".getBytes());
-            fop.write(String.valueOf((int)rect.getX()).getBytes());
-            fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getY()).getBytes());
-            fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getWidth()).getBytes());
-            fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-            fop.write(");\n".getBytes());
-            
-            if(!(rect.getFillColor().equals(null))){
+            Boolean drawn = false;
+            for(AnimationEffect animation: animations){
+                PPShape shape = animation.getShape();
+                if (rect.getShapeId() == (shape.getShapeId())){
+                    if (animation.getTrigger() == "onClick"){
+                        if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
+                            drawn = true;
+                            fop.write("\tcanvas.addEventListener('click', function() {\n".getBytes());
+                            fop.write("\t\tctx.rect(".getBytes());
+                            fop.write(String.valueOf((int)rect.getX()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf((int)rect.getY()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf((int)rect.getWidth()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf((int)rect.getHeight()).getBytes());
+                            fop.write(");\n".getBytes());
+                            
+                            if(!(rect.getFillColor().equals(null))){
 
-                fop.write("\tctx.fillStyle = '".getBytes());
-                String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
-                fop.write(hex.getBytes());
-                fop.write("';\n".getBytes());
-                fop.write("\tctx.fillRect(".getBytes());
+                                fop.write("\t\tctx.fillStyle = '".getBytes());
+                                String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
+                                fop.write(hex.getBytes());
+                                fop.write("';\n".getBytes());
+                                fop.write("\t\tctx.fillRect(".getBytes());
+                                fop.write(String.valueOf((int)rect.getX()).getBytes());
+                                fop.write(",".getBytes());
+                                fop.write(String.valueOf((int)rect.getY()).getBytes());
+                                fop.write(",".getBytes());
+                                fop.write(String.valueOf((int)rect.getWidth()).getBytes());
+                                fop.write(",".getBytes());
+                                fop.write(String.valueOf((int)rect.getHeight()).getBytes());
+                                fop.write(");\n".getBytes());
+
+                            }
+                            fop.write("\t}, false);\n".getBytes());    
+                        }
+                    }
+                    
+                }
+            }
+            if(!(drawn)){
+                fop.write("\tctx.rect(".getBytes());
                 fop.write(String.valueOf((int)rect.getX()).getBytes());
                 fop.write(",".getBytes());
                 fop.write(String.valueOf((int)rect.getY()).getBytes());
@@ -74,7 +108,24 @@ public class PPDumpShapeJS {
                 fop.write(",".getBytes());
                 fop.write(String.valueOf((int)rect.getHeight()).getBytes());
                 fop.write(");\n".getBytes());
+                
+                if(!(rect.getFillColor().equals(null))){
 
+                    fop.write("\tctx.fillStyle = '".getBytes());
+                    String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
+                    fop.write(hex.getBytes());
+                    fop.write("';\n".getBytes());
+                    fop.write("\tctx.fillRect(".getBytes());
+                    fop.write(String.valueOf((int)rect.getX()).getBytes());
+                    fop.write(",".getBytes());
+                    fop.write(String.valueOf((int)rect.getY()).getBytes());
+                    fop.write(",".getBytes());
+                    fop.write(String.valueOf((int)rect.getWidth()).getBytes());
+                    fop.write(",".getBytes());
+                    fop.write(String.valueOf((int)rect.getHeight()).getBytes());
+                    fop.write(");\n".getBytes());
+
+                }
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
@@ -93,7 +144,7 @@ public class PPDumpShapeJS {
             fop.write("\tctx.lineTo(".getBytes());
             fop.write(String.valueOf((int)line.getX()).getBytes()); //need help with this, not sure how to get second set of coords for the line
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)line.getY()).getBytes());
+            fop.write(String.valueOf((int)line.getY()).getBytes()); 
             fop.write(");\n".getBytes());
             
 
@@ -128,7 +179,7 @@ public class PPDumpShapeJS {
                 String hex = "#"+Integer.toHexString(oval.getFillColor().getRGB()).substring(2);
                 fop.write(hex.getBytes());
                 fop.write("';\n".getBytes());
-                fop.write("\tctx.fill();".getBytes());
+                fop.write("\tctx.fill();\n".getBytes());
 
             }
 

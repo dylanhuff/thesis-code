@@ -7,6 +7,7 @@
 
 package edu.stanford.cs.pptx;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.io.FileOutputStream;
@@ -56,15 +57,22 @@ public class PPSaveJS {
             fop.write("\tvar ctx = canvas.getContext('2d');\n".getBytes());
             //add a couple objects then start adding animations
             //add move animations, along curves
-            dump.writeShapes(fop, shapes);
+            dump.writeShapes(fop, shapes, slide);
             
             //it will be in the order of the display list
             //go throught the object list backl to front, then calls something to display
             
+            
+            
+
             fop.write("\tctx.stroke();\n".getBytes());
             fop.write("}".getBytes());
             fop.flush();
             fop.close();
+
+
+            
+            
 
             System.out.println(filename);
 
