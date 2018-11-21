@@ -37,7 +37,9 @@ public class testRectSave {
 
 
         testRect.appear("/onClick");
-        //testRect2.appear("/onClick");
+        testRect2.appear("/onClick");
+        testRect3.appear("/onClick");
+        testRect4.appear("/onClick");
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 

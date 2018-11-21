@@ -17,12 +17,20 @@ import java.util.ArrayList;
 
 public class PPDumpShapeJS {
 
-    ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
+    private ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
+    private float t = 0;
+    private int onClickCounter = 0; //keeps track of order for multiple onclick events 
 
     public PPDumpShapeJS(){
         
     }
-
+    //need to figure out how to get order of appearing correct for animations
+    //for an object, if the animation draws the first version of that object
+    //the method here should call a seperate method that is controls timeline.
+    //if animation draws obj, timeline 
+    //Also, spend time researching JS best practices. I need to think about
+    //the general structure here. Having everything output to a single func
+    //might not be ideal. 
     public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
 
         this.animations = slide.getAnimationList();
@@ -57,49 +65,37 @@ public class PPDumpShapeJS {
 
     private void writeRect(FileOutputStream fop, PPRect rect){
         try{
-            Boolean drawn = false;
+            Boolean calledOnClick = false;
             for(AnimationEffect animation: animations){
                 PPShape shape = animation.getShape();
+                
                 if (rect.getShapeId() == (shape.getShapeId())){
                     if (animation.getTrigger() == "onClick"){
                         if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
-                            drawn = true;
-                            fop.write("\tcanvas.addEventListener('click', function() {\n".getBytes());
-                            fop.write("\t\tctx.rect(".getBytes());
-                            fop.write(String.valueOf((int)rect.getX()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf((int)rect.getY()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf((int)rect.getWidth()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-                            fop.write(");\n".getBytes());
-                            
-                            if(!(rect.getFillColor().equals(null))){
-
-                                fop.write("\t\tctx.fillStyle = '".getBytes());
-                                String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
-                                fop.write(hex.getBytes());
-                                fop.write("';\n".getBytes());
-                                fop.write("\t\tctx.fillRect(".getBytes());
-                                fop.write(String.valueOf((int)rect.getX()).getBytes());
-                                fop.write(",".getBytes());
-                                fop.write(String.valueOf((int)rect.getY()).getBytes());
-                                fop.write(",".getBytes());
-                                fop.write(String.valueOf((int)rect.getWidth()).getBytes());
-                                fop.write(",".getBytes());
-                                fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-                                fop.write(");\n".getBytes());
-
-                            }
-                            fop.write("\t}, false);\n".getBytes());    
+                            writeOnClick(fop);
+                            calledOnClick = true;
                         }
                     }
                     
                 }
             }
-            if(!(drawn)){
-                fop.write("\tctx.rect(".getBytes());
+            fop.write("\tctx.rect(".getBytes());
+            fop.write(String.valueOf((int)rect.getX()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)rect.getY()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)rect.getWidth()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)rect.getHeight()).getBytes());
+            fop.write(");\n".getBytes());
+            
+            if(!(rect.getFillColor().equals(null))){
+
+                fop.write("\tctx.fillStyle = '".getBytes());
+                String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
+                fop.write(hex.getBytes());
+                fop.write("';\n".getBytes());
+                fop.write("\tctx.fillRect(".getBytes());
                 fop.write(String.valueOf((int)rect.getX()).getBytes());
                 fop.write(",".getBytes());
                 fop.write(String.valueOf((int)rect.getY()).getBytes());
@@ -108,24 +104,14 @@ public class PPDumpShapeJS {
                 fop.write(",".getBytes());
                 fop.write(String.valueOf((int)rect.getHeight()).getBytes());
                 fop.write(");\n".getBytes());
-                
-                if(!(rect.getFillColor().equals(null))){
 
-                    fop.write("\tctx.fillStyle = '".getBytes());
-                    String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
-                    fop.write(hex.getBytes());
-                    fop.write("';\n".getBytes());
-                    fop.write("\tctx.fillRect(".getBytes());
-                    fop.write(String.valueOf((int)rect.getX()).getBytes());
-                    fop.write(",".getBytes());
-                    fop.write(String.valueOf((int)rect.getY()).getBytes());
-                    fop.write(",".getBytes());
-                    fop.write(String.valueOf((int)rect.getWidth()).getBytes());
-                    fop.write(",".getBytes());
-                    fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-                    fop.write(");\n".getBytes());
-
-                }
+            }
+            if(calledOnClick){
+                fop.write("\tcounter+=1;\n".getBytes());
+                fop.write("\tcanvas.addEventListener('click', click".getBytes());
+                fop.write(String.valueOf(onClickCounter).getBytes());
+                fop.write(");\n".getBytes());
+                fop.write("\t}}\n".getBytes());
             }
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
@@ -186,5 +172,30 @@ public class PPDumpShapeJS {
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
+    }
+
+    public void writeOnClick(FileOutputStream fop){
+
+        try{
+            if(onClickCounter == 0){
+                fop.write("\tvar counter = 0;\n".getBytes());
+                fop.write("\tcanvas.addEventListener('click', click0);\n".getBytes());
+            }
+            fop.write("\tfunction click".getBytes());
+            fop.write(String.valueOf(onClickCounter).getBytes());
+            fop.write("(){\n".getBytes());
+            fop.write("\t\tif (counter==".getBytes());
+            fop.write(String.valueOf(onClickCounter).getBytes());
+            fop.write("){\n".getBytes());
+            onClickCounter+=1;
+
+            //at this point return to calling program, but calling program needs to deal with closing parentheses
+
+
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+        
+
     }
 }
