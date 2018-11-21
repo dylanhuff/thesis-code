@@ -6,10 +6,6 @@ function testSave() {
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(canvas);
 	var ctx = canvas.getContext('2d');
-	ctx.beginPath();
-	ctx.ellipse(300.0, 300.0, 100.0, 50.0, 0, 0, 6.283185307179586);
-	ctx.fillStyle = '#ffffff';
-	ctx.fill();
 	var counter = 0;
 	canvas.addEventListener('click', click0);
 	function click0() {
@@ -32,6 +28,9 @@ function testSave() {
 	}
 	function click2() {
 		if (counter == 2) {
+			ctx.rect(200, 400, 100, 100);
+			ctx.fillStyle = '#ff0000';
+			ctx.fillRect(200, 400, 100, 100);
 			ctx.rect(300, 200, 300, 100);
 			ctx.fillStyle = '#0000ff';
 			ctx.fillRect(300, 200, 300, 100);
@@ -39,15 +38,10 @@ function testSave() {
 			canvas.addEventListener('click', click3);
 		}
 	}
-	function click3() {
-		if (counter == 3) {
-			ctx.rect(200, 400, 100, 100);
-			ctx.fillStyle = '#ff0000';
-			ctx.fillRect(200, 400, 100, 100);
-			counter += 1;
-			canvas.addEventListener('click', click4);
-		}
-	}
+	ctx.beginPath();
+	ctx.ellipse(300.0, 300.0, 100.0, 50.0, 0, 0, 6.283185307179586);
+	ctx.fillStyle = '#ffffff';
+	ctx.fill();
 	ctx.moveTo(300, 300);
 	ctx.lineTo(0, 0);
 	ctx.stroke();

@@ -18,8 +18,10 @@ import java.util.ArrayList;
 public class PPDumpShapeJS {
 
     private ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
+    private int[] writtenIDs;
     private float t = 0;
     private int onClickCounter = 0; //keeps track of order for multiple onclick events 
+
 
     public PPDumpShapeJS(){
         
@@ -34,11 +36,18 @@ public class PPDumpShapeJS {
     public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
 
         this.animations = slide.getAnimationList();
-        
+        this.writtenIDs = new int[shapes.length+1];
+        for(int i = 0;i<shapes.length+1;i++){
+            writtenIDs[i] = 0;
+        }
         boolean startPath = true;
+
+        writeAnimationsWrapper(fop);
         for(PPShape shape: shapes){
             if(shape.getTypeName().equals("PPRect")){
-                writeRect(fop,(PPRect)shape);
+                if(writtenIDs[shape.getShapeId()] == 0){ //this checks that the shape hasn't been written yet
+                    writeRect(fop,(PPRect)shape);
+                }
             } else if(shape.getTypeName().equals("PPLine")) {
                 if(startPath){ //maybe should be small method
                     try{
@@ -63,22 +72,57 @@ public class PPDumpShapeJS {
         }
     }
 
+    private void writeAnimationsWrapper(FileOutputStream fop){
+        for(int i = 0;i<animations.size();i++){
+            i+=writeAnimation(fop, i);
+        }
+    }
+
+    private int writeAnimation(FileOutputStream fop,int index){
+        try{
+            AnimationEffect animation = animations.get(index);
+            int offset = 0;
+            PPShape shape = animation.getShape();
+            if (shape.getTypeName().equals("PPRect")){
+                if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
+                    if (animation.getTrigger() == "onClick"){
+                        writeOnClick(fop);
+                        writeRect(fop,(PPRect)shape);
+                        try{
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+
+                        fop.write("\tcounter+=1;\n".getBytes());
+                        fop.write("\tcanvas.addEventListener('click', click".getBytes());
+                        fop.write(String.valueOf(onClickCounter).getBytes());
+                        fop.write(");\n".getBytes());
+                        fop.write("\t}}\n".getBytes());
+                            
+                    } else if (animation.getTrigger() == "withPrev"){
+                        try{
+                            writeRect(fop,(PPRect)shape);
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+                    }
+                } 
+                    
+                
+            }
+            return offset; //return should be amount of withPrev called from this one
+        }  catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
     private void writeRect(FileOutputStream fop, PPRect rect){
         try{
-            Boolean calledOnClick = false;
-            for(AnimationEffect animation: animations){
-                PPShape shape = animation.getShape();
-                
-                if (rect.getShapeId() == (shape.getShapeId())){
-                    if (animation.getTrigger() == "onClick"){
-                        if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
-                            writeOnClick(fop);
-                            calledOnClick = true;
-                        }
-                    }
-                    
-                }
-            }
+            
             fop.write("\tctx.rect(".getBytes());
             fop.write(String.valueOf((int)rect.getX()).getBytes());
             fop.write(",".getBytes());
@@ -106,13 +150,7 @@ public class PPDumpShapeJS {
                 fop.write(");\n".getBytes());
 
             }
-            if(calledOnClick){
-                fop.write("\tcounter+=1;\n".getBytes());
-                fop.write("\tcanvas.addEventListener('click', click".getBytes());
-                fop.write(String.valueOf(onClickCounter).getBytes());
-                fop.write(");\n".getBytes());
-                fop.write("\t}}\n".getBytes());
-            }
+            writtenIDs[rect.getShapeId()] = 1;
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
@@ -190,12 +228,18 @@ public class PPDumpShapeJS {
             onClickCounter+=1;
 
             //at this point return to calling program, but calling program needs to deal with closing parentheses
-
+            //and with adding the next event listener. Currently there will be one eronious event listener
 
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
-        
+    }
 
+    public void writeWithPrev(FileOutputStream fop){
+        try{
+            fop.write("".getBytes());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
     }
 }
