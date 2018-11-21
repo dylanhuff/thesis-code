@@ -19,17 +19,11 @@ public class PPDumpShapeJS {
 
     private ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
     private int[] writtenIDs;
-    private float t = 0;
     private int onClickCounter = 0; //keeps track of order for multiple onclick events 
-
 
     public PPDumpShapeJS(){
         
     }
-    //need to figure out how to get order of appearing correct for animations
-    //for an object, if the animation draws the first version of that object
-    //the method here should call a seperate method that is controls timeline.
-    //if animation draws obj, timeline 
     //Also, spend time researching JS best practices. I need to think about
     //the general structure here. Having everything output to a single func
     //might not be ideal. 
@@ -73,6 +67,12 @@ public class PPDumpShapeJS {
     }
 
     private void writeAnimationsWrapper(FileOutputStream fop){
+        try{
+            fop.write("\tfunction sleep(s)\n \t{return new Promise(resolve => setTimeout(resolve, s*1000));\n\t}\n".getBytes());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        }
+        
         for(int i = 0;i<animations.size();i++){
             i+=writeAnimation(fop, i);
         }
@@ -92,6 +92,8 @@ public class PPDumpShapeJS {
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
                             }
                         } catch (IndexOutOfBoundsException ex){}
 
@@ -107,11 +109,25 @@ public class PPDumpShapeJS {
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+                    } else if (animation.getTrigger() == "afterPrev"){
+                        try{
+                            fop.write("\tawait sleep(".getBytes());
+                            fop.write(String.valueOf((int)(animation.getDelay())).getBytes());
+                            fop.write(");\n".getBytes());
+                            writeRect(fop,(PPRect)shape);
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
                             }
                         } catch (IndexOutOfBoundsException ex){}
                     }
                 } 
-                    
                 
             }
             return offset; //return should be amount of withPrev called from this one
@@ -219,7 +235,7 @@ public class PPDumpShapeJS {
                 fop.write("\tvar counter = 0;\n".getBytes());
                 fop.write("\tcanvas.addEventListener('click', click0);\n".getBytes());
             }
-            fop.write("\tfunction click".getBytes());
+            fop.write("\tasync function click".getBytes());
             fop.write(String.valueOf(onClickCounter).getBytes());
             fop.write("(){\n".getBytes());
             fop.write("\t\tif (counter==".getBytes());
