@@ -1,11 +1,34 @@
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+function RectObj(x, y, height, width, color) {
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
+	this.color = color;
+}
+RectObj.prototype.renderRect = function (that) {
+	ctx.rect(this.x, this.y, this.height, this.width);
+	ctx.fillStyle = this.color;
+	ctx.fillRect(this.x, this.y, this.height, this.width);
+}
+RectObj.prototype.clearRect = function (that) {
+	ctx.clearRect(this.x, this.y, this.height, this.width);
+}
+
+rect2 = new RectObj(400, 0, 100, 100, "#000000");
+rect3 = new RectObj(100, 100, 100, 100, "#ffff00");
+rect4 = new RectObj(300, 200, 300, 100, "#0000ff");
+rect5 = new RectObj(200, 400, 100, 100, "#ff0000");
+rect6 = new RectObj(200, 100, 100, 100, "#ffc800");
+rect7 = new RectObj(400, 300, 200, 100, "#00ffff");
+rect8 = new RectObj(100, 400, 100, 200, "#ff00ff");
 function testSave() {
-	var canvas = document.createElement('canvas');
 	canvas.width = '716';
 	canvas.height = '537';
 	canvas.style.border = '1px solid';
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(canvas);
-	var ctx = canvas.getContext('2d');
 	function sleep(s) {
 		return new Promise(resolve => setTimeout(resolve, s * 1000));
 	}
@@ -13,41 +36,27 @@ function testSave() {
 	canvas.addEventListener('click', click0);
 	async function click0() {
 		if (counter == 0) {
-			ctx.rect(400, 0, 100, 100);
-			ctx.fillStyle = '#000000';
-			ctx.fillRect(400, 0, 100, 100);
-			ctx.rect(100, 100, 100, 100);
-			ctx.fillStyle = '#ffff00';
-			ctx.fillRect(100, 100, 100, 100);
+			rect2.renderRect();
+			rect3.renderRect();
 			counter += 1;
 			canvas.addEventListener('click', click1);
 		}
 	}
 	async function click1() {
 		if (counter == 1) {
-			ctx.rect(200, 400, 100, 100);
-			ctx.fillStyle = '#ff0000';
-			ctx.fillRect(200, 400, 100, 100);
+			rect5.renderRect();
 			await sleep(2);
-			ctx.rect(300, 200, 300, 100);
-			ctx.fillStyle = '#0000ff';
-			ctx.fillRect(300, 200, 300, 100);
-			ctx.rect(400, 300, 200, 100);
-			ctx.fillStyle = '#00ffff';
-			ctx.fillRect(400, 300, 200, 100);
+			rect4.renderRect();
+			rect7.renderRect();
 			await sleep(4);
-			ctx.rect(200, 100, 100, 100);
-			ctx.fillStyle = '#ffc800';
-			ctx.fillRect(200, 100, 100, 100);
+			rect6.renderRect();
 			counter += 1;
 			canvas.addEventListener('click', click2);
 		}
 	}
 	async function click2() {
 		if (counter == 2) {
-			ctx.rect(100, 400, 100, 200);
-			ctx.fillStyle = '#ff00ff';
-			ctx.fillRect(100, 400, 100, 200);
+			rect8.renderRect();
 			counter += 1;
 			canvas.addEventListener('click', click3);
 		}
