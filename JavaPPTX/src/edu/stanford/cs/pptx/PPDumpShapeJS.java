@@ -14,33 +14,84 @@ import java.lang.Math;
 
 import edu.stanford.cs.pptx.effect.AnimationEffect;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class PPDumpShapeJS {
 
     private ArrayList<AnimationEffect> animations = new ArrayList<AnimationEffect>();
-    private int[] writtenIDs;
+    private int[] renderIDs;
     private int onClickCounter = 0; //keeps track of order for multiple onclick events 
 
     public PPDumpShapeJS(){
         
     }
+
+    public void fileInit(FileOutputStream fop, PPShape[] shapes, PPSlide slide,PPShow show){
+        try{ //haven't redone line or oval also since clearRect is done, disappear is done
+            Dictionary classInit = new Hashtable<>();
+            classInit.put("rect",false);
+            classInit.put("line",false);
+            fop.write("var canvas = document.createElement('canvas');\n".getBytes());
+            fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
+            for(PPShape shape: shapes){
+                if(shape.getTypeName().equals("PPRect")){
+                    if (classInit.get("rect").equals(false)) {
+                        classInit.put("rect",true);
+                        fop.write("function RectObj(x,y,height,width,color){\n".getBytes());
+                        fop.write("\tthis.x = x;\n".getBytes());
+                        fop.write("\tthis.y = y;\n".getBytes());
+                        fop.write("\tthis.width = width;\n".getBytes());
+                        fop.write("\tthis.height = height;\n".getBytes());
+                        fop.write("\tthis.color = color;\n".getBytes());
+                        fop.write("}\n".getBytes());
+                        fop.write("RectObj.prototype.renderRect = function(that){\n".getBytes());
+                        fop.write("\tctx.rect(this.x,this.y,this.height,this.width);\n".getBytes());
+                        fop.write("\tctx.fillStyle = this.color;\n".getBytes());
+                        fop.write("\tctx.fillRect(this.x,this.y,this.height,this.width);\n".getBytes());
+                        fop.write("}\n".getBytes());
+                        fop.write("RectObj.prototype.clearRect = function (that) {\n".getBytes());
+                        fop.write("\tctx.clearRect(this.x, this.y, this.height, this.width);\n".getBytes());
+                        fop.write("}\n".getBytes());
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        }
+    }
+
+    public void objInit(FileOutputStream fop, PPShape[] shapes, PPSlide slide,PPShow show){
+        for(PPShape shape: shapes){
+            if(shape.getTypeName().equals("PPRect")){
+                writeRect(fop,(PPRect)shape);
+            }
+        }
+        
+    }
+
+    
     //Also, spend time researching JS best practices. I need to think about
     //the general structure here. Having everything output to a single func
     //might not be ideal. 
+    //rectangle class remember all of the parameters
+    //grect and gwindow 
+    //spline motion paths
+    //fade would be good, look into global alphas (transperency)
     public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
 
         this.animations = slide.getAnimationList();
-        this.writtenIDs = new int[shapes.length+1];
+        this.renderIDs = new int[shapes.length+1];
         for(int i = 0;i<shapes.length+1;i++){
-            writtenIDs[i] = 0;
+            renderIDs[i] = 0;
         }
         boolean startPath = true;
 
         writeAnimationsWrapper(fop);
         for(PPShape shape: shapes){
             if(shape.getTypeName().equals("PPRect")){
-                if(writtenIDs[shape.getShapeId()] == 0){ //this checks that the shape hasn't been written yet
-                    writeRect(fop,(PPRect)shape);
+                if(renderIDs[shape.getShapeId()] == 0){ //this checks that the shape hasn't been written yet
+                    renderRect(fop,(PPRect)shape);
                 }
             } else if(shape.getTypeName().equals("PPLine")) {
                 if(startPath){ //maybe should be small method
@@ -87,7 +138,7 @@ public class PPDumpShapeJS {
                 if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
                     if (animation.getTrigger() == "onClick"){
                         writeOnClick(fop);
-                        writeRect(fop,(PPRect)shape);
+                        renderRect(fop,(PPRect)shape);
                         try{
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
@@ -105,7 +156,7 @@ public class PPDumpShapeJS {
                             
                     } else if (animation.getTrigger() == "withPrev"){
                         try{
-                            writeRect(fop,(PPRect)shape);
+                            renderRect(fop,(PPRect)shape);
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
@@ -118,7 +169,7 @@ public class PPDumpShapeJS {
                             fop.write("\tawait sleep(".getBytes());
                             fop.write(String.valueOf((int)(animation.getDelay())).getBytes());
                             fop.write(");\n".getBytes());
-                            writeRect(fop,(PPRect)shape);
+                            renderRect(fop,(PPRect)shape);
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
@@ -137,9 +188,10 @@ public class PPDumpShapeJS {
     }
 
     private void writeRect(FileOutputStream fop, PPRect rect){
-        try{
-            
-            fop.write("\tctx.rect(".getBytes());
+        try{ 
+            fop.write("rect".getBytes());
+            fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
+            fop.write(" = new RectObj(".getBytes());
             fop.write(String.valueOf((int)rect.getX()).getBytes());
             fop.write(",".getBytes());
             fop.write(String.valueOf((int)rect.getY()).getBytes());
@@ -147,30 +199,27 @@ public class PPDumpShapeJS {
             fop.write(String.valueOf((int)rect.getWidth()).getBytes());
             fop.write(",".getBytes());
             fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-            fop.write(");\n".getBytes());
-            
-            if(!(rect.getFillColor().equals(null))){
-
-                fop.write("\tctx.fillStyle = '".getBytes());
-                String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
-                fop.write(hex.getBytes());
-                fop.write("';\n".getBytes());
-                fop.write("\tctx.fillRect(".getBytes());
-                fop.write(String.valueOf((int)rect.getX()).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf((int)rect.getY()).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf((int)rect.getWidth()).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf((int)rect.getHeight()).getBytes());
-                fop.write(");\n".getBytes());
-
-            }
-            writtenIDs[rect.getShapeId()] = 1;
+            fop.write(",\"".getBytes());
+            String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
+            fop.write(hex.getBytes());
+            fop.write("\");\n".getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
     }
+
+    private void renderRect(FileOutputStream fop, PPRect rect){
+        try{ 
+            fop.write("\trect".getBytes());
+            fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
+            fop.write(".renderRect();\n".getBytes());
+            renderIDs[rect.getShapeId()] = 1;
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
+
 
     private void writeLine(FileOutputStream fop, PPLine line){
 

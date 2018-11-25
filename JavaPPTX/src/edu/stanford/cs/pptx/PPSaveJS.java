@@ -41,11 +41,12 @@ public class PPSaveJS {
             PPShape[] shapes = new PPShape[slide.getShapes().length];
             shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
+            dump.fileInit(fop, shapes, slide, this.show);
+            dump.objInit(fop, shapes, slide, this.show);
             //better function name then testSave (change in test.html as well)
             fop.write("function testSave(){\n".getBytes()); //I set the canvas side to the slide size, maybe should be GWindow size? 
             //gwindow could be added as a sepearte smaller window
             //third param is in this id
-            fop.write("\tvar canvas = document.createElement('canvas');\n".getBytes());
             fop.write("\tcanvas.width = '".getBytes());
             fop.write(String.valueOf((int)this.show.getWidth()).getBytes());
             fop.write("';\n\tcanvas.height = '".getBytes());
@@ -54,9 +55,9 @@ public class PPSaveJS {
             fop.write("\tcanvas.style.border = '1px solid';\n".getBytes());
             fop.write("\tvar body = document.getElementsByTagName('body')[0];\n".getBytes());
             fop.write("\tbody.appendChild(canvas);\n".getBytes());
-            fop.write("\tvar ctx = canvas.getContext('2d');\n".getBytes());
             //add a couple objects then start adding animations
             //add move animations, along curves
+            
             dump.writeShapes(fop, shapes, slide);
             
             //it will be in the order of the display list
