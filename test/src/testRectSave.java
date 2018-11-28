@@ -47,10 +47,11 @@ public class testRectSave {
         testRect.appear("/onClick");
         testRect2.appear("/withPrev");
         testRect4.appear("/onClick");
-        testRect3.appear("/afterPrev/delay:2.0");
+        testRect3.appear("/afterPrev/delay:1");
         testRect6.appear("/withPrev");
-        testRect5.appear("/afterPrev/delay:4.0");
+        testRect5.appear("/afterPrev/delay:1");
         testRect7.appear("/onClick");
+        testRect2.move(10.0,10.0); //bug with multiple animations 
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 
