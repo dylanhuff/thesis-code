@@ -215,3 +215,4 @@ test/example.pptx
 test/~$example.pptx
 test/bin/example.pptx
 JavaPPTX/.DS_Store
+node_modules

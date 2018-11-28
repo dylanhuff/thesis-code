@@ -41,12 +41,17 @@ public class PPSaveJS {
             PPShape[] shapes = new PPShape[slide.getShapes().length];
             shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
-            dump.fileInit(fop, shapes, slide, this.show);
+            fop.write("import RectObj from './classes.js';\n".getBytes()); 
+            fop.write("var canvas = document.createElement('canvas');\n".getBytes());
+            fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
+            fop.write("export {ctx as default};\n".getBytes());
+            dump.fileInit(shapes, slide, this.show);
             dump.objInit(fop, shapes, slide, this.show);
             //better function name then testSave (change in test.html as well)
             fop.write("function testSave(){\n".getBytes()); //I set the canvas side to the slide size, maybe should be GWindow size? 
             //gwindow could be added as a sepearte smaller window
             //third param is in this id
+            fop.write("\tdocument.removeEventListener('load',testSave);\n".getBytes());
             fop.write("\tcanvas.width = '".getBytes());
             fop.write(String.valueOf((int)this.show.getWidth()).getBytes());
             fop.write("';\n\tcanvas.height = '".getBytes());
@@ -63,17 +68,11 @@ public class PPSaveJS {
             //it will be in the order of the display list
             //go throught the object list backl to front, then calls something to display
             
-            
-            
-
             fop.write("\tctx.stroke();\n".getBytes());
-            fop.write("}".getBytes());
+            fop.write("}\n".getBytes());
+            fop.write("document.addEventListener('load', testSave());\n".getBytes());
             fop.flush();
             fop.close();
-
-
-            
-            
 
             System.out.println(filename);
 
