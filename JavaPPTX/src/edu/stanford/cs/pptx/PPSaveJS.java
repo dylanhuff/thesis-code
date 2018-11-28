@@ -42,9 +42,14 @@ public class PPSaveJS {
             shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
             fop.write("import RectObj from './classes.js';\n".getBytes()); 
-            fop.write("var canvas = document.createElement('canvas');\n".getBytes());
-            fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
-            fop.write("export {ctx as default};\n".getBytes());
+            fop.write("import {canvas,ctx,GWindow} from './classes.js';\n".getBytes());
+            fop.write("var window = new GWindow(".getBytes());
+            fop.write(String.valueOf((int)this.show.getWidth()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)this.show.getHeight()).getBytes());
+            fop.write(",'1px solid');\n".getBytes());
+            fop.write("window.renderWindow();\n".getBytes());
+
             dump.fileInit(shapes, slide, this.show);
             dump.objInit(fop, shapes, slide, this.show);
             //better function name then testSave (change in test.html as well)
@@ -52,14 +57,6 @@ public class PPSaveJS {
             //gwindow could be added as a sepearte smaller window
             //third param is in this id
             fop.write("\tdocument.removeEventListener('load',testSave);\n".getBytes());
-            fop.write("\tcanvas.width = '".getBytes());
-            fop.write(String.valueOf((int)this.show.getWidth()).getBytes());
-            fop.write("';\n\tcanvas.height = '".getBytes());
-            fop.write(String.valueOf((int)this.show.getHeight()).getBytes());
-            fop.write("';\n".getBytes());
-            fop.write("\tcanvas.style.border = '1px solid';\n".getBytes());
-            fop.write("\tvar body = document.getElementsByTagName('body')[0];\n".getBytes());
-            fop.write("\tbody.appendChild(canvas);\n".getBytes());
             //add a couple objects then start adding animations
             //add move animations, along curves
             
