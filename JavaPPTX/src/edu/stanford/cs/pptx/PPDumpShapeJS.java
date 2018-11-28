@@ -41,26 +41,73 @@ public class PPDumpShapeJS {
             Dictionary classInit = new Hashtable<>();
             classInit.put("rect",false);
             classInit.put("line",false);
-            fop.write("export {RectObj as default};\nimport ctx from './example.js'\n".getBytes());
+            fop.write("export {RectObj as default};\n".getBytes());
+            fop.write("export {canvas,ctx,GWindow};\n".getBytes());
+            fop.write("var canvas = document.createElement('canvas');\n".getBytes());
+            fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
+            fop.write("var body = document.getElementsByTagName('body')[0];\n".getBytes());
+            fop.write("class GWindow{\n".getBytes());
+            fop.write("\tconstructor(width,height,borderStyle){\n".getBytes());
+            fop.write("\t\tthis.width = width;\n".getBytes());
+            fop.write("\t\tthis.height = height;\n".getBytes());
+            fop.write("\t\tthis.borderStyle = borderStyle;\n".getBytes());
+            fop.write("\t\tthis.renderOrder = []; //list of obj ids in render order\n".getBytes());
+            fop.write("\t\tthis.objects = [];\n\t}\n".getBytes());
+            fop.write("\trenderWindow(){\n".getBytes());
+            fop.write("\t//renders the window without objects\n".getBytes());
+            fop.write("\t\tcanvas.width = this.width;\n".getBytes());
+            fop.write("\t\tcanvas.height = this.height;\n".getBytes());
+            fop.write("\t\tcanvas.style.border = this.borderStyle;\n".getBytes());
+            fop.write("\t\tbody.appendChild(canvas);\n\t}\n".getBytes());
+            fop.write("\trenderObject(id){\n".getBytes());
+            fop.write("\t\t//renders one object based on its id. should call the render method of the object\n".getBytes());
+            fop.write("\t\tthis.objects.forEach(obj => {\n".getBytes());
+            fop.write("\t\t\tif(obj.id == id){\n".getBytes());
+            fop.write("\t\t\t\tobj.render();\n".getBytes());
+            fop.write("\t\t\t\tthis.renderOrder.push(id);\n\t\t\t}\n".getBytes());
+            fop.write("\t\t});\n\t}\n".getBytes());
+            fop.write("\tderenderObject(id){\n".getBytes());
+            fop.write("\t\tvar index = this.renderOrder.indexOf(id);\n".getBytes());
+            fop.write("\t\tthis.renderOrder.splice(index,1);\n".getBytes());
+            fop.write("\t\tthis.derenderAllObjects();\n".getBytes());
+            fop.write("\t\tthis.renderAllObjects();\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\taddObjects(objs){\n".getBytes());
+            fop.write("\t\tobjs.forEach(element => {\n".getBytes());
+            fop.write("\t\t\tthis.objects.push(element)\n".getBytes());
+            fop.write("\t\t});\n\t}\n".getBytes());
+            fop.write("\trenderAllObjects(){\n".getBytes());
+            fop.write("\t\tthis.renderOrder.forEach(id => {".getBytes());
+            fop.write("\t\t\tthis.objects.forEach(obj => {\n".getBytes());
+            fop.write("\t\t\t\tif(obj.id==id){\n".getBytes());
+            fop.write("\t\t\t\t\tobj.render();\n".getBytes());
+            fop.write("\t\t\t\t}\n".getBytes());
+            fop.write("\t\t\t});\n".getBytes());
+            fop.write("\t\t});\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\tderenderAllObjects(){\n".getBytes());
+            fop.write("\t\tctx.clearRect(0, 0, this.height, this.width);\n".getBytes());
+            fop.write("\t\t//iterate through all objects and change its renderBool to false\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("}\n".getBytes());
+
             for(PPShape shape: shapes){
                 if(shape.getTypeName().equals("PPRect")){
                     if (classInit.get("rect").equals(false)) {
                         classInit.put("rect",true);
                         fop.write("class RectObj{\n".getBytes());
-                        fop.write("\tconstructor(x,y,height,width,color){\n".getBytes());
+                        fop.write("\tconstructor(x,y,height,width,color,id){\n".getBytes());
                         fop.write("\t\tthis.x = x;\n".getBytes());
                         fop.write("\t\tthis.y = y;\n".getBytes());
                         fop.write("\t\tthis.width = width;\n".getBytes());
                         fop.write("\t\tthis.height = height;\n".getBytes());
                         fop.write("\t\tthis.color = color;\n".getBytes());
+                        fop.write("\t\tthis.id = id;\n".getBytes());
                         fop.write("\t}\n".getBytes());
-                        fop.write("\trenderRect(){\n".getBytes());
+                        fop.write("\trender(){\n".getBytes());
                         fop.write("\t\tctx.rect(this.x,this.y,this.height,this.width);\n".getBytes());
                         fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
                         fop.write("\t\tctx.fillRect(this.x,this.y,this.height,this.width);\n".getBytes());
-                        fop.write("\t}\n".getBytes());
-                        fop.write("\tclearRect(){\n".getBytes());
-                        fop.write("\t\tctx.clearRect(this.x, this.y, this.height, this.width);\n".getBytes());
                         fop.write("\t}\n".getBytes());
                         fop.write("\tmove(){\n".getBytes());
                         fop.write("\t\tthis.clearRect();\n".getBytes());
@@ -102,6 +149,9 @@ public class PPDumpShapeJS {
     //grect and gwindow 
     //spline motion paths   
     //fade would be good, look into global alphas (transperency)
+    //start thinking about what is the thesis going to look like
+    //rough chapters
+
     public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
 
         this.animations = slide.getAnimationList();
@@ -274,7 +324,13 @@ public class PPDumpShapeJS {
             fop.write(",\"".getBytes());
             String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
             fop.write(hex.getBytes());
-            fop.write("\");\n".getBytes());
+            fop.write("\",".getBytes());
+            fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
+            fop.write(");\n".getBytes());
+            fop.write("window.addObjects([rect".getBytes());
+            fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
+            fop.write("]);\n".getBytes());
+
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
@@ -282,9 +338,9 @@ public class PPDumpShapeJS {
 
     private void renderRect(FileOutputStream fop, PPRect rect){
         try{ 
-            fop.write("\trect".getBytes());
+            fop.write("\twindow.renderObject(".getBytes());
             fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
-            fop.write(".renderRect();\n".getBytes());
+            fop.write(");\n".getBytes());
             renderIDs[rect.getShapeId()] = 1;
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
