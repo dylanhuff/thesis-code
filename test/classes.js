@@ -1,5 +1,5 @@
 export {RectObj as default};
-export {canvas,ctx,GWindow};
+export {canvas,ctx,window};
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 var body = document.getElementsByTagName('body')[0];
@@ -39,7 +39,8 @@ class GWindow{
 		});
 	}
 	renderAllObjects(){
-		this.renderOrder.forEach(id => {			this.objects.forEach(obj => {
+		this.renderOrder.forEach(id => {
+			this.objects.forEach(obj => {
 				if(obj.id==id){
 					obj.render();
 				}
@@ -47,7 +48,7 @@ class GWindow{
 		});
 	}
 	derenderAllObjects(){
-		ctx.clearRect(0, 0, this.height, this.width);
+		ctx.clearRect(0, 0, this.width, this.height);
 		//iterate through all objects and change its renderBool to false
 	}
 }
@@ -65,16 +66,29 @@ class RectObj{
 		ctx.fillStyle = this.color;
 		ctx.fillRect(this.x,this.y,this.height,this.width);
 	}
-	move(){
-		this.clearRect();
-		this.x = this.x;
-		this.y -=1;
-		this.renderRect();
+	moveHelper(xOffset,yOffset){
+		window.derenderAllObjects();
+		this.x +=xOffset
+		this.y +=yOffset;
+		window.renderAllObjects();
 	}
-	moveWrapper(interval){
+	move(endX,endY,duration){
 		var _this = this;
-		setInterval(function(){
-			_this.move();
-		},interval);
+		var xOffset = ((endX-this.x)/duration)/60; //px/refresh
+		var yOffset = ((endY-this.y)/duration)/60;
+		var threshold = (endX-this.x)/xOffset;
+		var refreshCounter = 0;
+		var intervalID = setInterval(function(){
+			wrap();
+		},1000/60);
+		var wrap = function(){
+			if(refreshCounter<threshold){
+				_this.moveHelper(xOffset,yOffset);
+				refreshCounter+=1;
+			} else {
+				clearInterval(intervalID)
+			}
+		}
 	}
 }
+var window = new GWindow(716,537,'1px solid');

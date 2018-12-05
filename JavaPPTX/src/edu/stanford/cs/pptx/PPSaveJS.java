@@ -42,12 +42,7 @@ public class PPSaveJS {
             shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
             fop.write("import RectObj from './classes.js';\n".getBytes()); 
-            fop.write("import {canvas,ctx,GWindow} from './classes.js';\n".getBytes());
-            fop.write("var window = new GWindow(".getBytes());
-            fop.write(String.valueOf((int)this.show.getWidth()).getBytes());
-            fop.write(",".getBytes());
-            fop.write(String.valueOf((int)this.show.getHeight()).getBytes());
-            fop.write(",'1px solid');\n".getBytes());
+            fop.write("import {canvas,ctx,window} from './classes.js';\n".getBytes());
             fop.write("window.renderWindow();\n".getBytes());
 
             dump.fileInit(shapes, slide, this.show);

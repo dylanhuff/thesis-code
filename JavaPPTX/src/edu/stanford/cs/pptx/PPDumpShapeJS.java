@@ -15,9 +15,11 @@ import java.io.File;
 
 
 import edu.stanford.cs.pptx.effect.AnimationEffect;
+import edu.stanford.cs.pptx.effect.LinearMotionEffect;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.awt.geom.Point2D;
 
 public class PPDumpShapeJS {
 
@@ -42,7 +44,7 @@ public class PPDumpShapeJS {
             classInit.put("rect",false);
             classInit.put("line",false);
             fop.write("export {RectObj as default};\n".getBytes());
-            fop.write("export {canvas,ctx,GWindow};\n".getBytes());
+            fop.write("export {canvas,ctx,window};\n".getBytes());
             fop.write("var canvas = document.createElement('canvas');\n".getBytes());
             fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
             fop.write("var body = document.getElementsByTagName('body')[0];\n".getBytes());
@@ -77,7 +79,7 @@ public class PPDumpShapeJS {
             fop.write("\t\t\tthis.objects.push(element)\n".getBytes());
             fop.write("\t\t});\n\t}\n".getBytes());
             fop.write("\trenderAllObjects(){\n".getBytes());
-            fop.write("\t\tthis.renderOrder.forEach(id => {".getBytes());
+            fop.write("\t\tthis.renderOrder.forEach(id => {\n".getBytes());
             fop.write("\t\t\tthis.objects.forEach(obj => {\n".getBytes());
             fop.write("\t\t\t\tif(obj.id==id){\n".getBytes());
             fop.write("\t\t\t\t\tobj.render();\n".getBytes());
@@ -86,7 +88,7 @@ public class PPDumpShapeJS {
             fop.write("\t\t});\n".getBytes());
             fop.write("\t}\n".getBytes());
             fop.write("\tderenderAllObjects(){\n".getBytes());
-            fop.write("\t\tctx.clearRect(0, 0, this.height, this.width);\n".getBytes());
+            fop.write("\t\tctx.clearRect(0, 0, this.width, this.height);\n".getBytes());
             fop.write("\t\t//iterate through all objects and change its renderBool to false\n".getBytes());
             fop.write("\t}\n".getBytes());
             fop.write("}\n".getBytes());
@@ -109,22 +111,38 @@ public class PPDumpShapeJS {
                         fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
                         fop.write("\t\tctx.fillRect(this.x,this.y,this.height,this.width);\n".getBytes());
                         fop.write("\t}\n".getBytes());
-                        fop.write("\tmove(){\n".getBytes());
-                        fop.write("\t\tthis.clearRect();\n".getBytes());
-                        fop.write("\t\tthis.x = this.x;\n".getBytes()); //change here for moving
-                        fop.write("\t\tthis.y -=1;\n".getBytes());
-                        fop.write("\t\tthis.renderRect();\n".getBytes());
+                        fop.write("\tmoveHelper(xOffset,yOffset){\n".getBytes());
+                        fop.write("\t\twindow.derenderAllObjects();\n".getBytes());
+                        fop.write("\t\tthis.x +=xOffset\n".getBytes()); //change here for moving
+                        fop.write("\t\tthis.y +=yOffset;\n".getBytes());
+                        fop.write("\t\twindow.renderAllObjects();\n".getBytes());
                         fop.write("\t}\n".getBytes());
-                        fop.write("\tmoveWrapper(interval){\n".getBytes());
+                        fop.write("\tmove(endX,endY,duration){\n".getBytes());
                         fop.write("\t\tvar _this = this;\n".getBytes());
-                        fop.write("\t\tsetInterval(function(){\n".getBytes());
-                        fop.write("\t\t\t_this.move();\n".getBytes());
-                        fop.write("\t\t},interval);\n".getBytes());
+                        fop.write("\t\tvar xOffset = ((endX-this.x)/duration)/60; //px/refresh\n".getBytes());
+                        fop.write("\t\tvar yOffset = ((endY-this.y)/duration)/60;\n".getBytes());
+                        fop.write("\t\tvar threshold = (endX-this.x)/xOffset;\n".getBytes());
+                        fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
+                        fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
+                        fop.write("\t\t\twrap();\n".getBytes());
+                        fop.write("\t\t},1000/60);\n".getBytes());
+                        fop.write("\t\tvar wrap = function(){\n".getBytes());
+                        fop.write("\t\t\tif(refreshCounter<threshold){\n".getBytes());
+                        fop.write("\t\t\t\t_this.moveHelper(xOffset,yOffset);\n".getBytes());
+                        fop.write("\t\t\t\trefreshCounter+=1;\n".getBytes());
+                        fop.write("\t\t\t} else {\n".getBytes());
+                        fop.write("\t\t\t\tclearInterval(intervalID)\n".getBytes());
+                        fop.write("\t\t\t}\n\t\t}\n".getBytes());
                         fop.write("\t}\n".getBytes());
                         fop.write("}\n".getBytes());
                     }
                 }
             }
+            fop.write("var window = new GWindow(".getBytes());
+            fop.write(String.valueOf((int)show.getWidth()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)show.getHeight()).getBytes());
+            fop.write(",'1px solid');\n".getBytes());
             fop.flush();
             fop.close();
 
@@ -146,7 +164,6 @@ public class PPDumpShapeJS {
     //Also, spend time researching JS best practices. I need to think about
     //the general structure here. Having everything output to a single func
     //might not be ideal. 
-    //grect and gwindow 
     //spline motion paths   
     //fade would be good, look into global alphas (transperency)
     //start thinking about what is the thesis going to look like
@@ -161,34 +178,36 @@ public class PPDumpShapeJS {
         }
         boolean startPath = true;
         writeAnimationsWrapper(fop);
-        for(PPShape shape: shapes){
-            if(shape.getTypeName().equals("PPRect")){
-                if(renderIDs[shape.getShapeId()] == 0){ //this checks that the shape hasn't been written yet
-                    renderRect(fop,(PPRect)shape);
-                }
-            } else if(shape.getTypeName().equals("PPLine")) {
-                if(startPath){ //maybe should be small method
-                    try{
-                        fop.write("\tctx.beginPath();\n".getBytes());
-                        startPath = false;
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex.toString());
-                    }
-                }
-                writeLine(fop,(PPLine)shape);
-            } else if(shape.getTypeName().equals("PPOval")) {
-                if(startPath){
-                    try{
-                        fop.write("\tctx.beginPath();\n".getBytes());
-                        startPath = false;
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex.toString());
-                    }
-                }
-                writeOval(fop,(PPOval)shape);
-            }
-        }
+        // for(PPShape shape: shapes){
+        //     if(shape.getTypeName().equals("PPRect")){
+        //         if(renderIDs[shape.getShapeId()] == 0){ //this checks that the shape hasn't been written yet
+        //             renderRect(fop,(PPRect)shape);
+        //         }
+        //     } else if(shape.getTypeName().equals("PPLine")) {
+        //         if(startPath){ //maybe should be small method
+        //             try{
+        //                 fop.write("\tctx.beginPath();\n".getBytes());
+        //                 startPath = false;
+        //             } catch (IOException ex) {
+        //                 throw new RuntimeException(ex.toString());
+        //             }
+        //         }
+        //         writeLine(fop,(PPLine)shape);
+        //     } else if(shape.getTypeName().equals("PPOval")) {
+        //         if(startPath){
+        //             try{
+        //                 fop.write("\tctx.beginPath();\n".getBytes());
+        //                 startPath = false;
+        //             } catch (IOException ex) {
+        //                 throw new RuntimeException(ex.toString());
+        //             }
+        //         }
+        //         writeOval(fop,(PPOval)shape);
+        //     }
+        // }
     }
+
+    //print stack trace to see 
 
     private void writeAnimationsWrapper(FileOutputStream fop){
         try{
@@ -252,11 +271,23 @@ public class PPDumpShapeJS {
                         } catch (IndexOutOfBoundsException ex){}
                     }
                 } else if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.LinearMotionEffect"){
+                    System.out.println(animation.getDuration());
+                    System.out.println(animation.getDirection());
+                    System.out.println(animation.getDelay());
+                    System.out.println(((LinearMotionEffect)animation).dumpJS());
+                    Point2D loc = ((LinearMotionEffect)animation).dumpJS();
+                    double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
                     if (animation.getTrigger() == "onClick"){
                         writeOnClick(fop);
                         fop.write("\trect".getBytes());
                         fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                        fop.write(".moveWrapper(1000/60);".getBytes());
+                        fop.write(".move(".getBytes());
+                        fop.write(String.valueOf(loc.getX()).getBytes());
+                        fop.write(",".getBytes());
+                        fop.write(String.valueOf(loc.getY()).getBytes());
+                        fop.write(",".getBytes());
+                        fop.write(String.valueOf(animation.getDuration()).getBytes());
+                        fop.write(");\n".getBytes());
                         try{
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
@@ -265,7 +296,6 @@ public class PPDumpShapeJS {
                                 offset+=1+writeAnimation(fop, index+1);
                             }
                         } catch (IndexOutOfBoundsException ex){}
-
                         fop.write("\tcounter+=1;\n".getBytes());
                         fop.write("\tcanvas.addEventListener('click', click".getBytes());
                         fop.write(String.valueOf(onClickCounter).getBytes());
@@ -276,7 +306,13 @@ public class PPDumpShapeJS {
                         try{
                             fop.write("\trect".getBytes());
                             fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                            fop.write(".moveWrapper(1000/60);".getBytes());
+                            fop.write(".move(".getBytes());
+                            fop.write(String.valueOf(loc.getX()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf(loc.getY()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf(animation.getDuration()).getBytes());
+                            fop.write(");\n".getBytes());
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
@@ -291,7 +327,13 @@ public class PPDumpShapeJS {
                             fop.write(");\n".getBytes());
                             fop.write("\trect".getBytes());
                             fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                            fop.write(".moveWrapper(1000/60);".getBytes());
+                            fop.write(".move(".getBytes());
+                            fop.write(String.valueOf(loc.getX()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf(loc.getY()).getBytes());
+                            fop.write(",".getBytes());
+                            fop.write(String.valueOf(animation.getDuration()).getBytes());
+                            fop.write(");\n".getBytes());
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
@@ -312,11 +354,12 @@ public class PPDumpShapeJS {
     private void writeRect(FileOutputStream fop, PPRect rect){
         try{ 
             fop.write("var rect".getBytes());
+            Point2D initLoc = rect.getInitialLocation();
             fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
             fop.write(" = new RectObj(".getBytes());
-            fop.write(String.valueOf((int)rect.getX()).getBytes());
+            fop.write(String.valueOf((int)initLoc.getX()).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getY()).getBytes());
+            fop.write(String.valueOf((int)initLoc.getY()).getBytes());
             fop.write(",".getBytes());
             fop.write(String.valueOf((int)rect.getWidth()).getBytes());
             fop.write(",".getBytes());
@@ -363,7 +406,6 @@ public class PPDumpShapeJS {
             fop.write(",".getBytes());
             fop.write(String.valueOf((int)line.getY()).getBytes()); 
             fop.write(");\n".getBytes());
-            
 
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
@@ -411,6 +453,7 @@ public class PPDumpShapeJS {
             if(onClickCounter == 0){
                 fop.write("\tvar counter = 0;\n".getBytes());
                 fop.write("\tcanvas.addEventListener('click', click0);\n".getBytes());
+                
             }
             fop.write("\tasync function click".getBytes());
             fop.write(String.valueOf(onClickCounter).getBytes());
@@ -419,10 +462,8 @@ public class PPDumpShapeJS {
             fop.write(String.valueOf(onClickCounter).getBytes());
             fop.write("){\n".getBytes());
             onClickCounter+=1;
-
             //at this point return to calling program, but calling program needs to deal with closing parentheses
             //and with adding the next event listener. Currently there will be one eronious event listener
-
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
