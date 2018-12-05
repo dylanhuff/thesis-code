@@ -51,7 +51,7 @@ public class testRectSave {
         testRect6.appear("/withPrev");
         testRect5.appear("/afterPrev/delay:1");
         testRect7.appear("/onClick");
-        //testRect2.move(10.0,10.0); //bug with multiple animations 
+        testRect2.move(500.0,100.0,"/withPrev"); //bug with multiple animations 
         PPSaveJS testSave = new PPSaveJS(testShow);
         testSave.save("../example.js");
 

@@ -79,6 +79,18 @@ public class LinearMotionEffect extends AnimationEffect {
       mpState.adjustEffectLocation(dx, dy);
    }
 
+   public Point2D dumpJS() {
+      Point2D start = mpState.getInitialLocation();
+      Point2D current = mpState.getEffectLocation();
+      double x0 = current.getX() - start.getX();
+      double y0 = current.getY() - start.getY(); //I really don't understand how this data is being stored
+      return mpState.getCurrentLocation();
+   }
+
+   public double dumpSpeed() {
+       return speed;
+   }
+
    private String getMotionString(double x0, double y0) {
       String str = "M";
       str += " " + format.format(sx * x0);
