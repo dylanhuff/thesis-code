@@ -5,7 +5,32 @@ import edu.stanford.cs.pptx.*;
 public class testRectSave {
 
 	 public static void main(String[] args){
-		 
+		simpleText(args);
+     }
+     
+    public static void simpleText(String[] args){
+        PPShow ppt = new PPShow();
+        PPSlide slide = new PPSlide();
+        slide.addTitle("Simple Shapes");
+        double x = (ppt.getWindowWidth() - SQUARE_SIZE) / 2;
+        double y = (ppt.getWindowHeight() - SQUARE_SIZE) / 2;
+        PPRect square = new PPRect(x, y, SQUARE_SIZE, SQUARE_SIZE);
+        square.setColor(Color.RED);
+        PPOval circle = new PPOval(x, y, SQUARE_SIZE, SQUARE_SIZE);
+        circle.setColor(Color.GREEN);
+        slide.add(square);
+        slide.add(circle);
+        circle.appear();
+        square.disappear();
+        ppt.add(slide);
+        ppt.save("PPSimpleShapes.pptx");
+        PPSaveJS testSave = new PPSaveJS(ppt);
+        testSave.save("../example.js");
+        System.out.println("PPSimpleShapes.pptx");
+
+    }
+
+    public static void mainTest(String[] args){
         PPShow testShow = new PPShow();
         PPSlide slide = new PPSlide();
         slide.addTitle("Testing yo");
@@ -56,6 +81,8 @@ public class testRectSave {
         testSave.save("../example.js");
 
         testShow.save("../example.pptx");
-	 }
+    }
+
+    private static final double SQUARE_SIZE = 200;
 }
 	 

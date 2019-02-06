@@ -1,5 +1,5 @@
 export {RectObj as default};
-export {canvas,ctx,window};
+export {canvas,ctx,window,OvalObj,TextObj};
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 var body = document.getElementsByTagName('body')[0];
@@ -52,19 +52,11 @@ class GWindow{
 		//iterate through all objects and change its renderBool to false
 	}
 }
-class RectObj{
-	constructor(x,y,height,width,color,id){
+class ObjectType{
+	constructor(id,x,y){
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.color = color;
 		this.id = id;
-	}
-	render(){
-		ctx.rect(this.x,this.y,this.height,this.width);
-		ctx.fillStyle = this.color;
-		ctx.fillRect(this.x,this.y,this.height,this.width);
 	}
 	moveHelper(xOffset,yOffset){
 		window.derenderAllObjects();
@@ -89,6 +81,50 @@ class RectObj{
 				clearInterval(intervalID)
 			}
 		}
+	}
+}
+class TextObj extends ObjectType{
+	constructor(x,y,id,string,color,fontDesc){
+		super(id,x,y);
+		this.string = string;
+		this.color = color;
+		this.fontDesc = fontDesc;
+	}
+	render(){
+		ctx.font = this.fontDesc;
+		ctx.fillStyle = this.color;
+		ctx.textAlign = 'center';
+		ctx.fillText(this.string, this.x, this.y); 
+	}
+}
+class RectObj extends ObjectType{
+	constructor(x,y,height,width,color,id){
+		super(id,x,y);
+		this.width = width;
+		this.height = height;
+		this.color = color;
+	}
+	render(){
+		ctx.rect(this.x,this.y,this.height,this.width);
+		ctx.fillStyle = this.color;
+		ctx.fillRect(this.x,this.y,this.height,this.width);
+	}
+}
+class OvalObj extends ObjectType{
+	constructor(x,y,radiusX, radiusY, rotation, startAngle, endAngle ,color,id){
+		super(id,x,y);
+		this.radiusX = radiusX;
+		this.radiusY = radiusY;
+		this.rotation = rotation;
+		this.startAngle = startAngle;
+		this.endAngle = endAngle;
+		this.color = color;
+	}
+	render(){
+		ctx.beginPath();
+		ctx.ellipse(this.x,this.y,this.radiusX,this.radiusY,this.rotation,this.startAngle,this.endAngle);
+		ctx.fillStyle = this.color;
+		ctx.fill();
 	}
 }
 var window = new GWindow(716,537,'1px solid');
