@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{19}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -20,6 +20,11 @@ Angel, E. (2001{\natexlab{a}}).
 Angel, E. (2001{\natexlab{b}}).
 \newblock {\em test second book by angel\/}.
 \newblock Boston, MA: Wesley Addison Longman.
+
+\bibitem[{Brown(1987)}]{brown_algorithm_1987}
+Brown, M.~H. (1987).
+\newblock {\em Algorithm Animation\/}.
+\newblock Phd thesis, Brown University.
 
 \bibitem[{Deussen \& Strothotte(2000)}]{deussen:2000}
 Deussen, O., \& Strothotte, T. (2000).
@@ -46,6 +51,13 @@ Hertzmann, A., \& Zorin, D. (2000).
 \newblock Illustrating smooth surfaces.
 \newblock {\em Proceedings of SIGGRAPH 2000\/}, {\em 5\/}(17), 517--526.
 
+\bibitem[{Hundhausen et~al.(2002)Hundhausen, Douglas, \&
+  Stasko}]{hundhausen_meta-study_2002}
+Hundhausen, C.~D., Douglas, S.~A., \& Stasko, J.~T. (2002).
+\newblock A meta-study of algorithm visualization effectiveness.
+\newblock {\em 13\/}(3), 259--290.
+\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S1045926X02902375}
+
 \bibitem[{Jain(1989)}]{jain:1989}
 Jain, A.~K. (1989).
 \newblock {\em Fundamentals of Digital Image Processing\/}.
@@ -57,6 +69,13 @@ Molina, S.~T., \& Borkovec, T.~D. (1994).
   associated characteristics.
 \newblock In G.~C.~L. Davey, \& F.~Tallis (Eds.), {\em Worrying: Perspectives
   on theory, assessment and treatment\/}, (pp. 265--283). New York: Wiley.
+
+\bibitem[{Najork \& Brown(1994)}]{najork_library_1994}
+Najork, M.~A., \& Brown, M.~H. (1994).
+\newblock A library for visualizing combinatorial structures.
+\newblock (pp. 164--171).
+\newblock Event-place: Washinton, D.C.
+\urlprefix\url{http://dl.acm.org/citation.cfm?id=951087.951119}
 
 \bibitem[{Noble(2002)}]{noble:2002}
 Noble, S.~G. (2002).
