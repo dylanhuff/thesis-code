@@ -64,7 +64,6 @@
 %\approvedforthe{Committee}
 
 \setlength{\parskip}{0pt}
-%%
 %% End Preamble
 %%
 %% The fun begins:
@@ -92,14 +91,8 @@
 	\begin{table}[h]
 	\centering % You could remove this to move table to the left
 	\begin{tabular}{ll}
-		\textbf{ABC}  	&  American Broadcasting Company \\
-		\textbf{CBS}  	&  Columbia Broadcasting System\\
-		\textbf{CDC}  	&  Center for Disease Control \\
-		\textbf{CIA}  	&  Central Intelligence Agency\\
-		\textbf{CLBR} 	&  Center for Life Beyond Reed\\
-		\textbf{CUS}  	&  Computer User Services\\
-		\textbf{FBI}  	&  Federal Bureau of Investigation\\
-		\textbf{NBC}  	&  National Broadcasting Corporation\\
+		\textbf{CS}   & Computer Science\\
+		\textbf{JS}  	&  JavaScript\\
 	\end{tabular}
 	\end{table}
 	
@@ -128,38 +121,21 @@
          \addcontentsline{toc}{chapter}{Introduction}
 	\chaptermark{Introduction}
 	\markboth{Introduction}{Introduction}
-	% The three lines above are to make sure that the headers are right, that the intro gets included in the table of contents, and that it doesn't get numbered 1 so that chapter one is 1.
 
-% Double spacing: if you want to double space, or one and a half 
-% space, uncomment one of the following lines. You can go back to 
-% single spacing with the \singlespacing command.
-% \onehalfspacing
-% \doublespacing
-	
-	Welcome to the \LaTeX\ thesis template. If you've never used \TeX\ or \LaTeX\ before, you'll have an initial learning period to go through, but the results of a nicely formatted thesis are worth it for more than the aesthetic benefit: markup like \LaTeX\ is more consistent than the output of a word processor, much less prone to corruption or crashing and the resulting file is smaller than a Word file. While you may have never had problems using Word in the past, your thesis is going to be about twice as large and complex as anything you've written before, taxing Word's capabilities. If you're still on the fence about  using \LaTeX, read the Introduction to LaTeX on the CUS site as well as skim the following template and give it a few weeks. Pretty soon all the markup gibberish will become second nature.
-
-\section{Why use it?}
-	
-\LaTeX\ does a great job of formatting tables and paragraphs. Its line-breaking algorithm was the subject of a PhD.\thinspace thesis. It does a fine job of automatically inserting ligatures, and to top it all off it is the only way to typeset good-looking mathematics.
-
-\section{Who should use it?}
-
-Anyone who needs to use math, tables, a lot of figures, complex cross-references, IPA or who just cares about the final appearance of their document should use \LaTeX. At Reed, math majors are required to use it, most physics majors will want to use it, and many other science majors may want it also.
-	
-    \chapter{Algorithm Animation}
-    	This chapter is an overview of algorithm animation and where this thesis fits into that story. 
+\chapter{Algorithm Animation}
+This chapter is an overview of algorithm animation and where this thesis fits into that story. 
 	
 \section{What is Algorithm Animation?}
 Algorithm animation is the process of taking algorithms and giving them graphical representations.
-
  
-\subsection{Motivation for Algorithm Animation}
+\section{Motivation for Algorithm Animation}
 Algorithm animation has benefits for teachers and students. Below are some of the most commonly cited benefits.\footnote{\cite{hundhausen_meta-study_2002}}
 \begin{itemize}
 \item It allows teachers to display algorithms in lectures easily.
 \item Another method for teaching students fundamental algorithms, pictures and code compared to just code.
 \item It allows for another avenue of debugging. 
 \end{itemize}
+
 
 \section{Use in Computer Science Education}
 
@@ -168,290 +144,84 @@ Algorithm animation began in the 70's and has seen usage since. In the early day
 
 One of the most famous and important contributions to algorithm animation was BALSA. BALSA was created in 1987 by Marc Brown. BALSA introduced several major innovations in the field. One major contribution was the addition of real time animations. Prior to BALSA, the animations wouldn't operate in real time, rather the animation would algorithm would run then the animation would be made, unlike real time animation which executes the animation and algorithm simultaneously. Another innovation was the introduction of scripts. Scripts were predefined PASCAL programs that would control the algorithm and could be executed in real time. This allows teachers to predefine how an animation will execute, then present the animation in real time.\footnote{\cite{brown_algorithm_1987}}
 
-Along with this shift form predefined to dynamically defined tools, progress was also made from 2D to 3D animation.\footnote{\cite{najork_library_1994}} This shift from 2D to 3D allowed for more information to be simultaneously displayed. Also color and sound
+Along with this shift form predefined to dynamically defined tools, other features were added that improved the animations. One paritcularly notable improvment came in when animations transitioned from 2D to 3D. This shift from 2D to 3D allowed for more information to be simultaneously displayed. Along with this improvement, color and sound were both added to animations.\footnote{\cite{najork_library_1994}}
 
-\chapter{Mathematics and Science}	
-\section{Math}
-	\TeX\ is the best way to typeset mathematics. Donald Knuth designed \TeX\ when he got frustrated at how long it was taking the typesetters to finish his book, which contained a lot of mathematics. 
+\subsection{Current State of Algorithm Animation}
+There are a few challenges facing modern day algorithm animation. One of these challenges is the lack of adoption of animation tools by instructors.Levy points out two main challenges of adoption from survey results of teachers. The first is that the tools being developed may be feature rich but not integrated well into the existing material or curriculum. This illuminates the fact that the tool developers aren't usually primarily concerned with integration, but rather features. Second, they cite "centrality" as the other major inhibition of teachers. They define centrality to be 	where the center of learning is for the students. By making animation tools that animate the students algorithms, the centrality is being moved from the teacher to the student. They note that this phenomenon is present with highly confident and experienced teachers through not confidant inexperienced teachers.\footnote{\cite{levy_we_2007}}  Its also worth noting that the teachers in this study are high school teachers and not college professors. 
+
+Along with low adoption rates by teachers, there is also a lack of work being published.\footnote{\cite{kucera_visualization_2018}}  
+
+
+\chapter{State of Computer Science Higher Education}	
+This chapter will be about the state of CS higher ed, its problems, some solutions and how JavaPPTX fits into that picture
+
+\section{Background}
+Talk about the history and formation. Talk about its periods of growth and bust. Talk about current growth and future growth. 
+
+\section{Problems facing Higher Education}
+Talk about various problems, how they arose and what their effects on education are.
+
+\subsection{Lack of PhDs}
+lack of number of people and huge demand for PhDs from market
+
+\subsection{Increasing Demand from Students}
+
+
+\section{Proposed Solutions}
+In each subsection, I will talk about the pros, cons and feasibility of every solution presented
+
+\subsection{Retraining PhDs}
+taking teachers with PhDs not in CS and retraining them to teach intro level classes.
+
+\subsection{Teaching Only Staff}
+Staff that teach but don't hold the professor title
+
+\subsection{Teaching Tools}
+talk about some of the existing tools to aid profs.
+
+
+\section{JavaPPTX}
+Overview of the package, how it helps address some of the problems in CS higher ed, and I'll end with talking about areas of expansion, which will be a good segway into my project. Also mention that this tool, and no tool, will be the solution to solving the problems facing higher ed.
+
+\subsection{Background}
+Here I will briefly talk about the features in the package. Some features include saving time animating and more effective at conveying concepts to students using pptx.
+
+
+\subsection{Classroom Usage}
+I'll talk about how it fits in unobtrusively and its current usage. May not be enough here to warrant a subsection. 
 	
-	If you are doing a thesis that will involve lots of math, you will want to read the following section which has been commented out. If you're not going to use math, skip over this next big red section. (It's red in the .tex file but does not show up in the .pdf.)
-%	
-%% MATH and PHYSICS majors: Uncomment the following section	
-%	$$\sum_{j=1}^n (\delta\theta_j)^2 \leq {{\beta_i^2}\over{\delta_i^2 + \rho_i^2}}
-%\left[ 2\rho_i^2 + {\delta_i^2\beta_i^2\over{\delta_i^2 + \rho_i^2}} \right] \equiv \omega_i^2
-%$$
+\subsection{Package Expansion}
+Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
 
-%From Informational Dynamics, we have the following (Dave Braden):
+\chapter{JavaPPTX to JavaScript}
 
-%After {\it n} such encounters the posterior density for $\theta$ is
+\section{Statement of Work}
 
-%$$
-%\pi(\theta|X_1< y_1,\dots,X_n<y_n) \varpropto \pi(\theta) \prod_{i=1}^n\int_{-\infty}^{y_i}
-%   \exp\left(-{(x-\theta)^2\over{2\sigma^2}}\right)\ dx
-%$$
+\subsection{New Features}
+Talk about the addition of native output to hmtl, css and js. Talk about the ease of turning this into a faculty webpage without any new things being installed
 
-%
+\subsection{Uses of this Expansion}
+How its useful to have a native JS output compared to PPTX. Also the pptx and js will be identical
 
-%Another equation:
+\section{Internal Logic}
+This section will explain, at a high level, the logic of what I did. 
 
-%$$\det\left|\,\begin{matrix}%
-%c_0&c_1\hfill&c_2\hfill&\ldots&c_n\hfill\cr
-%c_1&c_2\hfill&c_3\hfill&\ldots&c_{n+1}\hfill\cr
-%c_2&c_3\hfill&c_4\hfill&\ldots&c_{n+2}\hfill\cr
-%\,\vdots\hfill&\,\vdots\hfill&
-%  \,\vdots\hfill&&\,\vdots\hfill\cr
-%c_n&c_{n+1}\hfill&c_{n+2}\hfill&\ldots&c_{2n}\hfill\cr
-%\end{matrix}\right|>0$$
+\subsection{Cross Compilation}
+Talk about working through the existing logic and translating that. 
 
-%
-%Lapidus and Pindar, Numerical Solution of Partial Differential Equations in Science and
-%Engineering.  Page 54
+\subsection{JavaScript Framework}
+Talk about the construction of the JS framework and its features.
 
-%$$
-%\int_t\left\{\sum_{j=1}^3 T_j \left({d\phi_j\over dt}+k\phi_j\right)-kT_e\right\}w_i(t)\ dt=0,
-%   \qquad\quad i=1,2,3. 
-%$$
+\section{Future Work}
 
-%L\&P  Galerkin method weighting functions.  Page 55
+\subsection{New Features}
+What features did I miss? How can this overall be improved? 
 
-%$$
-%\sum_{j=1}^3 T_j\int_0^1\left\{{d\phi_j\over dt} + k\phi_j\right\} \phi_i\ dt 
-%   = \int_{0}^1k\,T_e\phi_idt, \qquad i=1,2,3 $$
-%   
-%Another L\&P (p145)
-
-%$$
-%\int_{-1}^1\!\int_{-1}^1\!\int_{-1}^1 f\big(\xi,\eta,\zeta\big) 
-%   = \sum_{k=1}^n\sum_{j=1}^n\sum_{i=1}^n w_i w_j w_k f\big( \xi,\eta,\zeta\big).
-%$$
-
-%Another L\&P (p126)
-
-%$$
-%\int_{A_e} (\,\cdot\,) dx dy = \int_{-1}^1\!\int_{-1}^1 (\,\cdot\,) \det[J] d\xi d\eta.
-%$$
-
-\section{Chemistry 101: Symbols}
-Chemical formulas will look best if they are not italicized. Get around math mode's automatic italicizing by using the argument \verb=$\mathrm{formula here}$=, with your formula inside the curly brackets.
-
-So, $\mathrm{Fe_2^{2+}Cr_2O_4}$ is written \verb=$\mathrm{Fe_2^{2+}Cr_2O_4}$=\\
-Exponent or Superscript: O$^{-}$\\
-Subscript: CH$_{4}$\\
-
-To stack numbers or letters as in $\mathrm{Fe_2^{2+}}$, the subscript is defined first, and then the superscript is defined.\\
-Angstrom: {\AA}\\
-Bullet: CuCl $\bullet$ 7H${_2}$O\\
-Double Dagger: \ddag \/\\
-Delta: $\Delta$\\
-Reaction Arrows: $\longrightarrow$ or  $\xrightarrow{solution}$\\
-Resonance Arrows: $\leftrightarrow$\\
-Reversible Reaction Arrows: $\rightleftharpoons$ or $\xrightleftharpoons[ ]{solution}$ (the latter requires the chemarr package)\\
+\subsection{Realtime JS Animation}
+Use the JS framework that I built to make a real time animation package. 
 
 
-\subsection{Typesetting reactions}
-You may wish to put your reaction in a figure environment, which means that LaTeX will place the reaction where it fits and you can have a figure legend if desired:
-\begin{figure}[htbp]
-\begin{center}
-$\mathrm{C_6H_{12}O_6  + 6O_2} \longrightarrow \mathrm{6CO_2 + 6H_2O}$
-\caption{Combustion of glucose}
-\label{combustion of glucose}
-\end{center}
-\end{figure}
-
-\subsection{Other examples of reactions}
-$\mathrm{NH_4Cl_{(s)}} \rightleftharpoons \mathrm{NH_{3(g)}+HCl_{(g)}}$\\
-$\mathrm{MeCH_2Br + Mg} \xrightarrow[below]{above} \mathrm{MeCH_2\bullet Mg \bullet Br}$
-
-\section{Physics}
-
-Many of the symbols you will need can be found on the math page (\url{http://web.reed.edu/cis/help/latex/math.html}) and the Comprehensive \LaTeX\ Symbol Guide (enclosed in this template download).  You may wish to create custom commands for commonly used symbols, phrases or equations, as described in Chapter \ref{commands}.
-
-\section{Biology}
-You will probably find the resources at \url{http://www.lecb.ncifcrf.gov/~toms/latex.html} helpful, particularly the links to bsts for various journals. You may also be interested in TeXShade for nucleotide typesetting (\url{http://homepages.uni-tuebingen.de/beitz/txe.html}).  Be sure to read the proceeding chapter on graphics and tables, and remember that the thesis template has versions of Ecology and Science bsts which support webpage citation formats. 
-
-\chapter{Tables and Graphics}
-
-\section{Tables}
-	The following section contains examples of tables, most of which have been commented out for brevity. (They will show up in the .tex document in red, but not at all in the .pdf). For more help in constructing a table (or anything else in this document), please see the LaTeX pages on the CUS site. 
-
-\begin{table}[htbp] % begins the table floating environment. This enables LaTeX to fit the table where it works best and lets you add a caption.
-\caption[Correlation of Inheritance Factors between Parents and Child]{Correlation of Inheritance Factors between Parents and Child} 
-% The words in square brackets of the caption command end up in the Table of Tables. The words in curly braces are the caption directly over the table.
-\begin{center} 
-% makes the table centered
-\begin{tabular}{c c c c} 
-% the tabular environment is used to make the table itself. The {c c c c} specify that the table will have four columns and they will all be center-aligned. You can make the cell contents left aligned by replacing the Cs with Ls or right aligned by using Rs instead. Add more letters for more columns, and pipes (the vertical line above the backslash) for vertical lines. Another useful type of column is the p{width} column, which forces text to wrap within whatever width you specify e.g. p{1in}. Text will wrap badly in narrow columns though, so beware.
-\toprule % a horizontal line, slightly thicker than \hline, depends on the booktabs package
-  Factors &  Correlation between Parents \& Child & Inherited \\ % the first row of the table. Separate columns with ampersands and end the line with two backslashes. An environment begun in one cell will not carry over to adjacent rows.
-  \midrule % another horizontal line
-	Education 				& -0.49 & Yes 	 \\ % another row
-	Socio-Economic Status 	& 0.28 	& Slight \\
-	Income 					& 0.08 	& No	 \\
-	Family Size 			& 0.19 	& Slight \\
-	Occupational Prestige 	& 0.21 	& Slight \\
-\bottomrule % yet another horizontal line
-\end{tabular}
-\end{center}
-\label{inheritance} % labels are useful when you have more than one table or figure in your document. See our online documentation for more on this.
-\end{table}
-
-	\clearpage 
-%% \clearpage ends the page, and also dumps out all floats. 
-%% Floats are things like tables and figures.
-
-If you want to make a table that is longer than a page, you will want to use the longtable environment. Uncomment the table below to see an example, or see our online documentation.
-
-%% An example of a long table, with headers that repeat on each subsequent page: Results from the summers of 1998 and 1999 work at Reed College done by Grace Brannigan, Robert Holiday and Lien Ngo in 1998 and Kate Brown and Christina Inman in 1999.
-
-	\begin{longtable}{||c|c|c|c||}
-	 	\caption[Chromium Hexacarbonyl Data Collected in 1998--1999]{Chromium Hexacarbonyl Data Collected in 1998--1999}\\ \hline
-	    	  \multicolumn{4}{||c||}{Chromium Hexacarbonyl} \\\hline
-		   State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-at vapor pressure}}{\textrm{Intensity at 240 Torr}}$ \\ \hline
-		  \endfirsthead
-		\hline     State & Laser wavelength & Buffer gas & Ratio of
-$\frac{\textrm{Intensity at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\
-\hline
-		    \endhead
-
-	    $z^{7}P^{\circ}_{4}$ & 266 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.57 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 266 nm & Argon & 1 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.14 \\\hline
-	    $y^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.14 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 266 nm & Argon & 1.2 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.04 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.02 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.07 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.05 \\\hline
-	    $y^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.05, 0.4 \\\hline
-	    $y^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.25 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 266 nm & Argon & 1.4 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 355 nm & Argon & 0.29 \\\hline
-	    $z^{5}F^{\circ}_{4}$ & 355 nm & Helium & 1.02 \\\hline
-	    $z^{5}D^{\circ}_{4}$ & 355 nm & Argon & 0.3 \\\hline
-	    $z^{5}D^{\circ}_{4}$ & 355 nm & Helium & 0.65 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 266 nm & Argon & 0.17 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Argon & 0.13 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Helium & 0.11 \\\hline
-	    $a^{5}D_{3}$ & 266 nm & Argon & 0.71 \\\hline
-	    $a^{5}D_{2}$ & 266 nm & Argon & 0.77 \\\hline
-	    $a^{5}D_{2}$ & 355 nm & Argon & 0.63 \\\hline
-	    $a^{3}D_{3}$ & 355 nm & Argon & 0.05 \\\hline
-	    $a^{5}S_{2}$ & 266 nm & Argon & 2 \\\hline
-	    $a^{5}S_{2}$ & 355 nm & Argon & 1.5 \\\hline
-	    $a^{5}G_{6}$ & 355 nm & Argon & 0.91 \\\hline
-	    $a^{3}G_{4}$ & 355 nm & Argon & 0.08 \\\hline
-	    $e^{7}D_{5}$ & 355 nm & Helium & 3.5 \\\hline
-	    $e^{7}D_{3}$ & 355 nm & Helium & 3 \\\hline
-	    $f^{7}D_{5}$ & 355 nm & Helium & 0.25 \\\hline
-	    $f^{7}D_{5}$ & 355 nm & Argon & 0.25 \\\hline
-	    $f^{7}D_{4}$ & 355 nm & Argon & 0.2 \\\hline
-	    $f^{7}D_{4}$ & 355 nm & Helium & 0.3 \\\hline
-	    \multicolumn{4}{||c||}{Propyl-ACT} \\\hline
-%	    State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-%at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\ \hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{3}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 1.25 \\\hline
-	    $z^{7}F^{\circ}_{5}$ & 355 nm & Argon & 2.85 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Argon & 0.07 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.06 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.12 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.13 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.14 \\\hline
-	    \multicolumn{4}{||c||}{Methyl-ACT} \\\hline
-%	    State & Laser wavelength & Buffer gas & Ratio of $\frac{\textrm{Intensity
-% at vapor pressure}}{\textrm{Intensity at 240 Torr}}$\\ \hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Argon & 1.6, 2.5 \\\hline
-	    $z^{7}P^{\circ}_{4}$ & 355 nm & Helium & 3 \\\hline
-	    $z^{7}P^{\circ}_{4}$ & 266 nm & Argon & 1.33 \\\hline
-	    $z^{7}P^{\circ}_{3}$ & 355 nm & Argon & 1.5 \\\hline
-	    $z^{7}P^{\circ}_{2}$ & 355 nm & Argon & 1.25, 1.3 \\\hline
-	    $z^{7}F^{\circ}_{5}$ & 355 nm & Argon & 3 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Argon & 0.07, 0.08 \\\hline
-	    $y^{7}P^{\circ}_{4}$ & 355 nm & Helium & 0.2 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 266 nm & Argon & 1.22 \\\hline
-	    $y^{7}P^{\circ}_{3}$ & 355 nm & Argon & 0.08 \\\hline
-	    $y^{7}P^{\circ}_{2}$ & 355 nm & Argon & 0.1 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 266 nm & Argon & 0.67 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Argon & 0.08, 0.17 \\\hline
-	    $z^{5}P^{\circ}_{3}$ & 355 nm & Helium & 0.12 \\\hline
-	    $z^{5}P^{\circ}_{2}$ & 355 nm & Argon & 0.13 \\\hline
-	    $z^{5}P^{\circ}_{1}$ & 355 nm & Argon & 0.09 \\\hline
-	    $y^{5}H^{\circ}_{7}$ & 355 nm & Argon & 0.06, 0.05 \\\hline
-	    $a^{5}D_{3}$ & 266 nm & Argon & 2.5 \\\hline
-	    $a^{5}D_{2}$ & 266 nm & Argon & 1.9 \\\hline
-	    $a^{5}D_{2}$ & 355 nm & Argon & 1.17 \\\hline
-	    $a^{5}S_{2}$ & 266 nm & Argon & 2.3 \\\hline
-	    $a^{5}S_{2}$ & 355 nm & Argon & 1.11 \\\hline
-	    $a^{5}G_{6}$ & 355 nm & Argon & 1.6 \\\hline
-	    $e^{7}D_{5}$ & 355 nm & Argon & 1 \\\hline
-
-		\end{longtable}
-
-   
-   \section{Figures}
-   
-	If your thesis has a lot of figures, \LaTeX\ might behave better for you than that other word processor.  One thing that may be annoying is the way it handles ``floats'' like tables and figures. \LaTeX\ will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.   There are some optional arguments to the figure and table environments to specify where you want it to appear; see the comments in the first figure.
-
-	If you need a graphic or tabular material to be part of the text, you can just put it inline. If you need it to appear in the list of figures or tables, it should be placed in the floating environment. 
 	
-	To get a figure from StatView, JMP, SPSS or other statistics program into a figure, you can print to pdf or save the image as a jpg or png. Precisely how you will do this depends on the program: you may need to copy-paste figures into Photoshop or other graphic program, then save in the appropriate format.
-	
-	Below we have put a few examples of figures. For more help using graphics and the float environment, see our online documentation.
-	
-	And this is how you add a figure with a graphic:
-	\begin{figure}[h]
-	% the options are h = here, t = top, b = bottom, p = page of figures.
-	% you can add an exclamation mark to make it try harder, and multiple
-	% options if you have an order of preference, e.g.
-	% \begin{figure}[h!tbp]
-	   
-	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	    \includegraphics{subdivision}
-	     \caption{A Figure}
-	 \label{subd}
-	\end{figure}
-
-\clearpage %% starts a new page and stops trying to place floats such as tables and figures
-
-\section{More Figure Stuff}
-You can also scale and rotate figures.
- 	\begin{figure}[h!]
-	   
-	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	    \includegraphics[scale=0.5,angle=180]{subdivision}
-	    % if your figure shows up not where you want it, it may just be too big to fit. You can use the scale argument to shrink it, e.g. scale=0.85 is 85 percent of the original size. 
-	     \caption{A Smaller Figure, Flipped Upside Down}
-	 \label{subd2}
-	\end{figure}
-
-\section{Even More Figure Stuff}
-With some clever work you can crop a figure, which is handy if (for instance) your EPS or PDF is a little graphic on a whole sheet of paper. The viewport arguments are the lower-left and upper-right coordinates for the area you want to crop.
-
- 	\begin{figure}[h!]
-	    	       \centering
-	    % DO NOT ADD A FILENAME EXTENSION TO THE GRAPHIC FILE
-	   \includegraphics[clip=true, viewport=.0in .0in 1in 1in]{subdivision}
-	    \caption{A Cropped Figure}
-	 \label{subd3}
-	\end{figure}
-	
-      \subsection{Common Modifications}
-      The following figure features the more popular changes thesis students want to their figures. This information is also on the web at \url{web.reed.edu/cis/help/latex/graphics.html}.
-    %\renewcommand{\thefigure}{0.\arabic{figure}} 	% Renumbers the figure to the type 0.x
-    %\addtocounter{figure}{4} 						% starts the figure numbering at 4
-    \begin{figure}[htbp]
-    \begin{center}
-   \includegraphics[scale=0.5]{subdivision}
-    \caption[Subdivision of arc segments]{\footnotesize{Subdivision of arc segments. You can see that $ p_3 = p_6^\prime$.}} %the special ToC caption is in square brackets. The \footnotesize makes the figure caption smaller
-    \label{barplot}
-    \end{center}
-    \end{figure} 
-
 \chapter*{Conclusion}
          \addcontentsline{toc}{chapter}{Conclusion}
 	\chaptermark{Conclusion}
@@ -459,18 +229,9 @@ With some clever work you can crop a figure, which is handy if (for instance) yo
 	\setcounter{chapter}{4}
 	\setcounter{section}{0}
 	
-Here's a conclusion, demonstrating the use of all that manual incrementing and table of contents adding that has to happen if you use the starred form of the chapter command. The deal is, the chapter command in \LaTeX\ does a lot of things: it increments the chapter counter, it resets the section counter to zero, it puts the name of the chapter into the table of contents and the running headers, and probably some other stuff. 
-
-So, if you remove all that stuff because you don't like it to say ``Chapter 4: Conclusion'', then you have to manually add all the things \LaTeX\ would normally do for you. Maybe someday we'll write a new chapter macro that doesn't add ``Chapter X'' to the beginning of every chapter title.
-
-\section{More info}
-And here's some other random info: the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there. 
-
-
-%If you feel it necessary to include an appendix, it goes here.
+Here's a conclusion
     \appendix
       \chapter{The First Appendix}
-      \chapter{The Second Appendix, for Fun}
 
 
 %This is where endnotes are supposed to go, if you have them.

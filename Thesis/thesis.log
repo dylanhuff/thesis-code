@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 MAR 2019 13:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  8 MAR 2019 10:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -218,18 +218,18 @@ LaTeX Info: Redefining \cite on input line 694.
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count112
@@ -299,17 +299,17 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+lasy on input line 73.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 72.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 73.
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 73.
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -334,18 +334,21 @@ Non-PDF special ignored!
 
 ] [5] [6
 
-] (./thesis.toc)
+] (./thesis.toc
+Underfull \vbox (badness 1502) has occurred while \output is active []
+
+ [7])
 \tf@toc=\write3
 \openout3 = `thesis.toc'.
 
- [7] [8
 
-] (./thesis.lot)
+[8] (./thesis.lot)
 \tf@lot=\write4
 \openout4 = `thesis.lot'.
 
+ [9
 
-[9] [10
+] [10
 
 ] (./thesis.lof)
 \tf@lof=\write5
@@ -357,19 +360,20 @@ Non-PDF special ignored!
 
 ] [15] [16
 
-] [1
+]
+[1
 
 ] [2
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 159.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 159.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
  [3]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -379,104 +383,49 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4]
 Chapter 2.
+[5
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--240
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--249
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5
-
-]
-
-LaTeX Warning: Reference `commands' on page 6 undefined on input line 267.
-
-
-Overfull \hbox (8.35866pt too wide) in paragraph at lines 270--271
-\OT1/cmr/m/n/12 You will prob-a-bly find the re-sources at $\OT1/cmtt/m/n/12 ht
-tp : / / www . lecb . ncifcrf . gov / []toms / latex .
- []
-
-[6]
+] [6]
 Chapter 3.
 [7
 
-] [8
+] [8] [9
 
-] [9]
-<subdivision.pdf, id=106, 220.825pt x 89.33376pt>
-File: subdivision.pdf Graphic file (type pdf)
-<use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf  used on input line 413.
-(pdftex.def)             Requested size: 220.82445pt x 89.33353pt.
- [10 <./subdivision.pdf>]
-File: subdivision.pdf Graphic file (type pdf)
-<use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf  used on input line 426.
-(pdftex.def)             Requested size: 110.41222pt x 44.66676pt.
-File: subdivision.pdf Graphic file (type pdf)
-<use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf  used on input line 438.
-(pdftex.def)             Requested size: 72.26979pt x 72.26979pt.
-File: subdivision.pdf Graphic file (type pdf)
-<use subdivision.pdf>
-Package pdftex.def Info: subdivision.pdf  used on input line 449.
-(pdftex.def)             Requested size: 110.41222pt x 44.66676pt.
- [11
-
-] [12
-
-] [13] [14
+] [10
 
 ]
 Appendix A.
-[15] [16
+[11] [12
 
-]
-Appendix B.
-[17] [18
+] (./thesis.bbl) [13
 
-] (./thesis.bbl [19
+] (./thesis.aux
 
-]) [20] (./thesis.aux)
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
 
-LaTeX Warning: There were undefined references.
-
- ) 
+) ) 
 Here is how much of TeX's memory you used:
- 3419 strings out of 492649
- 45249 string characters out of 6129622
- 145423 words of memory out of 5000000
- 7206 multiletter control sequences out of 15000+600000
+ 3379 strings out of 492649
+ 44466 string characters out of 6129622
+ 114352 words of memory out of 5000000
+ 7167 multiletter control sequences out of 15000+600000
  13612 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,17n,45p,842b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texli
-ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
-2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2
-018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on thesis.pdf (40 pages, 217216 bytes).
+ 41i,11n,45p,1066b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis.pdf (33 pages, 124344 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
+ 147 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 12 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
