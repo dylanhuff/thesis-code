@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{7}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
@@ -8,6 +8,23 @@
 Brown, M.~H. (1987).
 \newblock {\em Algorithm Animation\/}.
 \newblock Phd thesis, Brown University.
+
+\bibitem[{{Committee on the Growth of Computer Science Undergraduate
+  Enrollments} et~al.(2018){Committee on the Growth of Computer Science
+  Undergraduate Enrollments}, {Board on Higher Education and Workforce},
+  {Policy and Global Affairs}, {Computer Science and Telecommunications Board},
+  {Division on Engineering and Physical Sciences}, \& {National Academies of
+  Sciences, Engineering, and
+  Medicine}}]{committee_on_the_growth_of_computer_science_undergraduate_enrollments_assessing_2018}
+{Committee on the Growth of Computer Science Undergraduate Enrollments}, {Board
+  on Higher Education and Workforce}, {Policy and Global Affairs}, {Computer
+  Science and Telecommunications Board}, {Division on Engineering and Physical
+  Sciences}, \& {National Academies of Sciences, Engineering, and Medicine}
+  (2018).
+\newblock {\em Assessing and Responding to the Growth of Computer Science
+  Undergraduate Enrollments\/}.
+\newblock National Academies Press.
+\urlprefix\url{https://www.nap.edu/catalog/24926}
 
 \bibitem[{Hundhausen et~al.(2002)Hundhausen, Douglas, \&
   Stasko}]{hundhausen_meta-study_2002}
@@ -35,5 +52,11 @@ Najork, M.~A., \& Brown, M.~H. (1994).
 \newblock (pp. 164--171).
 \newblock Event-place: Washinton, D.C.
 \urlprefix\url{http://dl.acm.org/citation.cfm?id=951087.951119}
+
+\bibitem[{Zweben \& Bizot(2018)}]{zweben_another_2018}
+Zweben, S., \& Bizot, B. (2018).
+\newblock Another year of record undergrad enrollment; doctoral degree
+  production steady while master’s production rises again.
+\newblock (p.~47).
 
 \end{thebibliography}

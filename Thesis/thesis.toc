@@ -9,25 +9,25 @@
 \contentsline {section}{\numberline {2.1}Background}{5}
 \contentsline {section}{\numberline {2.2}Problems facing Higher Education}{5}
 \contentsline {subsection}{\numberline {2.2.1}Lack of PhDs}{5}
-\contentsline {subsection}{\numberline {2.2.2}Increasing Demand from Students}{5}
-\contentsline {section}{\numberline {2.3}Proposed Solutions}{5}
-\contentsline {subsection}{\numberline {2.3.1}Retraining PhDs}{5}
+\contentsline {subsection}{\numberline {2.2.2}Increasing Demand from Students}{6}
+\contentsline {section}{\numberline {2.3}Proposed Solutions}{6}
+\contentsline {subsection}{\numberline {2.3.1}Retraining PhDs}{6}
 \contentsline {subsection}{\numberline {2.3.2}Teaching Only Staff}{6}
 \contentsline {subsection}{\numberline {2.3.3}Teaching Tools}{6}
 \contentsline {section}{\numberline {2.4}JavaPPTX}{6}
-\contentsline {subsection}{\numberline {2.4.1}Background}{6}
-\contentsline {subsection}{\numberline {2.4.2}Classroom Usage}{6}
-\contentsline {subsection}{\numberline {2.4.3}Package Expansion}{6}
-\contentsline {chapter}{Chapter 3: JavaPPTX to JavaScript}{7}
-\contentsline {section}{\numberline {3.1}Statement of Work}{7}
-\contentsline {subsection}{\numberline {3.1.1}New Features}{7}
-\contentsline {subsection}{\numberline {3.1.2}Uses of this Expansion}{7}
-\contentsline {section}{\numberline {3.2}Internal Logic}{8}
-\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{8}
-\contentsline {subsection}{\numberline {3.2.2}Cross Compilation}{8}
-\contentsline {section}{\numberline {3.3}Future Work}{9}
-\contentsline {subsection}{\numberline {3.3.1}New Features}{9}
-\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{9}
-\contentsline {chapter}{Conclusion}{11}
-\contentsline {chapter}{Appendix A: The First Appendix}{13}
-\contentsline {chapter}{References}{15}
+\contentsline {subsection}{\numberline {2.4.1}Background}{7}
+\contentsline {subsection}{\numberline {2.4.2}Classroom Usage}{7}
+\contentsline {subsection}{\numberline {2.4.3}Package Expansion}{7}
+\contentsline {chapter}{Chapter 3: JavaPPTX to JavaScript}{9}
+\contentsline {section}{\numberline {3.1}Statement of Work}{9}
+\contentsline {subsection}{\numberline {3.1.1}New Features}{9}
+\contentsline {subsection}{\numberline {3.1.2}Uses of this Expansion}{9}
+\contentsline {section}{\numberline {3.2}Internal Logic}{10}
+\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{10}
+\contentsline {subsection}{\numberline {3.2.2}Cross Compilation}{10}
+\contentsline {section}{\numberline {3.3}Future Work}{11}
+\contentsline {subsection}{\numberline {3.3.1}New Features}{11}
+\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{11}
+\contentsline {chapter}{Conclusion}{13}
+\contentsline {chapter}{Appendix A: The First Appendix}{15}
+\contentsline {chapter}{References}{17}
