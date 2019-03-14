@@ -11,17 +11,18 @@ public class testRectSave {
     public static void simpleText(String[] args){
         PPShow ppt = new PPShow();
         PPSlide slide = new PPSlide();
-        slide.addTitle("Simple Shapes");
+        //slide.addTitle("Simple Shapes");
         double x = (ppt.getWindowWidth() - SQUARE_SIZE) / 2;
         double y = (ppt.getWindowHeight() - SQUARE_SIZE) / 2;
         PPRect square = new PPRect(x, y, SQUARE_SIZE, SQUARE_SIZE);
-        square.setColor(Color.RED);
-        PPOval circle = new PPOval(x, y, SQUARE_SIZE, SQUARE_SIZE);
-        circle.setColor(Color.GREEN);
+        // square.setColor(Color.RED);
+        PPOval circle = new PPOval(75, 75, SQUARE_SIZE, SQUARE_SIZE);
+        circle.setColor(Color.RED);
         slide.add(square);
+        square.disappear();
         slide.add(circle);
         circle.appear();
-        square.disappear();
+        
         ppt.add(slide);
         ppt.save("PPSimpleShapes.pptx");
         PPSaveJS testSave = new PPSaveJS(ppt);

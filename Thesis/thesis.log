@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  8 MAR 2019 10:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  14 MAR 2019 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,19 +334,16 @@ Non-PDF special ignored!
 
 ] [5] [6
 
-] (./thesis.toc
-Underfull \vbox (badness 1502) has occurred while \output is active []
-
- [7])
+] (./thesis.toc [7])
 \tf@toc=\write3
 \openout3 = `thesis.toc'.
 
-
-[8] (./thesis.lot)
+ [8] (./thesis.lot)
 \tf@lot=\write4
 \openout4 = `thesis.lot'.
 
- [9
+
+[9
 
 ] [10
 
@@ -360,8 +357,7 @@ Underfull \vbox (badness 1502) has occurred while \output is active []
 
 ] [15] [16
 
-]
-[1
+] [1
 
 ] [2
 
@@ -387,45 +383,48 @@ Chapter 2.
 
 ] [6]
 Chapter 3.
-[7
 
-] [8] [9
+Underfull \vbox (badness 4291) has occurred while \output is active []
 
-] [10
+ [7
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+[9] [10
+
+] [11] [12
 
 ]
 Appendix A.
-[11] [12
+[13] [14
 
-] (./thesis.bbl) [13
+] (./thesis.bbl) [15
 
-] (./thesis.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-) ) 
+] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 3379 strings out of 492649
- 44466 string characters out of 6129622
- 114352 words of memory out of 5000000
- 7167 multiletter control sequences out of 15000+600000
+ 3363 strings out of 492649
+ 44246 string characters out of 6129622
+ 113794 words of memory out of 5000000
+ 7151 multiletter control sequences out of 15000+600000
  13612 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,45p,1066b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local
-/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (33 pages, 124344 bytes).
+ 41i,11n,45p,1260b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
+2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.p
+fb>
+Output written on thesis.pdf (35 pages, 129967 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 153 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

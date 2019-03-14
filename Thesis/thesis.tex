@@ -198,27 +198,35 @@ Here I'll talk about ways that the package could be expanded and the benefits of
 \section{Statement of Work}
 
 \subsection{New Features}
-Talk about the addition of native output to hmtl, css and js. Talk about the ease of turning this into a faculty webpage without any new things being installed
+The main addition of this work is he ability to export the animations to HTML and JS without having to add any additional logic. This means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only having to add the following two lines
+\begin{quote}
+PPSaveJS testSave = new PPSaveJS(ppt);
+
+testSave.save("../example.js");
+\end{quote}
+the lecturer could create a web page that is identical to the PowerPoint. The newly created HTML file and JS file could be uploaded as is to create a web page, or could easily be embedded within an existing web page. 
 
 \subsection{Uses of this Expansion}
-How its useful to have a native JS output compared to PPTX. Also the pptx and js will be identical
+Having a native web output has two main benefits, the ease of viewing the animation and allowing new audiences to view the animation. PowerPoint is not web native, meaning that someone that wants to view the lecture needs to download a copy of the PowerPoint and have access to an application that can view the PPTX file. While this isn't too large of a burden on laptops or desktops, accessing the lecture on a phone is very cumbersome and often infeasible. This barrier is easily overcome with HTML and JS as an output as almost all phones, as well as laptops and desktops, can view a web page easily. This is very convenient for anyone trying to view the lecture, but it also allows people without access to a laptop or desktop to view the lecture. 
 
 \section{Internal Logic}
-This section will explain, at a high level, the logic of what I did. 
-
-\subsection{Cross Compilation}
-Talk about working through the existing logic and translating that. 
+The process of building this feature set and making individual algorithms can be broken down into two parts, building the framework and cross compilation of the logic. 
 
 \subsection{JavaScript Framework}
-Talk about the construction of the JS framework and its features.
+The JS framework relies heavily on the Canvas API. This API is meant to make animating in JS and HTML much simpler. The framework that I built is built on top of that and offers more abstractions to the programmer while also storing objects to be animated in a hierarchical and object oriented manner. This makes animating shapes and text objects much simpler. As an example consider drawing 5 circles and having them move using Canvas vs this framework. Canvas doesn't provide any way to keep track of drawn objects. It doesn't provide a native way to make objects move. It doesn't provide native re-rendering of drawn objects which is a problem when trying to move an object since it forces a rerender. Using the framework, a programmer would only need to create the 5 circle objects by passing them a few starting attributes (position, color, etc) then call a move function on the desired circle.
+
+The framework is created dynamically, only building the parts that are necessary for that particular algorithm. This allows the resulting JS to be as minimal and fast as possible. This is done at compilation every time. There is some boilerplate framework that is created every time. 
+
+\subsection{Cross Compilation}
+After the framework is built, the logic is processed. The native JavaPPTX package stores all of the information passed by the programmer then creates the corresponding PowerPoint. Since all of the information is stored by the package prior to being complied to a pptx file, the information can be stored in the same way but compiled to JS. After a save to JS function is called, the program will crawl through all of the stored data, and run the corresponding compilation to JS functions. This step was particularly tricky because the way that Java stores information is different from JS, so all the logic needed to be translated. Take storing color data as an example. Java may store the color as "RED" but JS would take a hex string as a color attribute. This logic translation was possibly the most difficult part of creating this extension. It required understanding how Java and  JavaPPTX stored information, then figuring out the best way to store that in JS. 
 
 \section{Future Work}
 
 \subsection{New Features}
-What features did I miss? How can this overall be improved? 
+What features did I miss? How can this overall be improved? This section will be quick to write once I know if/what features I was unable to get to. 
 
 \subsection{Realtime JS Animation}
-Use the JS framework that I built to make a real time animation package. 
+As this work stands, the animations that can be made are not real time and aren't reflecting algorithms that a student makes. A meta study has shown that it maybe more effective to have the animations reflect the students algorithms rather than having a teacher animate an algorithm and use it in a lecture, but this is contentious.\footnote{\cite{hundhausen_meta-study_2002}} A major contribution of this thesis is a JavaScript framework that allows for animations to be created more easily. In its current state, the animations are built based off of the logic given by the person creating the animation, which is intended to be an instructor. This framework could be used to reflect animations in real time that students create. Since the visual framework has been built, someone expanding on this work would have to figure out the logic behind creating animating the algorithms. The easiest expansion could be animating JS algorithms. Since JS is native to the web, it also maybe worthwhile to have other languages have animations done with this framework since the animations could easily be made into websites and shared. Since this package is written in Java, Java would be a logical language to expand this to. 
 
 
 	
