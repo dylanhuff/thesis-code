@@ -117,6 +117,9 @@ public class PPLine extends PPSimpleShape {
       super.setOptions(options);
    }
 
+   public int getQuadrant() {
+      return quadrant;
+   }
 /* Protected methods */
 
    @Override
@@ -167,6 +170,7 @@ public class PPLine extends PPSimpleShape {
       os.print("</p:sp>");
    }
 
+   
 /* Private instance variables */
 
    private int quadrant;

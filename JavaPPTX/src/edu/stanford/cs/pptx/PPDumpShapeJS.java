@@ -168,6 +168,18 @@ public class PPDumpShapeJS {
             fop.write("\t\tctx.fill();\n".getBytes());
             fop.write("\t}\n".getBytes());
             fop.write("}\n".getBytes());
+            fop.write("export class LineObj extends ObjectType{\n".getBytes());
+            fop.write("\tconstructor(x,y,xEnd, yEnd,color,id){\n".getBytes());
+            fop.write("\t\tsuper(id,x,y);\n".getBytes());
+            fop.write("\t\tthis.xEnd = xEnd;\n".getBytes());
+            fop.write("\t\tthis.yEnd = yEnd;\n".getBytes());
+            fop.write("\t\tthis.color = color;\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\trender(){\n".getBytes());
+            fop.write("\t\tctx.moveTo(this.x, this.y);\n".getBytes());
+            fop.write("\t\tctx.lineTo(this.xEnd, this.yEnd);\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("}\n".getBytes());
             fop.write("var window = new GWindow(".getBytes());
             fop.write(String.valueOf((int)show.getWidth()).getBytes());
             fop.write(",".getBytes());
@@ -191,6 +203,8 @@ public class PPDumpShapeJS {
                 writeOval(fop,(PPOval)shape);
             } else if(shape.getTypeName().equals("PPTextShape") || shape.getTypeName().equals("PPTitle")) {
                 writeTextObject(fop,(PPTextShape)shape);
+            } else if(shape.getTypeName().equals("PPLine")) {
+                writeLine(fop,(PPLine)shape);
             }
         }
         
@@ -221,6 +235,11 @@ public class PPDumpShapeJS {
                     renderTextObject(fop,(PPTitle)shape);
                     this.renderIDs.put(Integer.toString(shape.getShapeId()),1);
                 }
+            } else if(shape.getTypeName().equals("PPLine")) {
+                if((int)(this.renderIDs.get(Integer.toString(shape.getShapeId()))) == 0){ //this checks that the shape hasn't been written yet
+                    renderLine(fop,(PPLine)shape);
+                    this.renderIDs.put(Integer.toString(shape.getShapeId()),1);
+                }
             }
         }
     }
@@ -228,6 +247,7 @@ public class PPDumpShapeJS {
     private void writeAnimationsWrapper(FileOutputStream fop){
         try{
             fop.write("\tfunction sleep(s)\n \t{return new Promise(resolve => setTimeout(resolve, s*1000));\n\t}\n".getBytes());
+            fop.write("\tctx.beginPath();\n".getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         }
@@ -455,27 +475,66 @@ public class PPDumpShapeJS {
         } 
     }
 
-
-
     private void writeLine(FileOutputStream fop, PPLine line){
 
         try {
-            
-            fop.write("\tctx.moveTo(".getBytes());
-            fop.write(String.valueOf((int)line.getWidth()).getBytes());
+            fop.write("var line".getBytes());
+            Point2D initLoc = line.getInitialLocation();
+            fop.write(String.valueOf((int)line.getShapeId()).getBytes());
+            fop.write(" = new LineObj(".getBytes());
+            double x = initLoc.getX();
+            double y = initLoc.getY();
+            double xEnd = line.getWidth();
+            double yEnd = line.getHeight();
+            int quad = line.getQuadrant();
+            if (quad==1) {
+                double yTemp = y;
+                y = yEnd;
+                yEnd = yTemp;
+            } else if (quad==2){
+                double yTemp = y;
+                y = yEnd;
+                yEnd = yTemp;
+                double xTemp = x;
+                x = xEnd;
+                xEnd = xTemp;
+            } else if (quad==3){
+                double xTemp = x;
+                x = xEnd;
+                xEnd = xTemp;
+            }
+            fop.write(String.valueOf(x).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)line.getHeight()).getBytes());
-            fop.write(");\n".getBytes());
-            fop.write("\tctx.lineTo(".getBytes());
-            fop.write(String.valueOf((int)line.getX()).getBytes()); //need help with this, not sure how to get second set of coords for the line
+            fop.write(String.valueOf(y).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)line.getY()).getBytes()); 
+            fop.write(String.valueOf(xEnd).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf(yEnd).getBytes());
+            fop.write(",\"".getBytes());
+            String hex = "#"+Integer.toHexString(line.getFillColor().getRGB()).substring(2);
+            fop.write(hex.getBytes());
+            fop.write("\",".getBytes());
+            fop.write(String.valueOf((int)line.getShapeId()).getBytes());
             fop.write(");\n".getBytes());
+            fop.write("window.addObjects([line".getBytes());
+            fop.write(String.valueOf((int)line.getShapeId()).getBytes());
+            fop.write("]);\n".getBytes());
 
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
 
+    }
+
+    private void renderLine(FileOutputStream fop, PPLine line){
+        try{ 
+            fop.write("\twindow.renderObject(".getBytes());
+            fop.write(String.valueOf((int)line.getShapeId()).getBytes());
+            fop.write(");\n".getBytes());
+            this.renderIDs.put(Integer.toString(line.getShapeId()),1);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
     }
 
     private void writeOval(FileOutputStream fop, PPOval oval){ //weird oval behavior, different from pptx

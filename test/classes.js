@@ -127,4 +127,16 @@ export class OvalObj extends ObjectType{
 		ctx.fill();
 	}
 }
+export class LineObj extends ObjectType{
+	constructor(x,y,xEnd, yEnd,color,id){
+		super(id,x,y);
+		this.xEnd = xEnd;
+		this.yEnd = yEnd;
+		this.color = color;
+	}
+	render(){
+		ctx.moveTo(this.x, this.y);
+		ctx.lineTo(this.xEnd, this.yEnd);
+	}
+}
 var window = new GWindow(716,537,'1px solid');
