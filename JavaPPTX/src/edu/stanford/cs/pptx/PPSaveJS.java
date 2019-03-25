@@ -41,8 +41,8 @@ public class PPSaveJS {
             PPShape[] shapes = new PPShape[slide.getShapes().length];
             shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
-            fop.write("import RectObj from './classes.js';\n".getBytes()); 
-            fop.write("import {canvas,ctx,window,OvalObj,TextObj} from './classes.js';\n".getBytes());
+            fop.write("import canvas from './classes.js';\n".getBytes()); 
+            fop.write("import {ctx,window,OvalObj,TextObj,RectObj} from './classes.js';\n".getBytes());
             fop.write("window.renderWindow();\n".getBytes());
 
             dump.fileInit(shapes, slide, this.show);

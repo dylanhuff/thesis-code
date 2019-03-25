@@ -45,8 +45,8 @@ public class PPDumpShapeJS {
             classInit.put("rect",false);
             classInit.put("line",false);
             classInit.put("oval",false);
-            fop.write("export {RectObj as default};\n".getBytes());
-            fop.write("export {canvas,ctx,window,OvalObj,TextObj};\n".getBytes());
+            fop.write("export {canvas as default};\n".getBytes());
+            fop.write("export {ctx,window};\n".getBytes());
             fop.write("var canvas = document.createElement('canvas');\n".getBytes());
             fop.write("var ctx = canvas.getContext('2d');\n".getBytes());
             fop.write("var body = document.getElementsByTagName('body')[0];\n".getBytes());
@@ -124,7 +124,7 @@ public class PPDumpShapeJS {
             fop.write("\t\t\t}\n\t\t}\n".getBytes());
             fop.write("\t}\n".getBytes());
             fop.write("}\n".getBytes());
-            fop.write("class TextObj extends ObjectType{\n".getBytes());
+            fop.write("export class TextObj extends ObjectType{\n".getBytes());
             fop.write("\tconstructor(x,y,id,string,color,fontDesc){\n".getBytes());
             fop.write("\t\tsuper(id,x,y);\n".getBytes());
             fop.write("\t\tthis.string = string;\n".getBytes());
@@ -138,47 +138,36 @@ public class PPDumpShapeJS {
             fop.write("\t\tctx.fillText(this.string, this.x, this.y); \n".getBytes());
             fop.write("\t}\n".getBytes());
             fop.write("}\n".getBytes());
-            for(PPShape shape: shapes){
-                if(shape.getTypeName().equals("PPRect")){
-                    if (classInit.get("rect").equals(false)) {
-                        classInit.put("rect",true);
-                        fop.write("class RectObj extends ObjectType{\n".getBytes());
-                        fop.write("\tconstructor(x,y,height,width,color,id){\n".getBytes());
-                        fop.write("\t\tsuper(id,x,y);\n".getBytes());
-                        fop.write("\t\tthis.width = width;\n".getBytes());
-                        fop.write("\t\tthis.height = height;\n".getBytes());
-                        fop.write("\t\tthis.color = color;\n".getBytes());
-                        fop.write("\t}\n".getBytes());
-                        fop.write("\trender(){\n".getBytes());
-                        fop.write("\t\tctx.rect(this.x,this.y,this.height,this.width);\n".getBytes());
-                        fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
-                        fop.write("\t\tctx.fillRect(this.x,this.y,this.height,this.width);\n".getBytes());
-                        fop.write("\t}\n".getBytes());
-                        fop.write("}\n".getBytes());
-                    }
-                } else if(shape.getTypeName().equals("PPOval")){
-                    if (classInit.get("oval").equals(false)) {
-                        classInit.put("oval",true);
-                        fop.write("class OvalObj extends ObjectType{\n".getBytes());
-                        fop.write("\tconstructor(x,y,radiusX, radiusY, rotation, startAngle, endAngle ,color,id){\n".getBytes());
-                        fop.write("\t\tsuper(id,x,y);\n".getBytes());
-                        fop.write("\t\tthis.radiusX = radiusX;\n".getBytes());
-                        fop.write("\t\tthis.radiusY = radiusY;\n".getBytes());
-                        fop.write("\t\tthis.rotation = rotation;\n".getBytes());
-                        fop.write("\t\tthis.startAngle = startAngle;\n".getBytes());
-                        fop.write("\t\tthis.endAngle = endAngle;\n".getBytes());
-                        fop.write("\t\tthis.color = color;\n".getBytes());
-                        fop.write("\t}\n".getBytes());
-                        fop.write("\trender(){\n".getBytes());
-                        fop.write("\t\tctx.beginPath();\n".getBytes());
-                        fop.write("\t\tctx.ellipse(this.x,this.y,this.radiusX,this.radiusY,this.rotation,this.startAngle,this.endAngle);\n".getBytes());
-                        fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
-                        fop.write("\t\tctx.fill();\n".getBytes());
-                        fop.write("\t}\n".getBytes());
-                        fop.write("}\n".getBytes());
-                    }
-                }
-            }
+            fop.write("export class RectObj extends ObjectType{\n".getBytes());
+            fop.write("\tconstructor(x,y,height,width,color,id){\n".getBytes());
+            fop.write("\t\tsuper(id,x,y);\n".getBytes());
+            fop.write("\t\tthis.width = width;\n".getBytes());
+            fop.write("\t\tthis.height = height;\n".getBytes());
+            fop.write("\t\tthis.color = color;\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\trender(){\n".getBytes());
+            fop.write("\t\tctx.rect(this.x,this.y,this.height,this.width);\n".getBytes());
+            fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
+            fop.write("\t\tctx.fillRect(this.x,this.y,this.height,this.width);\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("}\n".getBytes());
+            fop.write("export class OvalObj extends ObjectType{\n".getBytes());
+            fop.write("\tconstructor(x,y,radiusX, radiusY, rotation, startAngle, endAngle ,color,id){\n".getBytes());
+            fop.write("\t\tsuper(id,x,y);\n".getBytes());
+            fop.write("\t\tthis.radiusX = radiusX;\n".getBytes());
+            fop.write("\t\tthis.radiusY = radiusY;\n".getBytes());
+            fop.write("\t\tthis.rotation = rotation;\n".getBytes());
+            fop.write("\t\tthis.startAngle = startAngle;\n".getBytes());
+            fop.write("\t\tthis.endAngle = endAngle;\n".getBytes());
+            fop.write("\t\tthis.color = color;\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\trender(){\n".getBytes());
+            fop.write("\t\tctx.beginPath();\n".getBytes());
+            fop.write("\t\tctx.ellipse(this.x,this.y,this.radiusX,this.radiusY,this.rotation,this.startAngle,this.endAngle);\n".getBytes());
+            fop.write("\t\tctx.fillStyle = this.color;\n".getBytes());
+            fop.write("\t\tctx.fill();\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("}\n".getBytes());
             fop.write("var window = new GWindow(".getBytes());
             fop.write(String.valueOf((int)show.getWidth()).getBytes());
             fop.write(",".getBytes());

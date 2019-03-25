@@ -1,5 +1,5 @@
-export {RectObj as default};
-export {canvas,ctx,window,OvalObj,TextObj};
+export {canvas as default};
+export {ctx,window};
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 var body = document.getElementsByTagName('body')[0];
@@ -83,7 +83,7 @@ class ObjectType{
 		}
 	}
 }
-class TextObj extends ObjectType{
+export class TextObj extends ObjectType{
 	constructor(x,y,id,string,color,fontDesc){
 		super(id,x,y);
 		this.string = string;
@@ -97,7 +97,7 @@ class TextObj extends ObjectType{
 		ctx.fillText(this.string, this.x, this.y); 
 	}
 }
-class RectObj extends ObjectType{
+export class RectObj extends ObjectType{
 	constructor(x,y,height,width,color,id){
 		super(id,x,y);
 		this.width = width;
@@ -110,7 +110,7 @@ class RectObj extends ObjectType{
 		ctx.fillRect(this.x,this.y,this.height,this.width);
 	}
 }
-class OvalObj extends ObjectType{
+export class OvalObj extends ObjectType{
 	constructor(x,y,radiusX, radiusY, rotation, startAngle, endAngle ,color,id){
 		super(id,x,y);
 		this.radiusX = radiusX;

@@ -5,24 +5,23 @@ import edu.stanford.cs.pptx.*;
 public class testRectSave {
 
 	 public static void main(String[] args){
-		simpleText(args);
+		simpleExample(args);
      }
      
     public static void simpleText(String[] args){
         PPShow ppt = new PPShow();
         PPSlide slide = new PPSlide();
-        //slide.addTitle("Simple Shapes");
+        slide.addTitle("Simple Shapes");
         double x = (ppt.getWindowWidth() - SQUARE_SIZE) / 2;
         double y = (ppt.getWindowHeight() - SQUARE_SIZE) / 2;
         PPRect square = new PPRect(x, y, SQUARE_SIZE, SQUARE_SIZE);
-        // square.setColor(Color.RED);
+        square.setColor(Color.RED);
         PPOval circle = new PPOval(75, 75, SQUARE_SIZE, SQUARE_SIZE);
         circle.setColor(Color.RED);
         slide.add(square);
         square.disappear();
         slide.add(circle);
-        circle.appear();
-        
+        circle.appear();    
         ppt.add(slide);
         ppt.save("PPSimpleShapes.pptx");
         PPSaveJS testSave = new PPSaveJS(ppt);
@@ -30,6 +29,20 @@ public class testRectSave {
         System.out.println("PPSimpleShapes.pptx");
 
     }
+
+    public static void simpleExample(String[] args) {
+        PPShow ppt = new PPShow();
+        ppt.add(simplePPLineTest());
+        //ppt.add(simplePPRectTest());
+        //ppt.add(simplePPOvalTest());
+        //ppt.add(simplePPTextBoxTest());
+        //ppt.add(simplePPPictureTest());
+        //ppt.add(simplePPGroupTest());
+        ppt.save("PPSimpleExamples.pptx");
+        PPSaveJS testSave = new PPSaveJS(ppt);
+        testSave.save("../example.js");
+        System.out.println("PPSimpleExamples.pptx");
+     }
 
     public static void mainTest(String[] args){
         PPShow testShow = new PPShow();
@@ -83,6 +96,73 @@ public class testRectSave {
 
         testShow.save("../example.pptx");
     }
+
+    private static PPSlide simplePPLineTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPLineTest");
+        double width = slide.getWidth();
+        double height = slide.getHeight();
+        PPLine diagonalNWtoSE = new PPLine(0, 0, width, height);
+        PPLine diagonalSWtoNE = new PPLine(0, height, width, 0);
+        slide.add(diagonalNWtoSE);
+        slide.add(diagonalSWtoNE);
+        return slide;
+     }
+  
+     private static PPSlide simplePPRectTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPRectTest");
+        PPRect square = new PPRect(100, 100);
+        square.setColor(Color.RED);
+        slide.add(square, 200, 100);
+        return slide;
+     }
+  
+     private static PPSlide simplePPOvalTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPOvalTest");
+        double xc = slide.getWidth() / 2;
+        double yc = slide.getHeight() / 2;
+        PPOval circle = new PPOval(xc - 50, yc - 50, 100, 100);
+        slide.add(circle);
+        return slide;
+     }
+  
+     private static PPSlide simplePPTextBoxTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPTextBoxTest");
+        double xc = slide.getWidth() / 2;
+        double yc = slide.getHeight() / 2;
+        PPTextBox hello = new PPTextBox("hello, world");
+        hello.setFont("Helvetica-Bold-36");
+        slide.add(hello, xc - hello.getWidth() / 2, yc - hello.getHeight() / 2);
+        return slide;
+     }
+  
+     private static PPSlide simplePPPictureTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPPictureTest");
+        double xc = slide.getWidth() / 2;
+        double yc = slide.getHeight() / 2;
+        PPPicture logo = new PPPicture("images/StanfordLogo.png");
+        logo.setBounds(xc - 100, yc - 100, 200, 200);
+        slide.add(logo);
+        return slide;
+     }
+  
+     private static PPSlide simplePPGroupTest() {
+        PPSlide slide = new PPSlide();
+        slide.addTitle("PPGroupTest");
+        double xc = slide.getWidth() / 2;
+        double yc = slide.getHeight() / 2;
+        PPGroup group = new PPGroup();
+        group.add(new PPRect(200, 100, "/color:red"));
+        group.add(new PPOval(200, 100, "/color:green"));
+        slide.add(group, xc - group.getWidth() / 2, yc - group.getHeight() / 2);
+        group.appear();
+        return slide;
+     }
+  
 
     private static final double SQUARE_SIZE = 200;
 }
