@@ -33,9 +33,9 @@ public class testRectSave {
     public static void simpleExample(String[] args) {
         PPShow ppt = new PPShow();
         ppt.add(simplePPLineTest());
-        //ppt.add(simplePPRectTest());
+        ppt.add(simplePPRectTest());
         //ppt.add(simplePPOvalTest());
-        //ppt.add(simplePPTextBoxTest());
+        ppt.add(simplePPTextBoxTest());
         //ppt.add(simplePPPictureTest());
         //ppt.add(simplePPGroupTest());
         ppt.save("PPSimpleExamples.pptx");
@@ -115,6 +115,7 @@ public class testRectSave {
         PPRect square = new PPRect(100, 100);
         square.setColor(Color.RED);
         slide.add(square, 200, 100);
+        square.appear("/onClick");
         return slide;
      }
   

@@ -36,27 +36,36 @@ public class PPSaveJS {
             
             file.createNewFile();
             
-            PPSlide slide = new PPSlide();
-            slide = show.getSlide(1); //currently assuming only 1 slide
-            PPShape[] shapes = new PPShape[slide.getShapes().length];
-            shapes = slide.getShapes();
             PPDumpShapeJS dump = new PPDumpShapeJS();
             fop.write("import canvas from './classes.js';\n".getBytes()); 
             fop.write("import {ctx,window,OvalObj,TextObj,RectObj,LineObj} from './classes.js';\n".getBytes());
             fop.write("window.renderWindow();\n".getBytes());
-
-            dump.fileInit(shapes, slide, this.show);
-            dump.objInit(fop, shapes, slide, this.show);
+            dump.fileInit(this.show);
+            for(int i = 1;i<=show.getSlideCount();i++){
+                PPSlide slide = show.getSlide(i);
+                PPShape[] shapes = slide.getShapes();
+                dump.objInit(fop, shapes, slide, this.show);
+            }
             //better function name then testSave (change in test.html as well)
             fop.write("function testSave(){\n".getBytes()); //I set the canvas side to the slide size, maybe should be GWindow size? 
             //gwindow could be added as a sepearte smaller window
             //third param is in this id
             fop.write("\tdocument.removeEventListener('load',testSave);\n".getBytes());
+            dump.writeAnimationsWrapper(fop);
             //add a couple objects then start adding animations
             //add move animations, along curves
-            
-            dump.writeShapes(fop, shapes, slide);
-            
+            for(int i = 1;i<=show.getSlideCount();i++){
+                PPSlide slide = show.getSlide(i);
+                PPShape[] shapes = slide.getShapes();
+                dump.writeShapes(fop, shapes, slide, i);
+                if(show.getSlideCount()>1 & !(show.getSlideCount()==i)) {
+                    dump.writeOnClick(fop);
+                    fop.write("\t\t\twindow.derenderAllObjects();\n".getBytes());
+                    fop.write("\t\t\twindow.renderOrder = [];\n".getBytes());
+                    fop.write(("\t\t\tslide"+Integer.toString(i+1)+"()\n").getBytes());
+                    dump.closeEvent(fop);
+                }
+            }
             //it will be in the order of the display list
             //go throught the object list backl to front, then calls something to display
             

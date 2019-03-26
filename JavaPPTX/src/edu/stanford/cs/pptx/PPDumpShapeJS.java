@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 import java.lang.Math;
 import java.io.File;
+import java.awt.Color;
 import java.awt.Font;
 
 
@@ -37,7 +38,7 @@ public class PPDumpShapeJS {
     //stop being a schmo
 
     //this method creates the classes.js file
-    public void fileInit(PPShape[] shapes, PPSlide slide,PPShow show){
+    public void fileInit(PPShow show){
         try{ //haven't redone line or oval also since clearRect is done, disappear is done
             File file = new File("../classes.js");
             FileOutputStream fop = new FileOutputStream(file);
@@ -192,16 +193,17 @@ public class PPDumpShapeJS {
             throw new RuntimeException(ex.toString());
         }
     }
-
+    //have obj init do for only slide
+    //slide.getShapes() 
     public void objInit(FileOutputStream fop, PPShape[] shapes, PPSlide slide,PPShow show){
         for(PPShape shape: shapes){
-            System.out.println(shape.getTypeName());
-            System.out.println(shape.getShapeId());
             if(shape.getTypeName().equals("PPRect")){
                 writeRect(fop,(PPRect)shape);
             } else if(shape.getTypeName().equals("PPOval")) {
                 writeOval(fop,(PPOval)shape);
             } else if(shape.getTypeName().equals("PPTextShape") || shape.getTypeName().equals("PPTitle")) {
+                writeTextObject(fop,(PPTextShape)shape);
+            } else if(shape.getTypeName().equals("PPTextBox")) {
                 writeTextObject(fop,(PPTextShape)shape);
             } else if(shape.getTypeName().equals("PPLine")) {
                 writeLine(fop,(PPLine)shape);
@@ -210,16 +212,25 @@ public class PPDumpShapeJS {
         
     }
 
-    public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide){
+    public void writeShapes(FileOutputStream fop, PPShape[] shapes, PPSlide slide, int slideNum){
 
         this.animations = slide.getAnimationList();
         this.renderIDs = new Hashtable<String,Integer>(shapes.length+1);
         for(int i = 0;i<shapes.length;i++){
             this.renderIDs.put(Integer.toString(shapes[i].getShapeId()),0);
         }
-        boolean startPath = true;
-        writeAnimationsWrapper(fop);
+        
+        for(int i = 0;i<this.animations.size();i++){
+            i+=writeAnimation(fop, i);
+        }
+        try{
+            fop.write(("\tvar slide"+Integer.toString(slideNum)).getBytes());
+            fop.write(" = () => {\n".getBytes());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        }
         for(PPShape shape: shapes){
+            System.out.println(shape.getTypeName());
             if(shape.getTypeName().equals("PPRect")){
                 if((int)(this.renderIDs.get(Integer.toString(shape.getShapeId()))) == 0){ //this checks that the shape hasn't been written yet
                     renderRect(fop,(PPRect)shape);
@@ -232,28 +243,38 @@ public class PPDumpShapeJS {
                 }
             } else if(shape.getTypeName().equals("PPTitle") || shape.getTypeName().equals("PPTextShape")){
                 if((int)(this.renderIDs.get(Integer.toString(shape.getShapeId()))) == 0){ //this checks that the shape hasn't been written yet
-                    renderTextObject(fop,(PPTitle)shape);
+                    renderTextObject(fop,(PPTextShape)shape);
                     this.renderIDs.put(Integer.toString(shape.getShapeId()),1);
                 }
-            } else if(shape.getTypeName().equals("PPLine")) {
+            } else if(shape.getTypeName().equals("PPTextBox")){
+                if((int)(this.renderIDs.get(Integer.toString(shape.getShapeId()))) == 0){ //this checks that the shape hasn't been written yet
+                    renderTextObject(fop,(PPTextShape)shape);
+                    this.renderIDs.put(Integer.toString(shape.getShapeId()),1);
+                }
+            }
+            else if(shape.getTypeName().equals("PPLine")) {
                 if((int)(this.renderIDs.get(Integer.toString(shape.getShapeId()))) == 0){ //this checks that the shape hasn't been written yet
                     renderLine(fop,(PPLine)shape);
                     this.renderIDs.put(Integer.toString(shape.getShapeId()),1);
                 }
             }
         }
+        try{
+            fop.write("\t}\n".getBytes());
+            if(slideNum==1){
+                fop.write("\tslide1()\n".getBytes());
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        }
     }
 
-    private void writeAnimationsWrapper(FileOutputStream fop){
+    public void writeAnimationsWrapper(FileOutputStream fop){
         try{
             fop.write("\tfunction sleep(s)\n \t{return new Promise(resolve => setTimeout(resolve, s*1000));\n\t}\n".getBytes());
             fop.write("\tctx.beginPath();\n".getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
-        }
-        
-        for(int i = 0;i<animations.size();i++){
-            i+=writeAnimation(fop, i);
         }
     }   
 
@@ -311,11 +332,7 @@ public class PPDumpShapeJS {
                             }
                         } catch (IndexOutOfBoundsException ex){}
 
-                        fop.write("\tcounter+=1;\n".getBytes());
-                        fop.write("\tcanvas.addEventListener('click', click".getBytes());
-                        fop.write(String.valueOf(onClickCounter).getBytes());
-                        fop.write(");\n".getBytes());
-                        fop.write("\t}}\n".getBytes());
+                        closeEvent(fop);
                             
                     }
                 } else if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.LinearMotionEffect"){
@@ -340,11 +357,7 @@ public class PPDumpShapeJS {
                                 offset+=1+writeAnimation(fop, index+1);
                             }
                         } catch (IndexOutOfBoundsException ex){}
-                        fop.write("\tcounter+=1;\n".getBytes());
-                        fop.write("\tcanvas.addEventListener('click', click".getBytes());
-                        fop.write(String.valueOf(onClickCounter).getBytes());
-                        fop.write(");\n".getBytes());
-                        fop.write("\t}}\n".getBytes());
+                        closeEvent(fop);
                             
                     } else if (animation.getTrigger() == "withPrev"){
                         try{
@@ -422,16 +435,24 @@ public class PPDumpShapeJS {
                             }
                         } catch (IndexOutOfBoundsException ex){}
 
-                        fop.write("\tcounter+=1;\n".getBytes());
-                        fop.write("\tcanvas.addEventListener('click', click".getBytes());
-                        fop.write(String.valueOf(onClickCounter).getBytes());
-                        fop.write(");\n".getBytes());
-                        fop.write("\t}}\n".getBytes());
+                        closeEvent(fop);
                             
                     }
                 } 
             return offset; //return should be amount of withPrev called from this one
         }  catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
+    public void closeEvent(FileOutputStream fop) {
+        try {
+            fop.write("\t\t\tcounter+=1;\n".getBytes());
+            fop.write("\t\t\tcanvas.addEventListener('click', click".getBytes());
+            fop.write(String.valueOf(onClickCounter).getBytes());
+            fop.write(");\n".getBytes());
+            fop.write("\t}}\n".getBytes());
+        } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
     }
@@ -598,7 +619,12 @@ public class PPDumpShapeJS {
             fop.write(",'".getBytes());
             fop.write(text.getText().getBytes());
             fop.write("',\"".getBytes());
-            String hex = "#"+Integer.toHexString(text.getFillColor().getRGB()).substring(2);
+            String hex;
+            if (text.getFillColor()==null) {
+                hex = "#000000";
+            } else {
+                hex = "#"+Integer.toHexString(text.getFillColor().getRGB()).substring(2);
+            }
             fop.write(hex.getBytes());
             fop.write("\", '".getBytes());
             fop.write(fontDesc.getBytes());
@@ -622,7 +648,7 @@ public class PPDumpShapeJS {
         } 
     }
 
-    private void writeOnClick(FileOutputStream fop){
+    public void writeOnClick(FileOutputStream fop){
 
         try{
             if(onClickCounter == 0){
