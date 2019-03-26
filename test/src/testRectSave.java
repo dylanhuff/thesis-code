@@ -8,8 +8,7 @@ public class testRectSave {
 		simpleExample(args);
      }
      
-    public static void simpleText(String[] args){
-        PPShow ppt = new PPShow();
+    public static PPSlide simpleText(PPShow ppt){
         PPSlide slide = new PPSlide();
         slide.addTitle("Simple Shapes");
         double x = (ppt.getWindowWidth() - SQUARE_SIZE) / 2;
@@ -22,20 +21,18 @@ public class testRectSave {
         square.disappear();
         slide.add(circle);
         circle.appear();    
-        ppt.add(slide);
-        ppt.save("PPSimpleShapes.pptx");
-        PPSaveJS testSave = new PPSaveJS(ppt);
-        testSave.save("../example.js");
-        System.out.println("PPSimpleShapes.pptx");
+        return slide;
 
     }
 
     public static void simpleExample(String[] args) {
         PPShow ppt = new PPShow();
+        ppt.add(simpleText(ppt));
         ppt.add(simplePPLineTest());
         ppt.add(simplePPRectTest());
-        //ppt.add(simplePPOvalTest());
+        ppt.add(simplePPOvalTest());
         ppt.add(simplePPTextBoxTest());
+        ppt.add(mainTest(ppt));
         //ppt.add(simplePPPictureTest());
         //ppt.add(simplePPGroupTest());
         ppt.save("PPSimpleExamples.pptx");
@@ -44,8 +41,7 @@ public class testRectSave {
         System.out.println("PPSimpleExamples.pptx");
      }
 
-    public static void mainTest(String[] args){
-        PPShow testShow = new PPShow();
+    public static PPSlide mainTest(PPShow ppt){
         PPSlide slide = new PPSlide();
         slide.addTitle("Testing yo");
         PPRect testRect = new PPRect(400,0,100,100);
@@ -81,7 +77,6 @@ public class testRectSave {
         slide.add(testRect7);
         slide.add(testLine); //adding lines removes borders from other objs
         //slide.add(testLine2);
-        testShow.add(slide);
 
         testRect.appear("/onClick");
         testRect2.appear("/withPrev");
@@ -90,11 +85,8 @@ public class testRectSave {
         testRect6.appear("/withPrev");
         testRect5.appear("/afterPrev/delay:1");
         testRect7.appear("/onClick");
-        testRect2.move(500.0,100.0,"/withPrev"); //bug with multiple animations 
-        PPSaveJS testSave = new PPSaveJS(testShow);
-        testSave.save("../example.js");
-
-        testShow.save("../example.pptx");
+        testRect2.move(500.0,100.0,"/withPrev"); //bug with multiple animations \
+        return slide;
     }
 
     private static PPSlide simplePPLineTest() {
@@ -115,7 +107,6 @@ public class testRectSave {
         PPRect square = new PPRect(100, 100);
         square.setColor(Color.RED);
         slide.add(square, 200, 100);
-        square.appear("/onClick");
         return slide;
      }
   

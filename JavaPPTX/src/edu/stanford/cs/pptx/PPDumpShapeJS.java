@@ -272,6 +272,18 @@ public class PPDumpShapeJS {
     public void writeAnimationsWrapper(FileOutputStream fop){
         try{
             fop.write("\tfunction sleep(s)\n \t{return new Promise(resolve => setTimeout(resolve, s*1000));\n\t}\n".getBytes());
+            fop.write("\tfunction scale(){\n".getBytes());
+            fop.write("\t\tvar viewHeight = document.documentElement.clientHeight-20;\n".getBytes());
+            fop.write("\t\tvar viewWidth = document.documentElement.clientWidth-20;\n".getBytes());
+            fop.write("\t\tvar scaleHeight = viewHeight / window.height;\n".getBytes());
+            fop.write("\t\tvar scaleWidth = viewWidth / window.width;\n".getBytes());
+            fop.write("\t\tvar scaleFactor;\n".getBytes());
+            fop.write("\t\t((scaleWidth<scaleHeight) ? scaleFactor = scaleWidth : scaleFactor = scaleHeight)\n".getBytes());
+            fop.write("\t\twindow.height *= scaleFactor;\n".getBytes());
+            fop.write("\t\twindow.width *= scaleFactor;\n".getBytes());
+            fop.write("\t\twindow.renderWindow()\n".getBytes());
+            fop.write("\t\tctx.scale(scaleFactor,scaleFactor)\n".getBytes());
+            fop.write("\t}\n\tscale();\n".getBytes());
             fop.write("\tctx.beginPath();\n".getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
