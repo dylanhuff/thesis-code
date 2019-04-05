@@ -11,10 +11,7 @@
 \contentsline {subsection}{\numberline {2.2.1}Lack of PhDs}{5}
 \contentsline {subsection}{\numberline {2.2.2}Increasing Demand from Students}{6}
 \contentsline {section}{\numberline {2.3}Proposed Solutions}{6}
-\contentsline {subsection}{\numberline {2.3.1}Retraining PhDs}{6}
-\contentsline {subsection}{\numberline {2.3.2}Teaching Only Staff}{6}
-\contentsline {subsection}{\numberline {2.3.3}Teaching Tools}{6}
-\contentsline {section}{\numberline {2.4}JavaPPTX}{6}
+\contentsline {section}{\numberline {2.4}JavaPPTX}{7}
 \contentsline {subsection}{\numberline {2.4.1}Background}{7}
 \contentsline {subsection}{\numberline {2.4.2}Classroom Usage}{7}
 \contentsline {subsection}{\numberline {2.4.3}Package Expansion}{7}

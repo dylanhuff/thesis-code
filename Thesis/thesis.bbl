@@ -1,8 +1,14 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{9}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{{\tt #1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{}\fi
+
+\bibitem[{BLS(2018)}]{BLS}
+BLS, U. (2018).
+\newblock Computer and information technology occupations :occupational outlook
+  handbook u.s. bureau of labor statistics.
+\urlprefix\url{https://www.bls.gov/ooh/computer-and-information-technology/home.htm}
 
 \bibitem[{Brown(1987)}]{brown_algorithm_1987}
 Brown, M.~H. (1987).
@@ -52,6 +58,12 @@ Najork, M.~A., \& Brown, M.~H. (1994).
 \newblock (pp. 164--171).
 \newblock Event-place: Washinton, D.C.
 \urlprefix\url{http://dl.acm.org/citation.cfm?id=951087.951119}
+
+\bibitem[{Starkman \& University(2016)}]{starkman_stanford_0400}
+Starkman, R., \& University, C.~S. (2016).
+\newblock Stanford computer science launches new masters of education.
+\newblock {\em HuffPost\/}.
+\urlprefix\url{https://www.huffpost.com/entry/stanford-computer-science_b_9713220}
 
 \bibitem[{Zweben \& Bizot(2018)}]{zweben_another_2018}
 Zweben, S., \& Bizot, B. (2018).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  15 MAR 2019 20:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  4 APR 2019 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,18 +334,18 @@ Non-PDF special ignored!
 
 ] [5] [6
 
-] (./thesis.toc [7])
+] (./thesis.toc)
 \tf@toc=\write3
 \openout3 = `thesis.toc'.
 
- [8] (./thesis.lot)
+ [7] [8
+
+] (./thesis.lot)
 \tf@lot=\write4
 \openout4 = `thesis.lot'.
 
 
-[9
-
-] [10
+[9] [10
 
 ] (./thesis.lof)
 \tf@lof=\write5
@@ -404,13 +404,13 @@ Appendix A.
 
 ] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 3369 strings out of 492649
- 44603 string characters out of 6129622
- 114228 words of memory out of 5000000
- 7157 multiletter control sequences out of 15000+600000
+ 3375 strings out of 492649
+ 44726 string characters out of 6129622
+ 114290 words of memory out of 5000000
+ 7163 multiletter control sequences out of 15000+600000
  13612 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,45p,1260b,259s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,45p,1260b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
@@ -421,7 +421,7 @@ r8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 .pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
 pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.p
 fb>
-Output written on thesis.pdf (37 pages, 140074 bytes).
+Output written on thesis.pdf (37 pages, 143431 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  112 compressed objects within 2 object streams

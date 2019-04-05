@@ -3,50 +3,51 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: APA/apa-good.bst
 Database file #1: thesis.bib
+Warning--empty journal in BLS
 Warning--empty journal in hundhausen_meta-study_2002
 Warning--empty journal in kucera_visualization_2018
 Warning--empty journal in levy_we_2007
 Warning--empty journal in najork_library_1994
 Warning--empty journal in zweben_another_2018
-You've used 7 entries,
+You've used 9 entries,
             2804 wiz_defined-function locations,
-            629 strings with 6335 characters,
-and the built_in function-call counts, 4135 in all, are:
-= -- 340
-> -- 155
-< -- 9
-+ -- 62
-- -- 51
-* -- 296
-:= -- 630
-add.period$ -- 23
-call.type$ -- 7
-change.case$ -- 53
-chr.to.int$ -- 7
-cite$ -- 12
-duplicate$ -- 310
-empty$ -- 290
-format.name$ -- 74
-if$ -- 811
+            640 strings with 6737 characters,
+and the built_in function-call counts, 4992 in all, are:
+= -- 409
+> -- 184
+< -- 11
++ -- 73
+- -- 60
+* -- 352
+:= -- 775
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 66
+chr.to.int$ -- 9
+cite$ -- 15
+duplicate$ -- 379
+empty$ -- 354
+format.name$ -- 89
+if$ -- 973
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 61
-newline$ -- 48
-num.names$ -- 28
-pop$ -- 146
+missing$ -- 74
+newline$ -- 59
+num.names$ -- 36
+pop$ -- 181
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 56
 quote$ -- 0
-skip$ -- 134
+skip$ -- 162
 stack$ -- 0
-substring$ -- 180
-swap$ -- 161
+substring$ -- 202
+swap$ -- 185
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
-warning$ -- 5
-while$ -- 31
+type$ -- 78
+warning$ -- 6
+while$ -- 37
 width$ -- 0
-write$ -- 99
-(There were 5 warnings)
+write$ -- 123
+(There were 6 warnings)
