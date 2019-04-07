@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  4 APR 2019 20:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 APR 2019 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -363,13 +363,13 @@ Non-PDF special ignored!
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 135.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 135.
  [3]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -381,14 +381,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 Chapter 2.
 [5
 
-] [6] [7] [8
-
-]
+] [6] [7] [8]
 Chapter 3.
 
 Underfull \vbox (badness 4291) has occurred while \output is active []
 
- [9]
+ [9
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
@@ -421,7 +421,7 @@ r8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
 .pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
 pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.p
 fb>
-Output written on thesis.pdf (37 pages, 143431 bytes).
+Output written on thesis.pdf (37 pages, 144592 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  112 compressed objects within 2 object streams

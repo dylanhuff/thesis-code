@@ -92,6 +92,7 @@
 	\centering % You could remove this to move table to the left
 	\begin{tabular}{ll}
 		\textbf{CS}   & Computer Science\\
+		\textbf{HTML} & Hyper Text Markup Language\\
 		\textbf{JS}  	&  JavaScript\\
 	\end{tabular}
 	\end{table}
@@ -183,13 +184,26 @@ Another partial solution is the creation of supporting tools for existing facult
 
 
 \section{JavaPPTX}
-JavaPPTx, created by Eric Roberts, is a library for Java that aids in the creation of PowerPoint Presentations. The package allows someone to write a program in Java that will create a separate PPTX file. This differs from the usual method of creating PowerPoints using Microsoft PowerPoint, which can become very cumbersome when making detailed animations that have specific movements or require many moving objects. 
+JavaPPTx, created by Eric Roberts, is a library for Java that aids in the creation of PowerPoint Presentations. The package allows someone to write a program in Java that will create a PPTX file. This differs from the usual method of creating PowerPoints using Microsoft PowerPoint, which can become very cumbersome when making detailed animations that have specific movements or require many moving objects. 
 
 \subsection{Background}
-Here I will briefly talk about the features in the package. Some features include saving time animating and more effective at conveying concepts to students using pptx.
+The package supports many of the features in PowerPoint and adds functionality in other cases. Here are some of the features supported:
+\begin{itemize}
+\item Creation of many shapes, including rectangles, ovals, lines, and more. 
+\item Creation of text objects, including titles and long form text. 
+\item Animation of objects. This includes fades, appearing, disappearing, linear motion, and more. All of these can be event based (clicks or delays). 
+\item Support for multiple slides and slide transitions.
+\item Importing of images.
+\end{itemize}
+Some of the extended functionality includes:
+\begin{itemize}
+\item An animated terminal function.
+\item Exact animations including bezier paths. 
+\item An animated stack tracing function.
+\end{itemize}
 
 \subsection{Classroom Usage}
-I'll talk about how it fits in unobtrusively and its current usage. May not be enough here to warrant a subsection. 
+One of the major benefits of the package is that it unobtrusively saves professors time while allowing them to animate hard to understand concepts.  The package fits in well because it doesn't require professors to change their teaching methods. Many professors already use PowerPoint during their lectures. While their is a learning curve associated with the package, it isn't particularly difficult to use and would save time in the long run. The package can be used to make simple slides, but the package was designed to, and excels at, making complicated PowerPoints. Some topics that can be more easily explained are recursion, loops,  and debugging. 
 	
 \subsection{Package Expansion}
 Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
