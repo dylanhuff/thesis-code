@@ -1,6 +1,6 @@
 \contentsline {chapter}{Introduction}{1}
 \contentsline {chapter}{Chapter 1: Algorithm Animation}{3}
-\contentsline {section}{\numberline {1.1}What is Algorithm Animation and Why is it Important?}{3}
+\contentsline {section}{\numberline {1.1}What is Algorithm Animation and What are its Benefits?}{3}
 \contentsline {section}{\numberline {1.2}Use in Computer Science Education}{3}
 \contentsline {subsection}{\numberline {1.2.1}History}{3}
 \contentsline {subsection}{\numberline {1.2.2}Current State of Algorithm Animation}{4}
@@ -9,21 +9,20 @@
 \contentsline {section}{\numberline {2.2}Problems facing Higher Education}{7}
 \contentsline {subsection}{\numberline {2.2.1}Lack of PhDs}{7}
 \contentsline {subsection}{\numberline {2.2.2}Increasing Demand from Students}{8}
-\contentsline {section}{\numberline {2.3}Proposed Solutions}{8}
+\contentsline {section}{\numberline {2.3}Proposed Solutions}{9}
 \contentsline {section}{\numberline {2.4}JavaPPTX}{9}
-\contentsline {subsection}{\numberline {2.4.1}Background}{9}
+\contentsline {subsection}{\numberline {2.4.1}Background}{10}
 \contentsline {subsection}{\numberline {2.4.2}Classroom Usage}{10}
-\contentsline {subsection}{\numberline {2.4.3}Package Expansion}{10}
-\contentsline {chapter}{Chapter 3: JavaPPTX to JavaScript}{11}
-\contentsline {section}{\numberline {3.1}Statement of Work}{11}
-\contentsline {subsection}{\numberline {3.1.1}New Features}{11}
-\contentsline {subsection}{\numberline {3.1.2}Uses of this Expansion}{11}
-\contentsline {section}{\numberline {3.2}Internal Logic}{13}
-\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{13}
-\contentsline {subsection}{\numberline {3.2.2}Cross Compilation}{13}
-\contentsline {section}{\numberline {3.3}Future Work}{14}
-\contentsline {subsection}{\numberline {3.3.1}New Features}{14}
-\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{14}
-\contentsline {chapter}{Conclusion}{15}
-\contentsline {chapter}{Appendix A: The First Appendix}{17}
-\contentsline {chapter}{References}{19}
+\contentsline {chapter}{Chapter 3: JavaPPTX to JavaScript}{13}
+\contentsline {section}{\numberline {3.1}Statement of Work}{13}
+\contentsline {subsection}{\numberline {3.1.1}New Features}{13}
+\contentsline {subsection}{\numberline {3.1.2}Uses of this Expansion}{13}
+\contentsline {section}{\numberline {3.2}Internal Logic}{15}
+\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{15}
+\contentsline {subsection}{\numberline {3.2.2}Cross Compilation}{15}
+\contentsline {section}{\numberline {3.3}Future Work}{16}
+\contentsline {subsection}{\numberline {3.3.1}New Features}{16}
+\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{16}
+\contentsline {chapter}{Conclusion}{17}
+\contentsline {chapter}{Appendix A: The First Appendix}{19}
+\contentsline {chapter}{References}{21}

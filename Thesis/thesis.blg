@@ -3,51 +3,53 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: APA/apa-good.bst
 Database file #1: thesis.bib
+Warning--I didn't find a database entry for "roberts_history_nodate"
 Warning--empty journal in BLS
 Warning--empty journal in hundhausen_meta-study_2002
 Warning--empty journal in kucera_visualization_2018
 Warning--empty journal in levy_we_2007
 Warning--empty journal in najork_library_1994
+Warning--empty journal in roberts_history
 Warning--empty journal in zweben_another_2018
-You've used 9 entries,
+You've used 10 entries,
             2804 wiz_defined-function locations,
-            640 strings with 6737 characters,
-and the built_in function-call counts, 4992 in all, are:
-= -- 409
-> -- 184
-< -- 11
-+ -- 73
-- -- 60
-* -- 352
-:= -- 775
-add.period$ -- 28
-call.type$ -- 9
-change.case$ -- 66
-chr.to.int$ -- 9
-cite$ -- 15
-duplicate$ -- 379
-empty$ -- 354
-format.name$ -- 89
-if$ -- 973
+            645 strings with 6841 characters,
+and the built_in function-call counts, 5463 in all, are:
+= -- 447
+> -- 194
+< -- 13
++ -- 79
+- -- 63
+* -- 376
+:= -- 848
+add.period$ -- 31
+call.type$ -- 10
+change.case$ -- 72
+chr.to.int$ -- 10
+cite$ -- 17
+duplicate$ -- 421
+empty$ -- 391
+format.name$ -- 93
+if$ -- 1068
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 74
-newline$ -- 59
-num.names$ -- 36
-pop$ -- 181
+missing$ -- 81
+newline$ -- 64
+num.names$ -- 40
+pop$ -- 200
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 61
 quote$ -- 0
-skip$ -- 162
+skip$ -- 183
 stack$ -- 0
-substring$ -- 202
-swap$ -- 185
-text.length$ -- 4
+substring$ -- 219
+swap$ -- 204
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 78
-warning$ -- 6
-while$ -- 37
+type$ -- 87
+warning$ -- 7
+while$ -- 41
 width$ -- 0
-write$ -- 123
-(There were 6 warnings)
+write$ -- 135
+(There were 8 warnings)

@@ -148,7 +148,7 @@
 	
 \chapter{Algorithm Animation}
 	
-\section{What is Algorithm Animation and Why is it Important?}	
+\section{What is Algorithm Animation and What are its Benefits?}	
 Algorithm animation is the process of taking algorithms and giving them graphical representations. Algorithm animation has benefits for teachers and students. Below are some of the most commonly cited benefits.\footnote{\cite{hundhausen_meta-study_2002}}
 \begin{itemize}
 \item It allows teachers to display algorithms in lectures easily.
@@ -174,27 +174,33 @@ One of the most famous and important contributions to algorithm animation was BA
 Along with this shift form predefined to dynamically defined tools, other features were added that improved the animations. One paritcularly notable improvment came in when animations transitioned from 2D to 3D. This shift from 2D to 3D allowed for more information to be simultaneously displayed. Along with this improvement, color and sound were both added to animations.\footnote{\cite{najork_library_1994}}
 
 \subsection{Current State of Algorithm Animation}
-There are a few challenges facing modern day algorithm animation. One of these challenges is the lack of adoption of animation tools by instructors.Levy points out two main challenges of adoption from survey results of teachers. The first is that the tools being developed may be feature rich but not integrated well into the existing material or curriculum. This illuminates the fact that the tool developers aren't usually primarily concerned with integration, but rather features. Second, they cite "centrality" as the other major inhibition of teachers. They define centrality to be 	where the center of learning is for the students. By making animation tools that animate the students algorithms, the centrality is being moved from the teacher to the student. They note that this phenomenon is present with highly confident and experienced teachers through not confidant inexperienced teachers.\footnote{\cite{levy_we_2007}}  Its also worth noting that the teachers in this study are high school teachers and not college professors. 
-
-Along with low adoption rates by teachers, there is also a lack of work being published.\footnote{\cite{kucera_visualization_2018}}  
+There are a few challenges facing modern day algorithm animation. One of these challenges is the lack of adoption of animation tools by instructors. Levy points out two main challenges of adoption from survey results of teachers. The first is that the tools being developed may be feature rich but not integrated well into the existing material or curriculum. This illuminates the fact that the tool developers aren't usually primarily concerned with integration, but rather features. Second, they cite "centrality" as the other major inhibition of teachers. They define centrality to be 	where the center of learning is for the students. By making animation tools that animate the students algorithms, the centrality is being moved from the teacher to the student. The teachers polled were uncomforable with the centrality shifting from them to the students. They note that this phenomenon is present with highly confident and experienced teachers through not-confidant, inexperienced teachers.\footnote{\cite{levy_we_2007}}  Its also worth noting that the teachers in this study are high school teachers and not college professors. Along with low adoption rates by teachers, there is also a lack of new work being published, as of 2018.\footnote{\cite{kucera_visualization_2018}}  
 
 
 \chapter{State of Computer Science Higher Education}	
-This chapter will be about the state of CS higher ed, its problems, some solutions and how JavaPPTX fits into that picture
+This chapter describes the state of CS Higher Education, its problems, some solutions and how JavaPPTX fits into that picture.
 
 \section{Background}
-Talk about the history and formation. Talk about its periods of growth and bust. Talk about current growth and future growth.
+While there is a lot to be said about the entire history of Computer Science Higher Education, this section will focus on previous booms and bust of enrollment in Colleges. 
+
+In the following sections, I outline the various problems facing CS Higher Education today. These are not the first time these problems have been faced though. Rather, this current crisis could be seen as the 3rd boom, and potentially subsequent bust that has happened.\footnote{\cite{roberts_history}}
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{Capacity Bust of the 80's, Amount of Annual CS Bachelors Degrees}
+\includegraphics[scale=0.345] {computerbust}
+\label{animexample}
+\end{centering} 
+\end{figure}
 
 \section{Problems facing Higher Education}
-Talk about various problems, how they arose and what their effects on education are.
 
 \subsection{Lack of PhDs}
 One of the major issues facing CS higher education is the amount of PhDs being produced and the percentage of them going to industry versus professor positions. Currently, 57\%of the new PhD graduates go to industry.\footnote{\cite{zweben_another_2018}} With wages in industry being considerably higher than wages for CS professors, there is no sign of this trend decreasing. 
 
-Currently about 30\% of PhD graduates go into academia, but that doesn't mean they all take tenure track positions. About 10\% of all graduates choose to go into Post Doctoral positions while another 2\% go into research positions.\footnote{\cite{zweben_another_2018}} In the end, only 18\% end up in teach positions. This translates to 320 graduates. To put that in perspective, there are currently 1577 open faculty positions in 2015. While those numbers seem bleak, the picture only gets worse. Consider that when large prestigious universities have openings, the graduates are much more likely to go there compared to smaller local universities with less prestige. 
+Currently about 30\% of PhD graduates go into academia, but that doesn't mean they all take tenure track positions. About 10\% of all graduates choose to go into Post Doctoral positions while another 2\% go into research positions.\footnote{\cite{zweben_another_2018}} In the end, only 18\% end up in teaching positions. This translates to 320 graduates per year. To put that in perspective, there are currently 1577 open faculty positions in 2015. While those numbers seem bleak, the picture only gets worse. Consider that when large prestigious universities have openings, the graduates are much more likely to go there compared to smaller local universities with less prestige. 
 
 \subsection{Increasing Demand from Students}
-Between 2009 and 2015, the amount of people graduating with a bachelors degree from not-for-profit institutions has increased 74\%. This is significantly higher than the general rate of increase in bachelors degrees awarded over the same period of time. This is the average increase. As the books notes, their is large variation between institutions, with some seeing rates much higher than the average. In particular, research institutions tend to see higher than average rates of increase. Another consideration with this average is that some institutions also work to cap the amount of prospective CS students they admit. It is worth noting that there have been major increases in the past, followed by sharp decreases. There is no one factor that can account for the historical decreases in the past.  \footnote{\cite{committee_on_the_growth_of_computer_science_undergraduate_enrollments_assessing_2018}} 
+Between 2009 and 2015, the amount of people graduating with a bachelors degree from not-for-profit institutions has increased 74\%. This is significantly higher than the general rate of increase in bachelors degrees awarded over the same period of time. This is the average increase. As the books notes, their is large variation between institutions, with some seeing rates much higher than the average. In particular, research institutions tend to see higher than average rates of increase. Another consideration with this average is that some institutions also work to cap the amount of prospective CS students they admit. It is worth noting that there have been major increases in the past, followed by sharp decreases. There is no one factor that can account for the historical decreases in the past.\footnote{\cite{committee_on_the_growth_of_computer_science_undergraduate_enrollments_assessing_2018}} 
 
 On top of increased degree production, enrollment of CS courses from CS majors and non-majors has also increased since 2005. This trend also shows no sign of slowing down within the next few years, relative to 2018, without any institutional discouragement. 
 
@@ -238,8 +244,8 @@ One of the major benefits of the package is that it unobtrusively saves professo
 \end{centering} 
 \end{figure}
 	
-\subsection{Package Expansion}
-Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
+%\subsection{Package Expansion}
+%Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
 
 \chapter{JavaPPTX to JavaScript}
 
@@ -283,6 +289,7 @@ The only two lines that need to be added to export to JS and HTML are the lines 
 		...
 \end{lstlisting}
 \end{figure}
+
 Another major addition was the automatic scaling to screen resolution. When a PowerPoint is created with this package, the slides will be a fixed size, defined in pixels. A major benefit of using JavaScript is the ability to scale the presentation without any additional work. This is an important feature because one benefit of outputting to web is that phones can natively view the presentation. With auto-scaling built in, the presentation will adjust to phones and desktops. 
 
 \subsection{Uses of this Expansion}

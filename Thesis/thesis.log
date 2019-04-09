@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  9 APR 2019 12:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  9 APR 2019 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,7 +252,11 @@ Package color Info: Driver file: pdftex.def on input line 147.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(./thesis.aux)
+(./thesis.aux
+
+LaTeX Warning: Label `animexample' multiply defined.
+
+)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
@@ -267,8 +271,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
 LaTeX Font Info:    ... okay on input line 93.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
 LaTeX Font Info:    ... okay on input line 93.
-
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count120
 \scratchdimen=\dimen132
@@ -422,50 +425,63 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapter 2.
-[7] [8]
-<algoanim.png, id=88, 401.5pt x 301.125pt>
+<computerbust.png, id=82, 1271.75125pt x 699.61375pt>
+File: computerbust.png Graphic file (type png)
+<use computerbust.png>
+Package pdftex.def Info: computerbust.png  used on input line 190.
+(pdftex.def)             Requested size: 438.75465pt x 241.367pt.
+
+Overfull \hbox (5.13466pt too wide) in paragraph at lines 190--193
+[][]
+ []
+
+[7] [8 <./computerbust.png>] [9]
+<algoanim.png, id=94, 401.5pt x 301.125pt>
 File: algoanim.png Graphic file (type png)
 <use algoanim.png>
-Package pdftex.def Info: algoanim.png  used on input line 236.
+Package pdftex.def Info: algoanim.png  used on input line 242.
 (pdftex.def)             Requested size: 401.49901pt x 301.12425pt.
- [9] [10 <./algoanim.png>]
+ [10] [11 <./algoanim.png>] [12
+
+]
 Chapter 3.
-[11
+[13] [14] [15] [16] [17
 
-] [12] [13] [14] [15
-
-] [16
+] [18
 
 ]
 Appendix A.
-[17] [18
+[19] [20
 
-] (./thesis.bbl) [19
+] (./thesis.bbl) [21
 
-] (./thesis.aux) ) 
+] (./thesis.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5121 strings out of 492649
- 67752 string characters out of 6129622
+ 5129 strings out of 492649
+ 67920 string characters out of 6129622
  164582 words of memory out of 5000000
- 8888 multiletter control sequences out of 15000+600000
+ 8895 multiletter control sequences out of 15000+600000
  14080 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,1697b,1267s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl1
-2.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
-pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pf
-b>
-Output written on thesis.pdf (35 pages, 331666 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on thesis.pdf (37 pages, 610075 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
+ 173 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
