@@ -80,8 +80,8 @@
 
 % The preface is optional
 % To remove it, comment it out or delete it.
-    \chapter*{Preface}
-	This is an example of a thesis setup to use the reed thesis document class.
+%   \chapter*{Preface}
+%	This is an example of a thesis setup to use the reed thesis document class.
 	
 	
 
@@ -91,6 +91,7 @@
 	\begin{table}[h]
 	\centering % You could remove this to move table to the left
 	\begin{tabular}{ll}
+		\textbf{API} & Application Programming Interface\\ 
 		\textbf{CS}   & Computer Science\\
 		\textbf{HTML} & Hyper Text Markup Language\\
 		\textbf{JS}  	&  JavaScript\\
@@ -107,10 +108,10 @@
 % The abstract is not required if you're writing a creative thesis (but aren't they all?)
 % If your abstract is longer than a page, there may be a formatting issue.
     \chapter*{Abstract}
-	The preface pretty much says it all.
+	Computer Science higher education is facing a growing crisis, there aren't enough faculty members to support student demand. This problem shows no sign of getting any better in the years to come as the amount of people getting Ph.D.s annually who intend on working as a professor is far fewer than the number of unfilled faculty positions. Various tools have been created for Computer Science professors that free up time so that they can focus on students. There are tools for automating grading, animation creation and presentation creation. This thesis focuses on one package, JavaPPTX. This package allows people to make complicated PowerPoint animations in Java. Having a package that can do this is important because teaching topics such as recursion, stacks, sorting algorithms and others can be graphically demanding. Making these presentations in Java allows the user to have precision that would be very difficult to get using Microsoft PowerPoint. My contribution to this package is the addition of compilation of the Java code to JavaScript and HTML. With only adding two additional lines of code on the users part, a web native version of the presentation will also be made. This allows presenters to make websites that are identical to their presentations with marginal additional effort. From the students perspective, this gives them the option to view the presentation on any internet connected device without needing any additional software. In an age where cellphones are increasingly the way people access the internet, my extension adds convenience for some, while allowing the presentation to be viewed by audiences who wouldn't otherwise be able to access it. 
 	
 	\chapter*{Dedication}
-	You can have a dedication here if you wish.
+	I'd like to dedicate this to my parents who have sacrificed so much over their entire lives to allow me to get this education. I love you both and will always be grateful for this gift. 
 
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on
@@ -203,7 +204,7 @@ Some of the extended functionality includes:
 \end{itemize}
 
 \subsection{Classroom Usage}
-One of the major benefits of the package is that it unobtrusively saves professors time while allowing them to animate hard to understand concepts.  The package fits in well because it doesn't require professors to change their teaching methods. Many professors already use PowerPoint during their lectures. While their is a learning curve associated with the package, it isn't particularly difficult to use and would save time in the long run. The package can be used to make simple slides, but the package was designed to, and excels at, making complicated PowerPoints. Some topics that can be more easily explained are recursion, loops,  and debugging. 
+One of the major benefits of the package is that it unobtrusively saves professors time while allowing them to animate hard to understand concepts.  The package fits in well because it doesn't require professors to change their teaching methods, as many professors already use PowerPoint during their lectures. While their is a learning curve associated with the package, it isn't particularly difficult to use and would save time in the long run. The package can be used to make simple slides, but the package was designed to, and excels at, making complicated PowerPoints. Some topics that can be more easily explained are recursion, loops, and debugging. 
 	
 \subsection{Package Expansion}
 Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
@@ -213,13 +214,15 @@ Here I'll talk about ways that the package could be expanded and the benefits of
 \section{Statement of Work}
 
 \subsection{New Features}
-The main addition of this work is he ability to export the animations to HTML and JS without having to add any additional logic. This means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only having to add the following two lines
+The main addition of this work is he ability to export the presentation to HTML and JS without having to add any additional logic. This means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only having to add the following two lines
 \begin{quote}
 PPSaveJS testSave = new PPSaveJS(ppt);
 
 testSave.save("../example.js");
 \end{quote}
 the lecturer could create a web page that is identical to the PowerPoint. The newly created HTML file and JS file could be uploaded as is to create a web page, or could easily be embedded within an existing web page. 
+
+Another major addition was the automatic scaling to screen resolution. When a PowerPoint is created with this package, the slides will be a fixed size, defined in pixels. A major benefit of using JavaScript is the ability to scale the presentation without any additional work. This is an important feature because one benefit of outputting to web is that phones can natively view the presentation. With auto-scaling built in, the presentation will adjust to phones and desktops. 
 
 \subsection{Uses of this Expansion}
 Having a native web output has two main benefits, the ease of viewing the animation and allowing new audiences to view the animation. PowerPoint is not web native, meaning that someone that wants to view the lecture needs to download a copy of the PowerPoint and have access to an application that can view the PPTX file. While this isn't too large of a burden on laptops or desktops, accessing the lecture on a phone is very cumbersome and often infeasible. This barrier is easily overcome with HTML and JS as an output as almost all phones, as well as laptops and desktops, can view a web page easily. This is very convenient for anyone trying to view the lecture, but it also allows people without access to a laptop or desktop to view the lecture. 
@@ -230,10 +233,14 @@ The process of building this feature set and making individual algorithms can be
 \subsection{JavaScript Framework}
 The JS framework relies heavily on the Canvas API. This API is meant to make animating in JS and HTML much simpler. The framework that I built is built on top of that and offers more abstractions to the programmer while also storing objects to be animated in a hierarchical and object oriented manner. This makes animating shapes and text objects much simpler. As an example consider drawing 5 circles and having them move using Canvas vs this framework. Canvas doesn't provide any way to keep track of drawn objects. It doesn't provide a native way to make objects move. It doesn't provide native re-rendering of drawn objects which is a problem when trying to move an object since it forces a rerender. Using the framework, a programmer would only need to create the 5 circle objects by passing them a few starting attributes (position, color, etc) then call a move function on the desired circle.
 
+This framework creates classes for many of the shapes supported by JavaPPTX. The way that the framework was built allows for shapes classes to be easily added. The framework was created in a hierarchical manner, putting many of the methods into the abstract classes. This way, any objects added will have many of the methods already created for it. 
+
 The framework is created dynamically, only building the parts that are necessary for that particular algorithm. This allows the resulting JS to be as minimal and fast as possible. This is done at compilation every time. There is some boilerplate framework that is created every time. 
 
 \subsection{Cross Compilation}
-After the framework is built, the logic is processed. The native JavaPPTX package stores all of the information passed by the programmer then creates the corresponding PowerPoint. Since all of the information is stored by the package prior to being complied to a pptx file, the information can be stored in the same way but compiled to JS. After a save to JS function is called, the program will crawl through all of the stored data, and run the corresponding compilation to JS functions. This step was particularly tricky because the way that Java stores information is different from JS, so all the logic needed to be translated. Take storing color data as an example. Java may store the color as "RED" but JS would take a hex string as a color attribute. This logic translation was possibly the most difficult part of creating this extension. It required understanding how Java and  JavaPPTX stored information, then figuring out the best way to store that in JS. 
+After the framework is built, the logic is processed. The native JavaPPTX package stores all of the information passed by the programmer then creates the corresponding PowerPoint. Since all of the information is stored by the package prior to being complied to a pptx file, the information can be stored in the same way but compiled to JS. After a save to JS function is called, the program will crawl through all of the stored data, and run the corresponding compilation to JS functions. This step was particularly tricky because the way that Java stores information is different from JS, so all the logic needed to be translated. Take storing color data as an example. Java may store the color as "RED" but JS would take a hex string as a color attribute. This logic translation was possibly the most difficult part of creating this extension. It required understanding how Java and  JavaPPTX stored information, then figuring out the best way to store that in JS. Futhermore, the information can be stored in Java in a variety of ways. 
+
+Translating from Java to JS was one set of problems, but another set of problems was translating between PowerPoints internal logic to JavaScripts. Most of the time, logic was stored in a manner that was clearly related to the object. For example, a rectangle would contain the length, width, color, position on the screen, etc. There were times that the information for an object was stored not based on what made sense for that object vacuously, but the information was stored with regards to the way PowerPoint needed to be given the information. One particularly troublesome example was lines. PowerPoint draws lines by keeping track of what quadrant of the slide the line is in. JS however doesn't render lines according to quadrant, so the logic needed to be translated before it is output. 
 
 \section{Future Work}
 
