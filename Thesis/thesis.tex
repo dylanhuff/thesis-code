@@ -37,6 +37,29 @@
 \usepackage[hyphens]{url}
 \usepackage{rotating}
 \usepackage{natbib}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 % Comment out the natbib line above and uncomment the following two lines to use the new 
 % biblatex-chicago style, for Chicago A. Also make some changes at the end where the 
 % bibliography is included. 
@@ -45,7 +68,7 @@
 
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
-\title{My Final College Paper}
+\title{PowerPoint Natively on the Web, a JavaPPTX Extension}
 \author{Dylan H. Huff}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2019}
@@ -86,8 +109,6 @@
 	
 
     \chapter*{List of Abbreviations}
-		You can always change the way your abbreviations are formatted. Play around with it yourself, use tables, or come to CUS if you'd like to change the way it looks. You can also completely remove this chapter if you have no need for a list of abbreviations. Here is an example of what this could look like:
-
 	\begin{table}[h]
 	\centering % You could remove this to move table to the left
 	\begin{tabular}{ll}
@@ -101,7 +122,7 @@
 
     \tableofcontents
 % if you want a list of tables, optional
-    \listoftables
+%   \listoftables
 % if you want a list of figures, also optional
     \listoffigures
 
@@ -111,7 +132,7 @@
 	Computer Science higher education is facing a growing crisis, there aren't enough faculty members to support student demand. This problem shows no sign of getting any better in the years to come as the amount of people getting Ph.D.s annually who intend on working as a professor is far fewer than the number of unfilled faculty positions. Various tools have been created for Computer Science professors that free up time so that they can focus on students. There are tools for automating grading, animation creation and presentation creation. This thesis focuses on one package, JavaPPTX. This package allows people to make complicated PowerPoint animations in Java. Having a package that can do this is important because teaching topics such as recursion, stacks, sorting algorithms and others can be graphically demanding. Making these presentations in Java allows the user to have precision that would be very difficult to get using Microsoft PowerPoint. My contribution to this package is the addition of compilation of the Java code to JavaScript and HTML. With only adding two additional lines of code on the users part, a web native version of the presentation will also be made. This allows presenters to make websites that are identical to their presentations with marginal additional effort. From the students perspective, this gives them the option to view the presentation on any internet connected device without needing any additional software. In an age where cellphones are increasingly the way people access the internet, my extension adds convenience for some, while allowing the presentation to be viewed by audiences who wouldn't otherwise be able to access it. 
 	
 	\chapter*{Dedication}
-	I'd like to dedicate this to my parents who have sacrificed so much over their entire lives to allow me to get this education. I love you both and will always be grateful for this gift. 
+	I'd like to dedicate this to my parents, who have sacrificed so much over their entire lives to allow me to get this education. I love you both and will always be grateful for this gift. 
 
   \mainmatter % here the regular arabic numbering starts
   \pagestyle{fancyplain} % turns page numbering back on
@@ -123,20 +144,24 @@
          \addcontentsline{toc}{chapter}{Introduction}
 	\chaptermark{Introduction}
 	\markboth{Introduction}{Introduction}
-
-\chapter{Algorithm Animation}
-This chapter is an overview of algorithm animation and where this thesis fits into that story. 
+	In order to support the already strained Computer Science professors, I created an extension to the JavaPPTX package that allows presentations to be web native. This presentations would be programmed in Java, but the output is JavaScript and HTML. My extension to package can be accessed at \begin{quote} https://github.com/dylanhuff/thesis-code \end{quote} The most up-to-date version of JavaPPTX and any further expansion or extensions can be accessed at \begin{quote} https://github.com/eric-roberts/JavaPPTX \end{quote} The rest of this thesis will be broken down as follows. Chapter 1, I give define algorithm animation and explain its usage in Computer Science education. In Chapter 2, I describe the state of computer science higher education in 2019 and where it is forecast to go in the coming years. This chapter also includes some proposed solutions to combat the current faculty shortage. In Chapter 3 I explain the functionality I added to JavaPPTX and how it works. This chapter also includes some of the technical challenges I faced along with way and how my extension could be expanded. 
 	
-\section{What is Algorithm Animation?}
-Algorithm animation is the process of taking algorithms and giving them graphical representations.
- 
-\section{Motivation for Algorithm Animation}
-Algorithm animation has benefits for teachers and students. Below are some of the most commonly cited benefits.\footnote{\cite{hundhausen_meta-study_2002}}
+\chapter{Algorithm Animation}
+	
+\section{What is Algorithm Animation and Why is it Important?}	
+Algorithm animation is the process of taking algorithms and giving them graphical representations. Algorithm animation has benefits for teachers and students. Below are some of the most commonly cited benefits.\footnote{\cite{hundhausen_meta-study_2002}}
 \begin{itemize}
 \item It allows teachers to display algorithms in lectures easily.
-\item Another method for teaching students fundamental algorithms, pictures and code compared to just code.
+\item Another method for teaching students fundamental algorithms, it adds a more visual element rather than just showing code. 
 \item It allows for another avenue of debugging. 
 \end{itemize}
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{Example of an Algorithm Animation \footnotesize{Source: https://visualgo.net/en/bst}}
+\includegraphics[scale=0.32] {animexample}
+\label{animexample}
+\end{centering} 
+\end{figure}
 
 
 \section{Use in Computer Science Education}
@@ -205,6 +230,13 @@ Some of the extended functionality includes:
 
 \subsection{Classroom Usage}
 One of the major benefits of the package is that it unobtrusively saves professors time while allowing them to animate hard to understand concepts.  The package fits in well because it doesn't require professors to change their teaching methods, as many professors already use PowerPoint during their lectures. While their is a learning curve associated with the package, it isn't particularly difficult to use and would save time in the long run. The package can be used to make simple slides, but the package was designed to, and excels at, making complicated PowerPoints. Some topics that can be more easily explained are recursion, loops, and debugging. 
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{Example of an Algorithm Animation in JavaPPTX} 
+\includegraphics{algoanim} 
+\label{subd}
+\end{centering} 
+\end{figure}
 	
 \subsection{Package Expansion}
 Here I'll talk about ways that the package could be expanded and the benefits of the specific expansions. One will be my expansion. 
@@ -214,21 +246,50 @@ Here I'll talk about ways that the package could be expanded and the benefits of
 \section{Statement of Work}
 
 \subsection{New Features}
-The main addition of this work is he ability to export the presentation to HTML and JS without having to add any additional logic. This means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only having to add the following two lines
-\begin{quote}
-PPSaveJS testSave = new PPSaveJS(ppt);
+The main addition of this work is he ability to export the presentation to HTML and JS without having to add any additional logic. This means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only having to add two lines the lecturer could create a web page that is identical to the PowerPoint. The newly created HTML file and JS file could be uploaded as is to create a web page, or could easily be embedded within an existing web page. 
 
-testSave.save("../example.js");
-\end{quote}
-the lecturer could create a web page that is identical to the PowerPoint. The newly created HTML file and JS file could be uploaded as is to create a web page, or could easily be embedded within an existing web page. 
+Take the code in Figure 3.1 an example, which makes the previously shown Linked List Animation.
+\begin{figure}[h!tbp]
+\caption{Java Code for Linked List Animation} 
+\begin{lstlisting}
+import edu.stanford.cs.pptx.*;
 
+public class PPLinkedListTrace {
+
+   public void run() {
+      PPShow ppt = new PPShow();
+      PPCodeTraceSlide slide = new HSSlide();
+      ppt.add(slide);
+      ppt.save("LinkedListTrace.pptx");
+      PPSaveJS testSave = new PPSaveJS(ppt);
+      testSave.save("../example.js");
+      System.out.println("LinkedListTrace.pptx");
+   }
+
+   public static void main(String[] args) {
+      new PPLinkedListTrace().run();
+   }
+	...
+}
+\end{lstlisting}
+\end{figure}
+The only two lines that need to be added to export to JS and HTML are the lines shown in Figure 3.2.
+\begin{figure}[h!tbp]
+\caption{Two Lines for JavaScript Compilation} 
+\begin{lstlisting}
+		...
+		testSave = new PPSaveJS(ppt);
+		testSave.save("../example.js");
+		...
+\end{lstlisting}
+\end{figure}
 Another major addition was the automatic scaling to screen resolution. When a PowerPoint is created with this package, the slides will be a fixed size, defined in pixels. A major benefit of using JavaScript is the ability to scale the presentation without any additional work. This is an important feature because one benefit of outputting to web is that phones can natively view the presentation. With auto-scaling built in, the presentation will adjust to phones and desktops. 
 
 \subsection{Uses of this Expansion}
 Having a native web output has two main benefits, the ease of viewing the animation and allowing new audiences to view the animation. PowerPoint is not web native, meaning that someone that wants to view the lecture needs to download a copy of the PowerPoint and have access to an application that can view the PPTX file. While this isn't too large of a burden on laptops or desktops, accessing the lecture on a phone is very cumbersome and often infeasible. This barrier is easily overcome with HTML and JS as an output as almost all phones, as well as laptops and desktops, can view a web page easily. This is very convenient for anyone trying to view the lecture, but it also allows people without access to a laptop or desktop to view the lecture. 
 
 \section{Internal Logic}
-The process of building this feature set and making individual algorithms can be broken down into two parts, building the framework and cross compilation of the logic. 
+The process of building this feature set and making individual algorithms can be broken down into two parts, building the framework and cross compilation of the logic to the JavaScript framework.
 
 \subsection{JavaScript Framework}
 The JS framework relies heavily on the Canvas API. This API is meant to make animating in JS and HTML much simpler. The framework that I built is built on top of that and offers more abstractions to the programmer while also storing objects to be animated in a hierarchical and object oriented manner. This makes animating shapes and text objects much simpler. As an example consider drawing 5 circles and having them move using Canvas vs this framework. Canvas doesn't provide any way to keep track of drawn objects. It doesn't provide a native way to make objects move. It doesn't provide native re-rendering of drawn objects which is a problem when trying to move an object since it forces a rerender. Using the framework, a programmer would only need to create the 5 circle objects by passing them a few starting attributes (position, color, etc) then call a move function on the desired circle.
