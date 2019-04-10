@@ -1,6 +1,7 @@
 import java.awt.Color;
 
 import edu.stanford.cs.pptx.*;
+import edu.stanford.cs.pptx.PPSaveJS;
 
 public class testRectSave {
 
@@ -36,8 +37,7 @@ public class testRectSave {
         //ppt.add(simplePPPictureTest());
         //ppt.add(simplePPGroupTest());
         ppt.save("PPSimpleExamples.pptx");
-        PPSaveJS testSave = new PPSaveJS(ppt);
-        testSave.save("../example.js");
+        PPSaveJS.save(ppt,"../example.js");
         System.out.println("PPSimpleExamples.pptx");
      }
 

@@ -15,11 +15,7 @@ import java.io.FileOutputStream;
 
 public class PPSaveJS {
 
-    public PPSaveJS(PPShow show) {
-       this.show = show;
-    }
-
-    public void save(String filename){
+    public static void save(PPShow show, String filename){
         
         // assuming one slide for now
         //int nSlides = show.getSlideCount();
@@ -40,11 +36,11 @@ public class PPSaveJS {
             fop.write("import canvas from './classes.js';\n".getBytes()); 
             fop.write("import {ctx,window,OvalObj,TextObj,RectObj,LineObj} from './classes.js';\n".getBytes());
             fop.write("window.renderWindow();\n".getBytes());
-            dump.fileInit(this.show);
+            dump.fileInit(show);
             for(int i = 1;i<=show.getSlideCount();i++){
                 PPSlide slide = show.getSlide(i);
                 PPShape[] shapes = slide.getShapes();
-                dump.objInit(fop, shapes, slide, this.show);
+                dump.objInit(fop, shapes, slide, show);
             }
             //better function name then testSave (change in test.html as well)
             fop.write("function testSave(){\n".getBytes()); //I set the canvas side to the slide size, maybe should be GWindow size? 
@@ -82,8 +78,6 @@ public class PPSaveJS {
          } 
 
     }
-
-    private PPShow show;
 
 }
 //do as much with css as possible
