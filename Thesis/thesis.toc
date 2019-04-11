@@ -17,12 +17,11 @@
 \contentsline {section}{\numberline {3.1}Statement of Work}{13}
 \contentsline {subsection}{\numberline {3.1.1}New Features}{13}
 \contentsline {subsection}{\numberline {3.1.2}Uses of this Expansion}{13}
-\contentsline {section}{\numberline {3.2}Internal Logic}{15}
-\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{15}
+\contentsline {section}{\numberline {3.2}Internal Logic}{14}
+\contentsline {subsection}{\numberline {3.2.1}JavaScript Framework}{14}
 \contentsline {subsection}{\numberline {3.2.2}Cross Compilation}{15}
-\contentsline {section}{\numberline {3.3}Future Work}{16}
-\contentsline {subsection}{\numberline {3.3.1}New Features}{16}
-\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{16}
+\contentsline {section}{\numberline {3.3}Future Work}{15}
+\contentsline {subsection}{\numberline {3.3.1}New Features}{15}
+\contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{15}
 \contentsline {chapter}{Conclusion}{17}
-\contentsline {chapter}{Appendix A: The First Appendix}{19}
-\contentsline {chapter}{References}{21}
+\contentsline {chapter}{References}{19}
