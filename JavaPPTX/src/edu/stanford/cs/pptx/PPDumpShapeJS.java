@@ -201,10 +201,10 @@ public class PPDumpShapeJS {
                 writeRect(fop,(PPRect)shape);
             } else if(shape.getTypeName().equals("PPOval")) {
                 writeOval(fop,(PPOval)shape);
-            } else if(shape.getTypeName().equals("PPTextShape") || shape.getTypeName().equals("PPTitle")) {
+            } else if(shape.getTypeName().equals("PPTextShape") || shape.getTypeName().equals("PPTextBox")) {
                 writeTextObject(fop,(PPTextShape)shape);
-            } else if(shape.getTypeName().equals("PPTextBox")) {
-                writeTextObject(fop,(PPTextShape)shape);
+            } else if(shape.getTypeName().equals("PPTitle")) {
+                writeTitle(fop,(PPTextShape)shape);
             } else if(shape.getTypeName().equals("PPLine")) {
                 writeLine(fop,(PPLine)shape);
             }
@@ -296,6 +296,8 @@ public class PPDumpShapeJS {
             int offset = 0;
             PPShape shape = animation.getShape();
                 System.out.println(animation.getClass().getName().toString());
+                Point2D loc = ((LinearMotionEffect)animation).dumpJS();
+            double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
                 if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
                     if (animation.getTrigger() == "withPrev"){
                         try{
@@ -348,19 +350,9 @@ public class PPDumpShapeJS {
                             
                     }
                 } else if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.LinearMotionEffect"){
-                    Point2D loc = ((LinearMotionEffect)animation).dumpJS();
-                    double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
                     if (animation.getTrigger() == "onClick"){
                         writeOnClick(fop);
-                        fop.write("\trect".getBytes());
-                        fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                        fop.write(".move(".getBytes());
-                        fop.write(String.valueOf(loc.getX()).getBytes());
-                        fop.write(",".getBytes());
-                        fop.write(String.valueOf(loc.getY()).getBytes());
-                        fop.write(",".getBytes());
-                        fop.write(String.valueOf(animation.getDuration()).getBytes());
-                        fop.write(");\n".getBytes());
+                        writeLinearMotion(fop, shape,animation);
                         try{
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
@@ -453,6 +445,48 @@ public class PPDumpShapeJS {
                 } 
             return offset; //return should be amount of withPrev called from this one
         }  catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
+    public void writeLinearMotion(FileOutputStream fop, PPShape shape,AnimationEffect animation){
+        try {
+            Point2D loc = ((LinearMotionEffect)animation).dumpJS();
+            double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
+            System.out.println(loc);
+            if(shape.getTypeName().equals("PPRect")){
+                fop.write("\trect".getBytes());
+                fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
+                fop.write(".move(".getBytes());
+                fop.write(String.valueOf(loc.getX()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(loc.getY()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(animation.getDuration()).getBytes());
+                fop.write(");\n".getBytes());
+            } else if(shape.getTypeName().equals("PPOval")){
+                fop.write("\toval".getBytes());
+                fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
+                fop.write(".move(".getBytes());
+                fop.write(String.valueOf(loc.getX()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(loc.getY()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(animation.getDuration()).getBytes());
+                fop.write(");\n".getBytes());
+            } else if(shape.getTypeName().equals("PPTextBox")){
+                fop.write("\ttext".getBytes());
+                fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
+                fop.write(".move(".getBytes());
+                fop.write(String.valueOf(loc.getX()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(loc.getY()).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(animation.getDuration()).getBytes());
+                fop.write(");\n".getBytes());
+            }
+            
+        } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
     }
@@ -616,6 +650,40 @@ public class PPDumpShapeJS {
     }
 
     private void writeTextObject(FileOutputStream fop, PPTextShape text){
+        try{
+            Point2D pt = text.getInitialLocation();
+            Font font = text.getFont();
+            String fontDesc = Double.toString((font.getSize()*1.25)) + "px " + font.getName();
+            fop.write("var text".getBytes()); 
+            fop.write(String.valueOf((int)text.getShapeId()).getBytes());
+            fop.write(" = new TextObj(".getBytes());
+            fop.write(String.valueOf((double)pt.getX()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((double)pt.getY()).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf((int)text.getShapeId()).getBytes());
+            fop.write(",'".getBytes());
+            fop.write(text.getText().getBytes());
+            fop.write("',\"".getBytes());
+            String hex;
+            if (text.getFillColor()==null) {
+                hex = "#000000";
+            } else {
+                hex = "#"+Integer.toHexString(text.getFillColor().getRGB()).substring(2);
+            }
+            fop.write(hex.getBytes());
+            fop.write("\", '".getBytes());
+            fop.write(fontDesc.getBytes());
+            fop.write("');\n".getBytes());
+            fop.write("window.addObjects([text".getBytes());
+            fop.write(String.valueOf((int)text.getShapeId()).getBytes());
+            fop.write("]);\n".getBytes());
+        } catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
+    private void writeTitle(FileOutputStream fop, PPTextShape text){
         try{
             Point2D pt = text.getCenter();
             Font font = text.getFont();
