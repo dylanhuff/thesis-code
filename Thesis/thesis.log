@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 APR 2019 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  12 APR 2019 10:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,20 +407,20 @@ Non-PDF special ignored!
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 165.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 167.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 165.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 167.
 <animexample.png, id=61, 940.01187pt x 379.4175pt>
 File: animexample.png Graphic file (type png)
 <use animexample.png>
-Package pdftex.def Info: animexample.png  used on input line 173.
+Package pdftex.def Info: animexample.png  used on input line 175.
 (pdftex.def)             Requested size: 434.2897pt x 175.29257pt.
 
-Overfull \hbox (0.66971pt too wide) in paragraph at lines 173--177
+Overfull \hbox (0.66971pt too wide) in paragraph at lines 175--179
 [][]
  []
 
@@ -438,10 +438,10 @@ Chapter 2.
 <computerbust.png, id=82, 1271.75125pt x 699.61375pt>
 File: computerbust.png Graphic file (type png)
 <use computerbust.png>
-Package pdftex.def Info: computerbust.png  used on input line 203.
+Package pdftex.def Info: computerbust.png  used on input line 205.
 (pdftex.def)             Requested size: 438.75465pt x 241.367pt.
 
-Overfull \hbox (5.13466pt too wide) in paragraph at lines 203--206
+Overfull \hbox (5.13466pt too wide) in paragraph at lines 205--208
 [][]
  []
 
@@ -449,7 +449,7 @@ Overfull \hbox (5.13466pt too wide) in paragraph at lines 203--206
 <algoanim.png, id=94, 401.5pt x 301.125pt>
 File: algoanim.png Graphic file (type png)
 <use algoanim.png>
-Package pdftex.def Info: algoanim.png  used on input line 255.
+Package pdftex.def Info: algoanim.png  used on input line 257.
 (pdftex.def)             Requested size: 401.49901pt x 301.12425pt.
  [10] [11 <./algoanim.png>] [12
 
@@ -459,20 +459,20 @@ Chapter 3.
 <selsortbefore.png, id=117, 632.3625pt x 345.29pt>
 File: selsortbefore.png Graphic file (type png)
 <use selsortbefore.png>
-Package pdftex.def Info: selsortbefore.png  used on input line 371.
+Package pdftex.def Info: selsortbefore.png  used on input line 373.
 (pdftex.def)             Requested size: 442.65074pt x 241.70134pt.
 
-Overfull \hbox (9.03075pt too wide) in paragraph at lines 371--374
+Overfull \hbox (9.03075pt too wide) in paragraph at lines 373--376
 [][]
  []
 
 <selsortafter.png, id=118, 671.50874pt x 341.275pt>
 File: selsortafter.png Graphic file (type png)
 <use selsortafter.png>
-Package pdftex.def Info: selsortafter.png  used on input line 379.
+Package pdftex.def Info: selsortafter.png  used on input line 381.
 (pdftex.def)             Requested size: 470.05292pt x 238.89085pt.
 
-Overfull \hbox (36.43292pt too wide) in paragraph at lines 379--382
+Overfull \hbox (36.43292pt too wide) in paragraph at lines 381--384
 [][]
  []
 
@@ -507,7 +507,7 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (37 pages, 712119 bytes).
+Output written on thesis.pdf (37 pages, 712894 bytes).
 PDF statistics:
  181 PDF objects out of 1000 (max. 8388607)
  119 compressed objects within 2 object streams
