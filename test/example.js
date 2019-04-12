@@ -1,17 +1,17 @@
 import canvas from './classes.js';
 import {ctx,window,OvalObj,TextObj,RectObj,LineObj} from './classes.js';
 window.renderWindow();
-var text1 = new TextObj(358.0,45.0,1,'Sorting',"#000000", '50.0px Times New Roman');
+var text1 = new TextObj(358.0,45.0,1,'Selection Sorting',"#000000", '50.0px Times New Roman');
 window.addObjects([text1]);
-var text2 = new TextObj(200.0,200.0,2,'5',"#000000", '30.0px Times New Roman');
+var text2 = new TextObj(298.0,150.0,2,'5',"#000000", '30.0px Times New Roman');
 window.addObjects([text2]);
-var text3 = new TextObj(230.0,200.0,3,'4',"#000000", '30.0px Times New Roman');
+var text3 = new TextObj(328.0,150.0,3,'4',"#000000", '30.0px Times New Roman');
 window.addObjects([text3]);
-var text4 = new TextObj(260.0,200.0,4,'3',"#000000", '30.0px Times New Roman');
+var text4 = new TextObj(358.0,150.0,4,'3',"#000000", '30.0px Times New Roman');
 window.addObjects([text4]);
-var text5 = new TextObj(290.0,200.0,5,'2',"#000000", '30.0px Times New Roman');
+var text5 = new TextObj(388.0,150.0,5,'2',"#000000", '30.0px Times New Roman');
 window.addObjects([text5]);
-var text6 = new TextObj(320.0,200.0,6,'1',"#000000", '30.0px Times New Roman');
+var text6 = new TextObj(418.0,150.0,6,'1',"#000000", '30.0px Times New Roman');
 window.addObjects([text6]);
 function testSave(){
 	document.removeEventListener('load',testSave);
@@ -36,15 +36,13 @@ function testSave(){
 	canvas.addEventListener('click', click0);
 	async function click0(){
 		if (counter==0){
-	text2.move(320.0,200.0,1.2);
+	text6.move(298.0,150.0,1.2);
+	text2.move(328.0,150.0,0.3);
+	text3.move(358.0,150.0,0.3);
+	text4.move(388.0,150.0,0.3);
+	text5.move(418.0,150.0,0.3);
 			counter+=1;
 			canvas.addEventListener('click', click1);
-	}}
-	async function click1(){
-		if (counter==1){
-	text6.move(200.0,200.0,1.2);
-			counter+=1;
-			canvas.addEventListener('click', click2);
 	}}
 	var slide1 = () => {
 	window.renderObject(1);

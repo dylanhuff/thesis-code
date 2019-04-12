@@ -23,5 +23,5 @@
 \contentsline {section}{\numberline {3.3}Future Work}{15}
 \contentsline {subsection}{\numberline {3.3.1}Full JavaPPTX Support}{15}
 \contentsline {subsection}{\numberline {3.3.2}Realtime JS Animation}{16}
-\contentsline {chapter}{Conclusion}{17}
-\contentsline {chapter}{References}{19}
+\contentsline {chapter}{Conclusion}{19}
+\contentsline {chapter}{References}{21}

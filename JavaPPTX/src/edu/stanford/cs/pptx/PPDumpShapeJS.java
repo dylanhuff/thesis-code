@@ -297,7 +297,7 @@ public class PPDumpShapeJS {
             PPShape shape = animation.getShape();
                 System.out.println(animation.getClass().getName().toString());
                 Point2D loc = ((LinearMotionEffect)animation).dumpJS();
-            double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
+                double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
                 if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
                     if (animation.getTrigger() == "withPrev"){
                         try{
@@ -365,15 +365,7 @@ public class PPDumpShapeJS {
                             
                     } else if (animation.getTrigger() == "withPrev"){
                         try{
-                            fop.write("\trect".getBytes());
-                            fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                            fop.write(".move(".getBytes());
-                            fop.write(String.valueOf(loc.getX()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf(loc.getY()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf(animation.getDuration()).getBytes());
-                            fop.write(");\n".getBytes());
+                            writeLinearMotion(fop, shape,animation);
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);
@@ -386,15 +378,7 @@ public class PPDumpShapeJS {
                             fop.write("\tawait sleep(".getBytes());
                             fop.write(String.valueOf((int)(animation.getDelay())).getBytes());
                             fop.write(");\n".getBytes());
-                            fop.write("\trect".getBytes());
-                            fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                            fop.write(".move(".getBytes());
-                            fop.write(String.valueOf(loc.getX()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf(loc.getY()).getBytes());
-                            fop.write(",".getBytes());
-                            fop.write(String.valueOf(animation.getDuration()).getBytes());
-                            fop.write(");\n".getBytes());
+                            writeLinearMotion(fop, shape,animation);
                             AnimationEffect nextAnimation = animations.get(index+1);
                             if (nextAnimation.getTrigger() == "withPrev"){
                                 offset+=1+writeAnimation(fop, index+1);

@@ -43,19 +43,23 @@ public class testRectSave {
 
      public static PPSlide sortTest(PPShow ppt){
       PPSlide slide = new PPSlide();
-      slide.addTitle("Sorting");
-      PPTextBox text1 = new PPTextBox("5");
-      slide.add(text1, 200, 200);
-      PPTextBox text2 = new PPTextBox("4");
-      slide.add(text2, 230, 200);
+      slide.addTitle("Selection Sorting");
+      double xc = slide.getWidth() / 2;
+      PPTextBox text5 = new PPTextBox("5");
+      slide.add(text5, xc-60, 150);
+      PPTextBox text4 = new PPTextBox("4");
+      slide.add(text4, xc-30, 150);
       PPTextBox text3 = new PPTextBox("3");
-      slide.add(text3, 260, 200);
-      PPTextBox text4 = new PPTextBox("2");
-      slide.add(text4, 290, 200);
-      PPTextBox text5 = new PPTextBox("1");
-      slide.add(text5, 320, 200);
-      text1.move(120,0,"/onClick");
-      text5.move(-120,0,"/onClick");
+      slide.add(text3, xc, 150);
+      PPTextBox text2 = new PPTextBox("2");
+      slide.add(text2, xc+30, 150);
+      PPTextBox text1 = new PPTextBox("1");
+      slide.add(text1, xc+60, 150);
+      text1.move(-120,0,"/onClick");
+      text5.move(30,0,"/withPrev");
+      text4.move(30,0,"/withPrev");
+      text3.move(30,0,"/withPrev");
+      text2.move(30,0,"/withPrev");
       return slide;
      }
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 APR 2019 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  11 APR 2019 17:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -260,6 +260,12 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 
 LaTeX Warning: Label `animexample' multiply defined.
 
+
+LaTeX Warning: Label `subd' multiply defined.
+
+
+LaTeX Warning: Label `subd' multiply defined.
+
 )
 \openout1 = `thesis.aux'.
 
@@ -449,11 +455,33 @@ Package pdftex.def Info: algoanim.png  used on input line 255.
 
 ]
 Chapter 3.
-[13] [14] [15] [16] [17
+[13] [14] [15]
+<selsortbefore.png, id=117, 632.3625pt x 345.29pt>
+File: selsortbefore.png Graphic file (type png)
+<use selsortbefore.png>
+Package pdftex.def Info: selsortbefore.png  used on input line 371.
+(pdftex.def)             Requested size: 442.65074pt x 241.70134pt.
 
-] [18
+Overfull \hbox (9.03075pt too wide) in paragraph at lines 371--374
+[][]
+ []
 
-] (./thesis.bbl) [19
+<selsortafter.png, id=118, 671.50874pt x 341.275pt>
+File: selsortafter.png Graphic file (type png)
+<use selsortafter.png>
+Package pdftex.def Info: selsortafter.png  used on input line 379.
+(pdftex.def)             Requested size: 470.05292pt x 238.89085pt.
+
+Overfull \hbox (36.43292pt too wide) in paragraph at lines 379--382
+[][]
+ []
+
+[16] [17] [18 <./selsortbefore.png> <./selsortafter.png>] [19
+
+] [20
+
+]
+(./thesis.bbl) [21
 
 ] (./thesis.aux)
 
@@ -461,10 +489,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5203 strings out of 492649
- 69284 string characters out of 6129622
- 162309 words of memory out of 5000000
- 8965 multiletter control sequences out of 15000+600000
+ 5227 strings out of 492649
+ 69651 string characters out of 6129622
+ 182309 words of memory out of 5000000
+ 8987 multiletter control sequences out of 15000+600000
  14080 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,1745b,1282s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -479,10 +507,10 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (35 pages, 573044 bytes).
+Output written on thesis.pdf (37 pages, 712119 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 181 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

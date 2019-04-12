@@ -319,6 +319,70 @@ The JavaScirpt compilation is not fully completed, not all of the features in Ja
 
 In order to finish the JS compilation, some objects, properties and features need to be added. If a star object was to be added, the logic for processing stars specifically would be added during the object processing phase. For adding motions and background colors, the JavaScript framework needs to be extended. While these are nontrivial, the bulk of the work has been completed. 
 
+Take making a selection sort presentation as an example. Figure 3.2 shows the code required to make a presentation that sorts the array [5,4,3,2,1] to [1,2,3,4,5] in PowerPoint and JavaScript.
+\begin{figure}[h!tbp]
+\caption{Current Features Code Example} 
+\begin{lstlisting}[escapechar=!]
+import edu.stanford.cs.pptx.*;
+
+public class PPSelectionSort {
+
+   public void run() {
+      PPShow ppt = new PPShow();
+      PPSlide slide = new PPSlide();
+      sortTest(slide);
+      ppt.add(slide);
+      ppt.save("SelectionSort.pptx");
+      PPSaveJS.save(ppt,"SelectionSort.js");
+   }
+
+   public static void main(String[] args) {
+      new PPSelectionSort().run();
+   }
+   
+   public void PPSlide sortTest(PPSlide slide){
+      slide.addTitle("Selection Sorting");
+      double xc = slide.getWidth() / 2;
+      PPTextBox text5 = new PPTextBox("5");
+      slide.add(text5, xc-60, 150);
+      PPTextBox text4 = new PPTextBox("4");
+      slide.add(text4, xc-30, 150);
+      PPTextBox text3 = new PPTextBox("3");
+      slide.add(text3, xc, 150);
+      PPTextBox text2 = new PPTextBox("2");
+      slide.add(text2, xc+30, 150);
+      PPTextBox text1 = new PPTextBox("1");
+      slide.add(text1, xc+60, 150);
+      text1.move(-120,0,"/onClick");
+      text5.move(30,0,"/withPrev");
+      text4.move(30,0,"/withPrev");
+      text3.move(30,0,"/withPrev");
+      text2.move(30,0,"/withPrev");
+      ...
+     }
+	
+}
+\end{lstlisting}
+\end{figure} 
+Figure 3.3 shows the webpage that is made from the code in Figure 3.2 before anyone clicks on the page.
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{JavaScript Selection Sort Example, Before Click} 
+\includegraphics[scale=0.7]{selsortbefore} 
+\label{subd}
+\end{centering} 
+\end{figure}
+After someone clicks on the webpage, as selection sort would dictate, one gets moved to the first position and all of the other numbers are shifted over by one position. Figure 3.4 shows the same webpage after a click. 
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{JavaScript Selection Sort Example, After Click} 
+\includegraphics[scale=0.7]{selsortafter} 
+\label{subd}
+\end{centering} 
+\end{figure}
+This example shows how the general infrastructure is made for slides, presentations, motions, and objects. This example should also illustrate that currently only basic features of JavaPPTX are supported. 
+
+
 \subsection{Realtime JS Animation}
 As this work stands, the animations that can be made are not real time and aren't reflecting algorithms that a student makes. A meta study has shown that it maybe more effective to have the animations reflect the students algorithms rather than having a teacher animate an algorithm and use it in a lecture, but this is contentious.\footnote{\cite{hundhausen_meta-study_2002}} A major contribution of this thesis is a JavaScript framework that allows for animations to be created more easily. In its current state, the animations are built based off of the logic given by the person creating the animation, which is intended to be an instructor. This framework could be used to reflect animations in real time that students create. Since the visual framework has been built, someone expanding on this work would have to figure out the logic behind creating animating the algorithms. The easiest expansion could be animating JS algorithms. Since JS is native to the web, it also maybe worthwhile to have other languages have animations done with this framework since the animations could easily be made into websites and shared. Since this package is written in Java, Java would be a logical language to expand this to. 
 
