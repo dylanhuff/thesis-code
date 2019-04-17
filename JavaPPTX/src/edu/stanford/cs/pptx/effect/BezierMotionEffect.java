@@ -137,8 +137,8 @@ public class BezierMotionEffect extends AnimationEffect {
    public double[] getPoints(){
       Point2D start = mpState.getInitialLocation();
       Point2D current = mpState.getEffectLocation();
-      double x0 = current.getX() - start.getX();
-      double y0 = current.getY() - start.getY();
+      double x0 = start.getX() ;
+      double y0 = start.getY() ;
       double[] points = {x0,y0,dx1,dy1,dx2,dy2,dx3,dy3};
       return points;
    }

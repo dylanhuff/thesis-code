@@ -127,16 +127,25 @@ public class PPDumpShapeJS {
             fop.write("\t}\n".getBytes());
             fop.write("\tbezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){\n".getBytes());
             fop.write("\t\tvar _this = this;\n".getBytes());
-            fop.write("\t\tvar xOffset \n".getBytes());
-            fop.write("\t\tvar yOffset \n".getBytes());
-            fop.write("\t\tvar threshold \n".getBytes());
+            fop.write("\t\tvar threshold =100;\n".getBytes());
             fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
+            fop.write("\t\tvar t = 0;\n".getBytes());
+            fop.write("\t\tvar calcX = function(t){\n".getBytes());
+            fop.write("\t\t\treturn ((Math.pow(1-t,3)*x0)+(3*Math.pow(1-t,2)*t*x1)+(3*(1-t)*Math.pow(t,2)*x2)+(Math.pow(t,3)*x3))\n".getBytes());
+            fop.write("\t\t}\n".getBytes());
+            fop.write("\t\tvar calcY = function(t){\n".getBytes());
+            fop.write("\t\t\treturn ((Math.pow(1-t,3)*y0)+(3*Math.pow(1-t,2)*t*y1)+(3*(1-t)*Math.pow(t,2)*y2)+(Math.pow(t,3)*y3))\n".getBytes());
+            fop.write("\t\t}\n".getBytes());
             fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
             fop.write("\t\t\twrap();\n".getBytes());
             fop.write("\t\t},1000/60);\n".getBytes());
             fop.write("\t\tvar wrap = function(){\n".getBytes());
             fop.write("\t\t\tif(refreshCounter<threshold){\n".getBytes());
-            fop.write("\t\t\t\t_this.moveHelper(xOffset,yOffset);\n".getBytes());
+            fop.write("\t\t\t\twindow.derenderAllObjects();\n".getBytes());
+            fop.write("\t\t\t\t_this.x = calcX(t)\n".getBytes());
+            fop.write("\t\t\t\t_this.y = calcY(t)\n".getBytes());
+            fop.write("\t\t\t\twindow.renderAllObjects();\n".getBytes());
+            fop.write("\t\t\t\tt+=0.01\n".getBytes());
             fop.write("\t\t\t\trefreshCounter+=1;\n".getBytes());
             fop.write("\t\t\t} else {\n".getBytes());
             fop.write("\t\t\t\tclearInterval(intervalID)\n".getBytes());
@@ -467,16 +476,10 @@ public class PPDumpShapeJS {
         try {
             double[] points = ((BezierMotionEffect)animation).getPoints();
             double duration = ((BezierMotionEffect)animation).getDuration(); 
-            System.out.println(duration);
-            System.out.println("Duration");
-            for(int i = 0;i<points.length;i++){
-                System.out.println(points[i]);
-            }
-            System.out.println("here");
             if(shape.getTypeName().equals("PPRect")){
-                fop.write("\trect.".getBytes());
+                fop.write("\trect".getBytes());
                 fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                fop.write("bezierMove(".getBytes());
+                fop.write(".bezierMove(".getBytes());
                 fop.write(String.valueOf(points[0]).getBytes());
                 fop.write(",".getBytes());
                 fop.write(String.valueOf(points[1]).getBytes());

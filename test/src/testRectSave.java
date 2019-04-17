@@ -128,8 +128,8 @@ public class testRectSave {
         slide.addTitle("PPRectTest");
         PPRect square = new PPRect(100, 100);
         square.setColor(Color.RED);
-        slide.add(square, 200, 100);
-        square.curveTo(300, 400, 500, 600, 100, 100);
+        slide.add(square, 50, 50);
+        square.curveTo(100, 600, 500, 600, 200, 100);
         return slide;
      }
   
