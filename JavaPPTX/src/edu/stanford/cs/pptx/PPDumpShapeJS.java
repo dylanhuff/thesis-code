@@ -18,6 +18,7 @@ import java.awt.Font;
 
 import edu.stanford.cs.pptx.effect.AnimationEffect;
 import edu.stanford.cs.pptx.effect.LinearMotionEffect;
+import edu.stanford.cs.pptx.effect.BezierMotionEffect;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -112,6 +113,23 @@ public class PPDumpShapeJS {
             fop.write("\t\tvar xOffset = ((endX-this.x)/duration)/60; //px/refresh\n".getBytes());
             fop.write("\t\tvar yOffset = ((endY-this.y)/duration)/60;\n".getBytes());
             fop.write("\t\tvar threshold = (endX-this.x)/xOffset;\n".getBytes());
+            fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
+            fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
+            fop.write("\t\t\twrap();\n".getBytes());
+            fop.write("\t\t},1000/60);\n".getBytes());
+            fop.write("\t\tvar wrap = function(){\n".getBytes());
+            fop.write("\t\t\tif(refreshCounter<threshold){\n".getBytes());
+            fop.write("\t\t\t\t_this.moveHelper(xOffset,yOffset);\n".getBytes());
+            fop.write("\t\t\t\trefreshCounter+=1;\n".getBytes());
+            fop.write("\t\t\t} else {\n".getBytes());
+            fop.write("\t\t\t\tclearInterval(intervalID)\n".getBytes());
+            fop.write("\t\t\t}\n\t\t}\n".getBytes());
+            fop.write("\t}\n".getBytes());
+            fop.write("\tbezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){\n".getBytes());
+            fop.write("\t\tvar _this = this;\n".getBytes());
+            fop.write("\t\tvar xOffset \n".getBytes());
+            fop.write("\t\tvar yOffset \n".getBytes());
+            fop.write("\t\tvar threshold \n".getBytes());
             fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
             fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
             fop.write("\t\t\twrap();\n".getBytes());
@@ -296,8 +314,8 @@ public class PPDumpShapeJS {
             int offset = 0;
             PPShape shape = animation.getShape();
                 System.out.println(animation.getClass().getName().toString());
-                Point2D loc = ((LinearMotionEffect)animation).dumpJS();
-                double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
+                //Point2D loc = ((LinearMotionEffect)animation).dumpJS();
+                //double speed = ((LinearMotionEffect)animation).dumpSpeed(); //speed is px/sec
                 if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.AppearEffect"){
                     if (animation.getTrigger() == "withPrev"){
                         try{
@@ -426,9 +444,59 @@ public class PPDumpShapeJS {
                         closeEvent(fop);
                             
                     }
-                } 
+                } else if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.BezierMotionEffect"){
+                    writeOnClick(fop);
+                    writeBezierMotion(fop, shape, animation);
+                    try{
+                        AnimationEffect nextAnimation = animations.get(index+1);
+                        if (nextAnimation.getTrigger() == "withPrev"){
+                            offset+=1+writeAnimation(fop, index+1);
+                        } else if (nextAnimation.getTrigger() == "afterPrev"){
+                            offset+=1+writeAnimation(fop, index+1);
+                        }
+                    } catch (IndexOutOfBoundsException ex){}
+                    closeEvent(fop);
+                }
             return offset; //return should be amount of withPrev called from this one
         }  catch (IOException ex) {
+            throw new RuntimeException(ex.toString());
+        } 
+    }
+
+    public void writeBezierMotion(FileOutputStream fop, PPShape shape,AnimationEffect animation){
+        try {
+            double[] points = ((BezierMotionEffect)animation).getPoints();
+            double duration = ((BezierMotionEffect)animation).getDuration(); 
+            System.out.println(duration);
+            System.out.println("Duration");
+            for(int i = 0;i<points.length;i++){
+                System.out.println(points[i]);
+            }
+            System.out.println("here");
+            if(shape.getTypeName().equals("PPRect")){
+                fop.write("\trect.".getBytes());
+                fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
+                fop.write("bezierMove(".getBytes());
+                fop.write(String.valueOf(points[0]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[1]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[2]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[3]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[4]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[5]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[6]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(points[7]).getBytes());
+                fop.write(",".getBytes());
+                fop.write(String.valueOf(duration).getBytes());
+                fop.write(");\n".getBytes());
+            } 
+        } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
     }

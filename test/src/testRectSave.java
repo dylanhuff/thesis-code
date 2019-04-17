@@ -29,11 +29,11 @@ public class testRectSave {
         PPShow ppt = new PPShow();
       //   ppt.add(simpleText(ppt));
       //   ppt.add(simplePPLineTest());
-      //   ppt.add(simplePPRectTest());
+         ppt.add(simplePPRectTest());
       //   ppt.add(simplePPOvalTest());
       //   ppt.add(simplePPTextBoxTest());
       //   ppt.add(mainTest(ppt));
-        ppt.add(sortTest(ppt));
+        //ppt.add(sortTest(ppt));
         //ppt.add(simplePPPictureTest());
         //ppt.add(simplePPGroupTest());
         ppt.save("PPSimpleExamples.pptx");
@@ -129,6 +129,7 @@ public class testRectSave {
         PPRect square = new PPRect(100, 100);
         square.setColor(Color.RED);
         slide.add(square, 200, 100);
+        square.curveTo(300, 400, 500, 600, 100, 100);
         return slide;
      }
   
@@ -177,7 +178,6 @@ public class testRectSave {
         return slide;
      }
   
-
     private static final double SQUARE_SIZE = 200;
 }
 	 

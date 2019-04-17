@@ -82,6 +82,31 @@ class ObjectType{
 			}
 		}
 	}
+	bezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){
+		var _this = this;
+		var xOffset 
+		var yOffset 
+		var threshold 
+		var refreshCounter = 0;
+		var calcX = function(t){
+			return ((Math.pow(1-t,3)*x0)+(3*Math.pow(1-t,2)*t*x1)+(3*(1-t)*Math.pow(t,2)*x2)+(Math.pow(t,3)*x3))
+		}
+		var calcY = function(t){
+			return ((Math.pow(1-t,3)*y0)+(3*Math.pow(1-t,2)*t*y1)+(3*(1-t)*Math.pow(t,2)*y2)+(Math.pow(t,3)*y3))
+		}
+		console.log(calcX(0),calcY(0))
+		var intervalID = setInterval(function(){
+			wrap();
+		},1000/60);
+		var wrap = function(){
+			if(refreshCounter<threshold){
+				_this.moveHelper(xOffset,yOffset);
+				refreshCounter+=1;
+			} else {
+				clearInterval(intervalID)
+			}
+		}
+	}
 }
 export class TextObj extends ObjectType{
 	constructor(x,y,id,string,color,fontDesc){
