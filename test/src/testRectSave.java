@@ -43,7 +43,7 @@ public class testRectSave {
 
      public static PPSlide sortTest(PPShow ppt){
       PPSlide slide = new PPSlide();
-      slide.addTitle("Selection Sorting");
+      slide.addTitle("Insertion Sorting");
       double xc = slide.getWidth() / 2;
       PPTextBox text5 = new PPTextBox("5");
       slide.add(text5, xc-60, 150);

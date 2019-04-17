@@ -1,7 +1,7 @@
 import canvas from './classes.js';
 import {ctx,window,OvalObj,TextObj,RectObj,LineObj} from './classes.js';
 window.renderWindow();
-var text1 = new TextObj(358.0,45.0,1,'Selection Sorting',"#000000", '50.0px Times New Roman');
+var text1 = new TextObj(358.0,45.0,1,'Insertion Sorting',"#000000", '50.0px Times New Roman');
 window.addObjects([text1]);
 var text2 = new TextObj(298.0,150.0,2,'5',"#000000", '30.0px Times New Roman');
 window.addObjects([text2]);
