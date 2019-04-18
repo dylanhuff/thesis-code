@@ -1,7 +1,6 @@
 import java.awt.Color;
 
 import edu.stanford.cs.pptx.*;
-import edu.stanford.cs.pptx.PPSaveJS;
 
 public class testRectSave {
 
@@ -126,10 +125,10 @@ public class testRectSave {
      private static PPSlide simplePPRectTest() {
         PPSlide slide = new PPSlide();
         slide.addTitle("PPRectTest");
-        PPRect square = new PPRect(100, 100);
+        PPOval square = new PPOval(50, 50, 50, 50);
         square.setColor(Color.RED);
-        slide.add(square, 50, 50);
-        square.curveTo(100, 600, 500, 600, 200, 100);
+        slide.add(square);
+        square.curveTo(100, 600, 700, 600, 300, 400);
         return slide;
      }
   

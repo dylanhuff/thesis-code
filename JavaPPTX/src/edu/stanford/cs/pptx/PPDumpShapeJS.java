@@ -125,11 +125,13 @@ public class PPDumpShapeJS {
             fop.write("\t\t\t\tclearInterval(intervalID)\n".getBytes());
             fop.write("\t\t\t}\n\t\t}\n".getBytes());
             fop.write("\t}\n".getBytes());
-            fop.write("\tbezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){\n".getBytes());
+            fop.write("\tasync bezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){\n".getBytes());
+            fop.write("\t\treturn new Promise((resolve, reject) => {\n".getBytes());
             fop.write("\t\tvar _this = this;\n".getBytes());
-            fop.write("\t\tvar threshold =100;\n".getBytes());
+            fop.write("\t\tvar threshold =duration*60;\n".getBytes());
             fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
             fop.write("\t\tvar t = 0;\n".getBytes());
+            fop.write("\t\tvar tdif = 1/threshold;\n".getBytes());
             fop.write("\t\tvar calcX = function(t){\n".getBytes());
             fop.write("\t\t\treturn ((Math.pow(1-t,3)*x0)+(3*Math.pow(1-t,2)*t*x1)+(3*(1-t)*Math.pow(t,2)*x2)+(Math.pow(t,3)*x3))\n".getBytes());
             fop.write("\t\t}\n".getBytes());
@@ -145,12 +147,12 @@ public class PPDumpShapeJS {
             fop.write("\t\t\t\t_this.x = calcX(t)\n".getBytes());
             fop.write("\t\t\t\t_this.y = calcY(t)\n".getBytes());
             fop.write("\t\t\t\twindow.renderAllObjects();\n".getBytes());
-            fop.write("\t\t\t\tt+=0.01\n".getBytes());
+            fop.write("\t\t\t\tt+=tdif\n".getBytes());
             fop.write("\t\t\t\trefreshCounter+=1;\n".getBytes());
             fop.write("\t\t\t} else {\n".getBytes());
             fop.write("\t\t\t\tclearInterval(intervalID)\n".getBytes());
             fop.write("\t\t\t}\n\t\t}\n".getBytes());
-            fop.write("\t}\n".getBytes());
+            fop.write("\tsetTimeout(() => resolve(true), duration*1000)})}\n".getBytes());
             fop.write("}\n".getBytes());
             fop.write("export class TextObj extends ObjectType{\n".getBytes());
             fop.write("\tconstructor(x,y,id,string,color,fontDesc){\n".getBytes());
@@ -454,17 +456,45 @@ public class PPDumpShapeJS {
                             
                     }
                 } else if (animation.getClass().getName().toString() == "edu.stanford.cs.pptx.effect.BezierMotionEffect"){
-                    writeOnClick(fop);
-                    writeBezierMotion(fop, shape, animation);
-                    try{
-                        AnimationEffect nextAnimation = animations.get(index+1);
-                        if (nextAnimation.getTrigger() == "withPrev"){
-                            offset+=1+writeAnimation(fop, index+1);
-                        } else if (nextAnimation.getTrigger() == "afterPrev"){
-                            offset+=1+writeAnimation(fop, index+1);
-                        }
-                    } catch (IndexOutOfBoundsException ex){}
-                    closeEvent(fop);
+                    if (animation.getTrigger() == "onClick"){
+                        writeOnClick(fop);
+                        writeBezierMotion(fop, shape, animation);
+                        try{
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+                        closeEvent(fop);
+                            
+                    } else if (animation.getTrigger() == "withPrev"){
+                        try{
+                            writeBezierMotion(fop, shape, animation);
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+                    } else if (animation.getTrigger() == "afterPrev"){
+                        try{
+                            if (animation.getDelay()!= 0){
+                                fop.write("\tawait sleep(".getBytes());
+                                fop.write(String.valueOf((int)(animation.getDelay())).getBytes());
+                                fop.write(");\n".getBytes());
+                            }
+                            writeBezierMotion(fop, shape, animation);
+                            AnimationEffect nextAnimation = animations.get(index+1);
+                            if (nextAnimation.getTrigger() == "withPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            } else if (nextAnimation.getTrigger() == "afterPrev"){
+                                offset+=1+writeAnimation(fop, index+1);
+                            }
+                        } catch (IndexOutOfBoundsException ex){}
+                    }
                 }
             return offset; //return should be amount of withPrev called from this one
         }  catch (IOException ex) {
@@ -476,29 +506,35 @@ public class PPDumpShapeJS {
         try {
             double[] points = ((BezierMotionEffect)animation).getPoints();
             double duration = ((BezierMotionEffect)animation).getDuration(); 
+            String objID = "";
+            // fop.write("\tawait sleep(".getBytes());
+            // fop.write(String.valueOf(duration+.02).getBytes());
+            // fop.write(");\n".getBytes());
             if(shape.getTypeName().equals("PPRect")){
-                fop.write("\trect".getBytes());
-                fop.write(String.valueOf((int)shape.getShapeId()).getBytes());
-                fop.write(".bezierMove(".getBytes());
-                fop.write(String.valueOf(points[0]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[1]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[2]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[3]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[4]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[5]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[6]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(points[7]).getBytes());
-                fop.write(",".getBytes());
-                fop.write(String.valueOf(duration).getBytes());
-                fop.write(");\n".getBytes());
-            } 
+                objID = "rect"+String.valueOf((int)shape.getShapeId());
+            } else if (shape.getTypeName().equals("PPOval")) {
+                objID = "oval"+String.valueOf((int)shape.getShapeId());
+            }
+            fop.write(("\tawait "+objID).getBytes());
+            fop.write(".bezierMove(".getBytes());
+            fop.write((objID+".x").getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".y").getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".x+ "+String.valueOf(points[2])).getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".y+ "+String.valueOf(points[3])).getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".x+ "+String.valueOf(points[4])).getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".y+ "+String.valueOf(points[5])).getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".x+ "+String.valueOf(points[6])).getBytes());
+            fop.write(",".getBytes());
+            fop.write((objID+".y+ "+String.valueOf(points[7])).getBytes());
+            fop.write(",".getBytes());
+            fop.write(String.valueOf(duration).getBytes());
+            fop.write(");\n".getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex.toString());
         } 
@@ -661,13 +697,13 @@ public class PPDumpShapeJS {
 
     private void writeOval(FileOutputStream fop, PPOval oval){ //weird oval behavior, different from pptx
         try {
-            
+            Point2D loc =  oval.getInitialLocation();
             fop.write("var oval".getBytes()); //params: x, y, radiusX, radiusY, rotation, startAngle, endAngle
             fop.write(String.valueOf((int)oval.getShapeId()).getBytes());
             fop.write(" = new OvalObj(".getBytes());
-            fop.write(String.valueOf((double)oval.getX()+(double)oval.getWidth()/2).getBytes());
+            fop.write(String.valueOf((double)loc.getX()+(double)oval.getWidth()/2).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((double)oval.getY()+(double)oval.getHeight()/2).getBytes());
+            fop.write(String.valueOf((double)loc.getY()+(double)oval.getHeight()/2).getBytes());
             fop.write(",".getBytes());
             fop.write(String.valueOf((double)oval.getWidth()/2).getBytes()); 
             fop.write(",".getBytes());

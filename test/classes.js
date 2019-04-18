@@ -82,11 +82,13 @@ class ObjectType{
 			}
 		}
 	}
-	bezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){
+	async bezierMove(x0,y0,x1,y1,x2,y2,x3,y3,duration){
+		return new Promise((resolve, reject) => {
 		var _this = this;
-		var threshold =100;
+		var threshold =duration*60;
 		var refreshCounter = 0;
 		var t = 0;
+		var tdif = 1/threshold;
 		var calcX = function(t){
 			return ((Math.pow(1-t,3)*x0)+(3*Math.pow(1-t,2)*t*x1)+(3*(1-t)*Math.pow(t,2)*x2)+(Math.pow(t,3)*x3))
 		}
@@ -102,13 +104,13 @@ class ObjectType{
 				_this.x = calcX(t)
 				_this.y = calcY(t)
 				window.renderAllObjects();
-				t+=0.01
+				t+=tdif
 				refreshCounter+=1;
 			} else {
 				clearInterval(intervalID)
 			}
 		}
-	}
+	setTimeout(() => resolve(true), duration*2000)})}
 }
 export class TextObj extends ObjectType{
 	constructor(x,y,id,string,color,fontDesc){
