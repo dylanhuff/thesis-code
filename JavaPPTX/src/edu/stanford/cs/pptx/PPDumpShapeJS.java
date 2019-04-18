@@ -510,6 +510,8 @@ public class PPDumpShapeJS {
             // fop.write("\tawait sleep(".getBytes());
             // fop.write(String.valueOf(duration+.02).getBytes());
             // fop.write(");\n".getBytes());
+            System.out.println(points[0]);
+            System.out.println(points[1]);
             if(shape.getTypeName().equals("PPRect")){
                 objID = "rect"+String.valueOf((int)shape.getShapeId());
             } else if (shape.getTypeName().equals("PPOval")) {
@@ -697,7 +699,7 @@ public class PPDumpShapeJS {
 
     private void writeOval(FileOutputStream fop, PPOval oval){ //weird oval behavior, different from pptx
         try {
-            Point2D loc =  oval.getInitialLocation();
+            Point2D loc =  oval.getCenter();
             fop.write("var oval".getBytes()); //params: x, y, radiusX, radiusY, rotation, startAngle, endAngle
             fop.write(String.valueOf((int)oval.getShapeId()).getBytes());
             fop.write(" = new OvalObj(".getBytes());

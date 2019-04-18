@@ -221,6 +221,11 @@ On top of increased degree production, enrollment of CS courses from CS majors a
 
 One of the major reasons for this increased demand is that in the U.S.,  the number of jobs related to computing have been increasing steadily for the past 40 years. Currently, there are not enough students graduating with degrees relating to the field to fill open the current open job positions. Looking down the road, the U.S. Bureau of Labor Statistics estimates that the number of jobs in this area is estimated to continue to grow rapidly through at least 2026.\footnote{\cite{BLS}} Beyond the data predicting continued growth, given the increasing pervasiveness of computers in the world, it is clear that the amount of jobs will continue to grow for the foreseeable future. 
 
+\subsection{Budget Constraints}
+Getting an appropriate budget is often a challenge for schools, but CS higher education today has some unique problems. As I mentioned earlier, wages in industry are particularly high for CS related Ph.Ds. Compounding this problem is that many universities have internal rules that enforce equal pay for professors regardless of their area of study. This internal wage equality means that the pay for CS faculty cannot simply be increased to lure people away from industry. In many institutions, it would require raising the pay for faculty across the board, which is in-feasible. 
+
+The other major budgeting issue is simply the under-funding of computer science departments, especially at state funded schools. In recent years, many states have decreased there budget for higher education.\footnote{\cite{committee_on_the_growth_of_computer_science_undergraduate_enrollments_assessing_2018}}  This decrease in spending comes during a boom in enrollment in CS, meaning that while departments need to expand their budget to hire new faculty, they are unable to. The under-funding of departments in response to budget constraints is particularly short sighted because these schools train a large fraction of the CS related work force, which has benefits for the state and federal economy.\footnote{\cite{committee_on_the_growth_of_computer_science_undergraduate_enrollments_assessing_2018}} 
+
 \section{Proposed Solutions}
 
 Currently there is no definitive solution to the problems facing CS higher education. Most of the problems stem from the job market, and there is no sign that the job market will ease up on the pressure that it is applying. There are a few solutions that have been proposed, none of which will be the sole answer.
@@ -319,9 +324,76 @@ Translating from Java to JS was one set of problems, but another set of problems
 
 The JavaScript compilation is not fully completed, not all of the features in JavaPPTX are supported in the JavaScript compilation. The main structure for the JS compilation is complete though. As an example of what that means, I'll explain how the program process a presentation with one slide that has a circle and a star on it. The program starts by storing all of boilerplate information, number of slides, height and width of slides, etc. The program then goes and tries to process all of the objects on a given slide. Since all of the objects are not yet supported, some objects will be skipped. In this step, because circles are supported, a circle would be processed and added to the presentation. A star object is not supported, and so it would be skipped over during this phase. All of the information would then be exported to JavaScript and rely on the JavaScript framework that I built to display the objects on the screen. The main infrastructure of processing, storing and building objects in JavaScript is done. Multiple slides can be added. Various types of motion are available for the supported for objects. 
 
-In order to finish the JS compilation, some objects, properties and features need to be added. If a star object was to be added, the logic for processing stars specifically would be added during the object processing phase. For adding motions and background colors, the JavaScript framework needs to be extended. While these are nontrivial, the bulk of the work has been completed. 
+In order to finish the JS compilation, some objects, properties and features need to be added. If a star object was to be added, the logic for processing stars specifically would be added during the object processing phase. For adding motions and background colors, the JavaScript framework needs to be extended. Figure 3.2 shows all of the classes supported by JavaPPTX and my JS extension. 
+\begin{figure}[htbp]
+\centering
+\caption{Supported Classes in JavaPPTX and JS Extension}
+\begin{tabular}{|c||c|c|} 
+\hline 
+Class Name & JavaPPTX Support & JS Extension Support\\ 
+\hline \hline
+PPRect & Yes & Yes\\ 
+\hline 
+PPLine & Yes & Yes\\
+\hline
+PPOval & Yes & Yes\\
+\hline
+PPTextBox & Yes & Yes\\
+\hline
+PPPie & Yes & No\\
+\hline
+PPStar & Yes & No\\
+\hline
+PPGroup & Yes & No\\
+\hline
+PPPath & Yes & No\\
+\hline
+PPPointer & Yes & No\\
+\hline
+PPRectCallout & Yes & No\\
+\hline
+PPOvalCallout & Yes & No\\
+\hline
+\end{tabular}
+\end{figure}
+Figure 3.3 shows all of the animations supported by JavaPPTX and my JS extension. For the currently supported animations, there are three triggers supported for all of them in JavaPPTX and the JS extension. The triggers supported are "On Click", "After Previous", and "With Delay". 
+\begin{figure}[htbp]
+\centering
+\caption{Supported Animations in JavaPPTX and JS Extension}
+\begin{tabular}{|c||c|c|} 
+\hline 
+Animation Name & JavaPPTX Support & JS Extension Support\\ 
+\hline \hline
+Appear/Disappear & Yes & Yes\\ 
+\hline 
+Linear Motion & Yes & Yes\\
+\hline
+Bezier Motion & Yes & Yes\\
+\hline
+FadeIn/FadeOut & Yes & No\\
+\hline
+FlyIn/FlyOut & Yes & No\\
+\hline
+WipeIn/WipeOut & Yes & No\\
+\hline
+ZoomIn/ZoomOut & Yes & No\\
+\hline
+FadedZoomIn/FadedZoomOut & Yes & No\\
+\hline
+CheckerboardIn/CheckerboardOut & Yes & No\\
+\hline
+Spin & Yes & No\\
+\hline
+Grow/Shrink & Yes & No\\
+\hline
+ChangeFillColor & Yes & No\\
+\hline
+ChangeLineColor & Yes & No\\
+\hline
+\end{tabular}
+\end{figure}
 
-Take making a insertion sort presentation as an example. Figure 3.2 shows the code required to make a presentation that sorts the array [5,4,3,2,1] to [1,2,3,4,5] in PowerPoint and JavaScript.
+Take making a insertion sort presentation as an example. Figure 3.4 shows the code required to make a presentation that sorts the array [5,4,3,2,1] to [1,2,3,4,5] in PowerPoint and JavaScript.
 \begin{figure}[h!tbp]
 \caption{Current Features Code Example} 
 \begin{lstlisting}[escapechar=!]
@@ -366,7 +438,7 @@ public class PPInsertionSort {
 }
 \end{lstlisting}
 \end{figure} 
-Figure 3.3 shows the webpage that is made from the code in Figure 3.2 before anyone clicks on the page.
+Figure 3.5 shows the webpage that is made from the code in Figure 3.4 before anyone clicks on the page.
 \begin{figure}[htbp] 
 \begin{centering} 
 \caption{JavaScript Insertion Sort Example, Before Click} 
@@ -374,7 +446,7 @@ Figure 3.3 shows the webpage that is made from the code in Figure 3.2 before any
 \label{subd}
 \end{centering} 
 \end{figure}
-After someone clicks on the webpage, as selection sort would dictate, one gets moved to the first position and all of the other numbers are shifted over by one position. Figure 3.4 shows the same webpage after a click. 
+After someone clicks on the webpage, as selection sort would dictate, one gets moved to the first position and all of the other numbers are shifted over by one position. Figure 3.6 shows the same webpage after a click. 
 \begin{figure}[htbp] 
 \begin{centering} 
 \caption{JavaScript Insertion Sort Example, After Click} 

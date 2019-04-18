@@ -6,6 +6,7 @@
 
 import edu.stanford.cs.pptx.PPFreeform;
 import edu.stanford.cs.pptx.PPOval;
+import edu.stanford.cs.pptx.PPRect;
 import edu.stanford.cs.pptx.PPPath;
 import edu.stanford.cs.pptx.PPShape;
 import edu.stanford.cs.pptx.PPShow;
@@ -27,13 +28,13 @@ public class PPOrbitalMechanics {
       sx = cx + SUN_DX;
       sy = cy;
       double sr = SUN_RADIUS;
-      sun = new PPOval(sx - sr, sy - sr, 2 * sr, 2 * sr);
+      sun = new PPRect(sx - sr, sy - sr, 2 * sr, 2 * sr);
       sun.setColor(SUN_COLOR);
       slide.add(sun);
       double px = cx + a;
       double py = cy;
       double pr = PLANET_RADIUS;
-      planet = new PPOval(px - pr, py - pr, 2 * pr, 2 * pr);
+      planet = new PPRect(px - pr, py - pr, 2 * pr, 2 * pr);
       planet.setColor(PLANET_COLOR);
       slide.add(planet);
       double dt = 360.0 / N_SEGMENTS;
@@ -145,8 +146,8 @@ public class PPOrbitalMechanics {
 
    private PPShow ppt;
    private PPSlide slide;
-   private PPOval sun;
-   private PPOval planet;
+   private PPRect sun;
+   private PPRect planet;
    private double cx;                 /* The center of the ellipse */
    private double cy;
    private double sx;                 /* The coordinates of the sun */
