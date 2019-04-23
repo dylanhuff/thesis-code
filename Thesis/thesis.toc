@@ -1,9 +1,9 @@
 \contentsline {chapter}{Introduction}{1}
 \contentsline {chapter}{Chapter 1: Algorithm Animation}{3}
 \contentsline {section}{\numberline {1.1}What is Algorithm Animation and What are its Benefits?}{3}
-\contentsline {section}{\numberline {1.2}Use in Computer Science Education}{3}
-\contentsline {subsection}{\numberline {1.2.1}History}{3}
-\contentsline {subsection}{\numberline {1.2.2}Current State of Algorithm Animation}{4}
+\contentsline {section}{\numberline {1.2}Use in Computer Science Education}{4}
+\contentsline {subsection}{\numberline {1.2.1}History}{4}
+\contentsline {subsection}{\numberline {1.2.2}Current State of Algorithm Animation}{5}
 \contentsline {chapter}{Chapter 2: State of Computer Science Higher Education}{7}
 \contentsline {section}{\numberline {2.1}Background}{7}
 \contentsline {section}{\numberline {2.2}Problems facing Higher Education}{7}

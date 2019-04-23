@@ -95,11 +95,9 @@ class ObjectType{
 		var calcY = function(t){
 			return ((Math.pow(1-t,3)*y0)+(3*Math.pow(1-t,2)*t*y1)+(3*(1-t)*Math.pow(t,2)*y2)+(Math.pow(t,3)*y3))
 		}
-		var intervalID = setInterval(function(){
-			wrap();
-		},1000/60);
-		var wrap = function(){
-			if(refreshCounter<threshold){
+		var intervalID = setInterval(wrap,1000/60);
+		function wrap(){
+			if(refreshCounter<=threshold){
 				window.derenderAllObjects();
 				_this.x = calcX(t)
 				_this.y = calcY(t)

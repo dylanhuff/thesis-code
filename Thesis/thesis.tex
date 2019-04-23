@@ -157,7 +157,7 @@
          \addcontentsline{toc}{chapter}{Introduction}
 	\chaptermark{Introduction}
 	\markboth{Introduction}{Introduction}
-	In order to support the already strained Computer Science professors, I created an extension to the JavaPPTX package that allows presentations to be web native. This presentations would be programmed in Java, but the output is JavaScript and HTML. My extension to package can be accessed at \begin{quote} https://github.com/dylanhuff/thesis-code \end{quote} The most up-to-date version of JavaPPTX and any further expansion or extensions can be accessed at \begin{quote} https://github.com/eric-roberts/JavaPPTX \end{quote} The rest of this thesis will be broken down as follows. Chapter 1, I give define algorithm animation and explain its usage in Computer Science education. In Chapter 2, I describe the state of computer science higher education in 2019 and where it is forecast to go in the coming years. This chapter also includes some proposed solutions to combat the current faculty shortage. In Chapter 3, I explain the functionality I added to JavaPPTX and how it works. This chapter also includes some of the technical challenges I faced along with way and how my extension could be expanded. 
+	In order to support the already strained Computer Science professors, I created an extension to the JavaPPTX package that allows presentations to be web native. This presentations would be programmed in Java, but the output is JavaScript and HTML. My extension to package can be accessed at \begin{quote} https://github.com/dylanhuff/thesis-code \end{quote} The most up-to-date version of JavaPPTX and any further expansion or extensions can be accessed at \begin{quote} https://github.com/eric-roberts/JavaPPTX \end{quote} The rest of this thesis will be broken down as follows. Chapter 1, I define algorithm animation and explain its usage in Computer Science education. In Chapter 2, I describe the state of computer science higher education in 2019 and where it is forecast to go in the coming years. This chapter also includes some proposed solutions to combat the current faculty shortage. In Chapter 3, I explain the functionality I added to JavaPPTX and how it works. This chapter also includes some of the technical challenges I faced along with way and how my extension could be expanded. 
 	
 \chapter{Algorithm Animation}
 	
@@ -172,7 +172,16 @@ Take Figure 1.1 as an example. The algorithm animation is showing what happens t
 \begin{figure}[htbp] 
 \begin{centering} 
 \caption{Example of an Algorithm Animation}
-\includegraphics[scale=0.462] {animexample}
+\includegraphics[scale=0.4] {animexample}
+\footnotesize{Source: https://visualgo.net/en/bst}
+\label{animexample}
+\end{centering} 
+\end{figure}
+Figure 1.2 shows what the AVL tree looks like after the animation is completed and two has been added. 
+\begin{figure}[htbp] 
+\begin{centering} 
+\caption{Example of an Algorithm Animation Completed}
+\includegraphics[scale=0.44] {animDone}
 \footnotesize{Source: https://visualgo.net/en/bst}
 \label{animexample}
 \end{centering} 
@@ -182,14 +191,14 @@ Take Figure 1.1 as an example. The algorithm animation is showing what happens t
 \section{Use in Computer Science Education}
 
 \subsection{History}
-Algorithm animation began in the 1970s and has been increasingly used since. In the early days of algorithm animation, teachers used tools to make animations for their presentations. Often time these were predefined short films. As tools progressed, the animations no longer had to be used exclusively by teachers and didn't need to be predefined.\footnote{\cite{hundhausen_meta-study_2002}} Tools became able to dynamically represent the algorithms that students made. 
+Algorithm animation began in the 1970s and has been increasingly used since. In the early days of algorithm animation, teachers used tools to make animations for their presentations. Often, these were predefined short films. As tools progressed, the animations no longer had to be used exclusively by teachers and didn't need to be predefined.\footnote{\cite{hundhausen_meta-study_2002}} Tools have progressed to the point where they are able to dynamically represent the algorithms that students make. 
 
-One of the most famous and important contributions to algorithm animation was BALSA. BALSA was created in 1987 by Marc Brown. BALSA introduced several major innovations in the field. One major contribution was the addition of real time animations. Prior to BALSA, the animations wouldn't operate in real time. Rather, the algorithm would run then the animation would be made. Real time animation on the other hand executes the animation and algorithm simultaneously. Another innovation was the introduction of scripts. Scripts were predefined PASCAL programs that would control the algorithm and could be executed in real time. This allows teachers to predefine how an animation will execute, then present the animation in real time.\footnote{\cite{brown_algorithm_1987}}
+One of the most famous and important contributions to algorithm animation was BALSA. BALSA was created in 1987 by Marc Brown. BALSA introduced several major innovations in the field. One major contribution was the addition of real time animations. Prior to BALSA, the animations wouldn't operate in real-time. The algorithm would run, and then theapplication would make the animation. Real time animation on the other hand executes the animation and algorithm simultaneously. Another innovation was the introduction of scripts. Scripts were predefined PASCAL programs that would control the algorithm and could be executed in real time. This approach allows teachers to predefine how an animation will execute, then present the animation in real time.\footnote{\cite{brown_algorithm_1987}}
 
 Along with this shift from predefined to dynamically defined tools, other features were added that improved the animations. One particularly notable improvment came in when animations transitioned from 2D to 3D. This shift from 2D to 3D allowed for more information to be simultaneously displayed. The later addition of color and sound allowed animations even more avenues to convey information.\footnote{\cite{najork_library_1994}}
 
 \subsection{Current State of Algorithm Animation}
-There are a few challenges facing modern-day algorithm animation. One of these challenges is the lack of adoption of animation tools by instructors. Levy points out two main challenges of adoption from survey results of teachers. The first is that the tools being developed may be feature rich but not integrated well into the existing material or curriculum. This incongruity illuminates the fact that the tool developers aren't usually primarily concerned with integration, but rather features. Second, they cite "centrality" as the other major inhibition of teachers. They define centrality to be 	where the center of learning is for the students. By making animation tools that animate the students algorithms, the centrality is being moved from the teacher to the student. The teachers polled were uncomforable with the centrality shifting from them to the students. They note that this phenomenon is present with highly confident and experienced teachers through not-confident, inexperienced teachers.\footnote{\cite{levy_we_2007}}  Its also worth noting that the teachers in this study are high-school teachers and not college professors. Along with low adoption rates by teachers, there is also a lack of new work being published, as of 2018.\footnote{\cite{kucera_visualization_2018}}  
+There are a few challenges facing modern-day algorithm animation. One of these challenges is the lack of adoption of animation tools by instructors. Levy points out two main challenges of adoption from survey results of teachers. The first is that the tools being developed may be feature rich but not integrated well into the existing material or curriculum. This incongruity illuminates the fact that the tool developers aren't usually primarily concerned with integration, but rather features. Second, they cite "centrality" as the other major inhibition of teachers. They define centrality to be 	where the center of learning is for the students. By making animation tools that animate the student's algorithms, the centrality is being moved from the teacher to the student. The teachers polled were uncomforable with the centrality shifting from them to the students. They note that this phenomenon is present with highly confident and experienced teachers through not-confident, inexperienced teachers.\footnote{\cite{levy_we_2007}}  It is also worth noting that the teachers in this study are high-school teachers and not college professors. Along with low adoption rates by teachers, there is also a lack of new work being published, as of 2018.\footnote{\cite{kucera_visualization_2018}}  
 
 
 \chapter{State of Computer Science Higher Education}	

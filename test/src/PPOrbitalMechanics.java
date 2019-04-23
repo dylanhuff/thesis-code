@@ -12,6 +12,7 @@ import edu.stanford.cs.pptx.PPShape;
 import edu.stanford.cs.pptx.PPShow;
 import edu.stanford.cs.pptx.PPSlide;
 import edu.stanford.cs.pptx.code.PPConsole;
+import edu.stanford.cs.pptx.PPLine;
 import edu.stanford.cs.pptx.*;
 
 public class PPOrbitalMechanics {
@@ -54,6 +55,8 @@ public class PPOrbitalMechanics {
       PPFreeform ff1 = new PPFreeform(p1);
       slide.add(ff1);
       String trigger = "/onClick";
+      PPLine line = new PPLine(100,100);
+      slide.add(line);
       for (int i = 0; i < 2 * N_SEGMENTS; i++) {
          double angle = i * dt;
          double speed = orbitalVelocity(angle + dt / 2);

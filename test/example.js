@@ -3,10 +3,12 @@ import {ctx,window,OvalObj,TextObj,RectObj,LineObj} from './classes.js';
 window.renderWindow();
 var text1 = new TextObj(358.0,45.0,1,'PPOrbitalMechanics',"#000000", '50.0px Times New Roman');
 window.addObjects([text1]);
-var rect2 = new RectObj(214,274,48,48,"#ff9900",2);
+var rect2 = new RectObj(214.0,274.5,48.0,48.0,"#ff9900",2);
 window.addObjects([rect2]);
-var rect3 = new RectObj(575,290,16,16,"#0033ff",3);
+var rect3 = new RectObj(575.0,290.5,16.0,16.0,"#0033ff",3);
 window.addObjects([rect3]);
+var line6 = new LineObj(0.0,0.0,100.0,100.0,"#000000",6);
+window.addObjects([line6]);
 function testSave(){
 	document.removeEventListener('load',testSave);
 	function sleep(s)
@@ -30,6 +32,7 @@ function testSave(){
 	canvas.addEventListener('click', click0);
 	async function click0(){
 		if (counter==0){
+			console.log("x,y go 0 :",rect3.x,rect3.y)
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 0.0,rect3.y+ 11.07989513547227,rect3.x+ -1.143764685214819,rect3.y+ 22.138658874293696,rect3.x+ -3.4182555722532015,rect3.y+ 33.05022550626899,0.45043399167358344);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ -2.2744908870383824,rect3.y+ 10.91156663197529,rect3.x+ -5.67103223149536,rect3.y+ 21.634315430597155,rect3.x+ -10.150904750917334,rect3.y+ 32.04601112848212,0.4456854008662109);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ -4.479872519421974,rect3.y+ 10.411695697884966,rect3.x+ -10.0259883331031,rect3.y+ 20.472624260033683,rect3.x+ -16.57512382533082,rect3.y+ 30.06809491862026,0.4363325027802445);
@@ -66,8 +69,8 @@ function testSave(){
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 6.549135492227833,rect3.y+ 9.595470658586635,rect3.x+ 12.095251305908846,rect3.y+ 19.656399220735437,rect3.x+ 16.57512382533082,rect3.y+ 30.06809491862043,0.4363325027802465);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 4.4798725194218605,rect3.y+ 10.411695697884937,rect3.x+ 7.876413863878952,rect3.y+ 21.134444496506745,rect3.x+ 10.150904750917334,rect3.y+ 32.046011128482064,0.4456854008662101);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 2.2744908870383824,rect3.y+ 10.91156663197529,rect3.x+ 3.4182555722532015,rect3.y+ 21.970330370796717,rect3.x+ 3.4182555722532015,rect3.y+ 33.05022550626893,0.45043399167358267);
+	console.log("x,y go 1 :",rect3.x,rect3.y)
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 0.0,rect3.y+ 11.079895135472213,rect3.x+ -1.1437646852149328,rect3.y+ 22.138658874293696,rect3.x+ -3.4182555722532015,rect3.y+ 33.05022550626899,0.45043399167358344);
-	await sleep(0);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ -2.2744908870383824,rect3.y+ 10.911566631975347,rect3.x+ -5.671032231495474,rect3.y+ 21.634315430597212,rect3.x+ -10.150904750917448,rect3.y+ 32.04601112848218,0.445685400866212);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ -4.4798725194218605,rect3.y+ 10.411695697884966,rect3.x+ -10.025988333102987,rect3.y+ 20.47262426003374,rect3.x+ -16.575123825330706,rect3.y+ 30.068094918620318,0.43633250278024444);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ -6.54913549222772,rect3.y+ 9.595470658586578,rect3.x+ -14.0763098526038,rect3.y+ 18.688882760976867,rect3.x+ -22.495716149728537,rect3.y+ 27.17657485984637,0.4226594804912303);
@@ -88,7 +91,6 @@ function testSave(){
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 0.0,rect3.y+ -11.079895135472213,rect3.x+ 1.1437646852148475,rect3.y+ -22.13865887429364,rect3.x+ 3.418255572253173,rect3.y+ -33.05022550626893,0.13786727187310868);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 2.2744908870383256,rect3.y+ -10.911566631975319,rect3.x+ 5.671032231495474,rect3.y+ -21.634315430597127,rect3.x+ 10.150904750917391,rect3.y+ -32.046011128482064,0.14261586268048163);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 4.479872519421917,rect3.y+ -10.411695697884937,rect3.x+ 10.025988333102902,rect3.y+ -20.47262426003374,rect3.x+ 16.57512382533062,rect3.y+ -30.068094918620318,0.15196876076644805);
-	await sleep(0);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 6.549135492227805,rect3.y+ -9.595470658586692,rect3.x+ 14.076309852604055,rect3.y+ -18.688882760977066,rect3.x+ 22.49571614972885,rect3.y+ -27.176574859846653,0.16564178305546243);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 8.41940629712471,rect3.y+ -8.487692098869502,rect3.x+ 17.698929820190017,rect3.y+ -16.337289016258808,rect3.x+ 27.73278752229868,rect3.y+ -23.459308325966504,0.1832194816841513);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 10.033857702108662,rect3.y+ -7.122019309707696,rect3.x+ 20.78377676128028,rect3.y+ -13.48929501184881,rect3.x+ 32.12721217947134,rect3.y+ -19.029242579584917,0.20416776717443164);
@@ -104,13 +106,15 @@ function testSave(){
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 6.54913549222772,rect3.y+ 9.595470658586578,rect3.x+ 12.095251305908846,rect3.y+ 19.656399220735324,rect3.x+ 16.575123825330706,rect3.y+ 30.06809491862026,0.4363325027802439);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 4.4798725194218605,rect3.y+ 10.411695697884937,rect3.x+ 7.8764138638790655,rect3.y+ 21.134444496506745,rect3.x+ 10.150904750917448,rect3.y+ 32.046011128482064,0.4456854008662106);
 	await rect3.bezierMove(rect3.x,rect3.y,rect3.x+ 2.2744908870383824,rect3.y+ 10.91156663197529,rect3.x+ 3.4182555722532015,rect3.y+ 21.970330370796717,rect3.x+ 3.4182555722532015,rect3.y+ 33.05022550626893,0.45043399167358267);
-			counter+=1;
+	console.log("x,y go 2 :",rect3.x,rect3.y)		
+	counter+=1;
 			canvas.addEventListener('click', click1);
 	}}
 	var slide1 = () => {
 	window.renderObject(1);
 	window.renderObject(2);
 	window.renderObject(3);
+	window.renderObject(6);
 	}
 	slide1()
 	ctx.stroke();

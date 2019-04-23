@@ -114,10 +114,8 @@ public class PPDumpShapeJS {
             fop.write("\t\tvar yOffset = ((endY-this.y)/duration)/60;\n".getBytes());
             fop.write("\t\tvar threshold = (endX-this.x)/xOffset;\n".getBytes());
             fop.write("\t\tvar refreshCounter = 0;\n".getBytes());
-            fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
-            fop.write("\t\t\twrap();\n".getBytes());
-            fop.write("\t\t},1000/60);\n".getBytes());
-            fop.write("\t\tvar wrap = function(){\n".getBytes());
+            fop.write("\t\tvar intervalID = setInterval(wrap,1000/60);\n".getBytes());
+            fop.write("\t\tfunction wrap(){\n".getBytes());
             fop.write("\t\t\tif(refreshCounter<threshold){\n".getBytes());
             fop.write("\t\t\t\t_this.moveHelper(xOffset,yOffset);\n".getBytes());
             fop.write("\t\t\t\trefreshCounter+=1;\n".getBytes());
@@ -138,10 +136,8 @@ public class PPDumpShapeJS {
             fop.write("\t\tvar calcY = function(t){\n".getBytes());
             fop.write("\t\t\treturn ((Math.pow(1-t,3)*y0)+(3*Math.pow(1-t,2)*t*y1)+(3*(1-t)*Math.pow(t,2)*y2)+(Math.pow(t,3)*y3))\n".getBytes());
             fop.write("\t\t}\n".getBytes());
-            fop.write("\t\tvar intervalID = setInterval(function(){\n".getBytes());
-            fop.write("\t\t\twrap();\n".getBytes());
-            fop.write("\t\t},1000/60);\n".getBytes());
-            fop.write("\t\tvar wrap = function(){\n".getBytes());
+            fop.write("\t\tvar intervalID = setInterval(wrap,1000/60);\n".getBytes());
+            fop.write("\t\tfunction wrap(){\n".getBytes());
             fop.write("\t\t\tif(refreshCounter<threshold){\n".getBytes());
             fop.write("\t\t\t\twindow.derenderAllObjects();\n".getBytes());
             fop.write("\t\t\t\t_this.x = calcX(t)\n".getBytes());
@@ -511,7 +507,20 @@ public class PPDumpShapeJS {
             // fop.write(String.valueOf(duration+.02).getBytes());
             // fop.write(");\n".getBytes());
             System.out.println(points[0]);
-            System.out.println(points[1]);
+            System.out.print(", ");
+            System.out.print(points[1]);
+            System.out.print(", ");
+            System.out.print(points[2]);
+            System.out.print(", ");
+            System.out.print(points[3]);
+            System.out.print(", ");
+            System.out.print(points[4]);
+            System.out.print(", ");
+            System.out.print(points[5]);
+            System.out.print(", ");
+            System.out.print(points[6]);
+            System.out.print(", ");
+            System.out.print(points[7]);
             if(shape.getTypeName().equals("PPRect")){
                 objID = "rect"+String.valueOf((int)shape.getShapeId());
             } else if (shape.getTypeName().equals("PPOval")) {
@@ -602,13 +611,13 @@ public class PPDumpShapeJS {
             Point2D initLoc = rect.getInitialLocation();
             fop.write(String.valueOf((int)rect.getShapeId()).getBytes());
             fop.write(" = new RectObj(".getBytes());
-            fop.write(String.valueOf((int)initLoc.getX()).getBytes());
+            fop.write(String.valueOf((double)initLoc.getX()).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)initLoc.getY()).getBytes());
+            fop.write(String.valueOf((double)initLoc.getY()).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getWidth()).getBytes());
+            fop.write(String.valueOf((double)rect.getWidth()).getBytes());
             fop.write(",".getBytes());
-            fop.write(String.valueOf((int)rect.getHeight()).getBytes());
+            fop.write(String.valueOf((double)rect.getHeight()).getBytes());
             fop.write(",\"".getBytes());
             String hex = "#"+Integer.toHexString(rect.getFillColor().getRGB()).substring(2);
             fop.write(hex.getBytes());
