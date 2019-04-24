@@ -285,9 +285,9 @@ One of the major benefits of the package is that it unobtrusively saves professo
 \section{Statement of Work}
 
 \subsection{New Features}
-The main addition of this work is the ability to export the presentation to HTML and JS without having to add any additional logic. This added functionality means that a professor could use JavaPPTX to create a PowerPoint for lecture, and with only adding one line the lecturer could create a web page that is identical to the PowerPoint. The newly created HTML file and JS file could be uploaded as is to create a web page, or could easily be embedded within an existing web page. 
+The main addition of this work is the ability to export the presentation to HTML and JS without having to add any additional logic. This added functionality means that a professor can use JavaPPTX to create a PowerPoint for lecture and then just by adding one line to the program the lecturer can create a web page that is identical to the PowerPoint. The newly created HTML file and JS file can be uploaded as is to create a web page, or can easily be embedded within an existing web page. 
 
-Take the code in Figure 3.1 an example, which makes the previously shown Linked List Animation.
+Take the code in Figure 3.1 as an example, which makes the previously shown Linked List Animation, Figure 2.2.
 \begin{figure}[h!tbp]
 \caption{Java Code for Linked List Animation} 
 \begin{lstlisting}[escapechar=!]
@@ -297,7 +297,7 @@ public class PPLinkedListTrace {
 
    public void run() {
       PPShow ppt = new PPShow();
-      PPCodeTraceSlide slide = new HSSlide();
+      PPCodeTraceSlide slide = new HSSlide(); //Most of the slide logic is contained in HSSlide
       ppt.add(slide);
       ppt.save("LinkedListTrace.pptx");
       !\mybox{PPSaveJS.save(ppt,"LinkedListTrace.js");}!
@@ -313,29 +313,31 @@ public class PPLinkedListTrace {
 \end{figure}
 The only line that needs to be added to export to JS and HTML is the line shown boxed, line ten, in Figure 3.1.
 
-Another major addition was the automatic scaling to screen resolution. When a PowerPoint is created with this package, the slides will be a fixed size, defined in pixels. A major benefit of using JavaScript is the ability to scale the presentation without any additional work on the presenter's part. This is an important feature because one benefit of outputting to web is that phones can natively view the presentation. With auto-scaling built in, the presentation will adjust to phones and desktops. 
+Another major addition is the automatic scaling to screen resolution. When a PowerPoint is created with this package, the slides will be a fixed size, defined in pixels. A major benefit of using JavaScript is the ability to scale the presentation without any additional work on the presenter's part. This is an important feature because one benefit of creating web accessible content is that phones can natively view the presentation. With auto-scaling built in, the presentation adjusts to phones and desktops. 
 
 \subsection{Uses of this Expansion}
-Having a native web output has two main benefits, the ease of viewing the animation and allowing new audiences to view the animation. PowerPoint is not web native, meaning that someone that wants to view the lecture needs to download a copy of the PowerPoint and have access to an application that can view the PPTX file. While this isn't too large of a burden on laptops or desktops, accessing the lecture on a phone is very cumbersome and often infeasible. This barrier is easily overcome with HTML and JS as an output as almost all phones, as well as laptops and desktops, can view a web page without any additional software. This is very convenient for anyone trying to view the lecture, but it also allows people without access to a laptop or desktop to view the lecture. 
+Having a native web output has two main benefits, the ease of viewing the animation and allowing new audiences to view the animation. PowerPoint is not web native, meaning that someone that wants to view the lecture needs to download a copy of the PowerPoint and have access to an application that can view the PPTX file. While this isn't too large of a burden on laptops or desktops, accessing the lecture on a phone is cumbersome and often infeasible. This barrier is easily overcome with HTML and JS as an output as almost all phones, as well as laptops and desktops, can view a web page without any additional software. This is very convenient for anyone trying to view the lecture, but it also allows people without access to a laptop or desktop to view the lecture. 
 
 \section{Internal Logic}
 The process of building this feature set and making individual algorithms can be broken down into two parts, building the framework and cross compilation of the logic to the JavaScript framework.
 
 \subsection{JavaScript Framework}
-The JS framework relies heavily on the Canvas API. The Canvas API is meant to make animating in JS and HTML much simpler. The framework that I built is constructed on top of that and offers more abstractions to the programmer while also storing objects to be animated in a hierarchical and object oriented manner. This makes animating shapes and text objects much simpler. As an example consider drawing five circles and having them move using Canvas vs my framework. Canvas doesn't provide any way to keep track of drawn objects. It doesn't provide a native way to make objects move. It doesn't provide native re-rendering of drawn objects which is a problem when trying to move an object since it forces a rerender. Using my framework, a programmer would only need to create the five circle objects by passing them a few starting attributes (position, color, etc) then call a move function on the desired circle.
+The JS framework relies heavily on the Canvas API. The Canvas API is meant to make animating in JS and HTML much simpler. The framework that I built is constructed on top of Canvas and offers more abstractions to the programmer while also storing objects to be animated in a hierarchical and object-oriented manner. This makes animating shapes and text objects much simpler. 
 
-My framework creates classes for many of the shapes supported by JavaPPTX. The way that the framework was built allows for shapes classes to be easily added. The framework was created in a hierarchical manner, putting many of the methods into the abstract classes. This way, any objects added will have many of the methods already created for it. 
+As an example consider drawing five circles and having them move using Canvas vs my framework. Canvas doesn't provide any way to keep track of drawn objects. It doesn't provide a native way to make objects move. It doesn't provide native re-rendering of drawn objects, which is a problem when trying to move an object since it forces a rerender. Using my framework, a programmer would only need to create the five circle objects by passing them a few starting attributes (position, color, etc) then call a move function on the desired circle.
+
+My framework creates classes for many of the shapes supported by JavaPPTX. The way that the framework was built allows for shapes classes to be easily added. The framework relies on class inheritance, putting many of the methods into the abstract superclasses which allows for the faster creation of new shape or animations classes. This way, any objects added will have many of the methods already created for it. 
 
 \subsection{Cross Compilation}
-After the framework is built, the logic is processed. The native JavaPPTX package stores all of the information passed by the programmer and then creates the corresponding PowerPoint. Since all of the information is stored by the package prior to being complied to a pptx file, the information can be stored in the same way but compiled to JS. After a save to JS function is called, the program will crawl through all of the stored data, and run the corresponding compilation to JS functions. This step was particularly tricky because the way that Java stores information is different from JS, so all the logic needed to be translated. Take storing color data as an example. Java may store the color as "RED" but JS would take a hex string as a color attribute. This logic translation was possibly the most difficult part of creating this extension. It required understanding how Java and  JavaPPTX stored information, then figuring out the best way to store that in JS. Futhermore, the information can be stored in Java in a variety of ways. 
+After the framework is built, the logic is processed. The native JavaPPTX package stores all of the information passed by the programmer and then creates the corresponding PowerPoint. Since all of the information is stored by the package prior to being complied to a pptx file, the information can be stored in the same way but compiled to JS. After a save to JS function is called, the program will crawl through the stored data, and run the corresponding compilation to JS functions. This step was particularly tricky because the way that Java stores information is different from JS, so all the logic needed to be translated. Take storing color data as an example. Java may store the color as "RED" but JS would take a hex string as a color attribute. This logic translation was possibly the most difficult part of creating this extension. It required understanding how Java and  JavaPPTX stored information, then figuring out the best way to store that in JS. Futhermore, the information can be stored in Java in a variety of ways. 
 
-Translating from Java to JS was one set of problems, but another set of problems was translating between PowerPoints internal logic to JavaScripts. Most of the time, logic was stored in a manner that was clearly related to the object. For example, a rectangle would contain the length, width, color, position on the screen, etc. There were times that the information for an object was stored not based on what made sense for that object vacuously, but the information was stored with regards to the way PowerPoint needed to be given the information. One particularly troublesome example was lines. PowerPoint draws lines by keeping track of what quadrant of the slide the line is in. JS however doesn't render lines according to quadrant, so the logic needed to be translated before it is output. 
+Translating from Java to JS was one set of problems, but another set of problems was translating between PowerPoint's internal logic to JavaScripts. Most of the time, logic was stored in a manner that was clearly related to the object. For example, a rectangle would contain the length, width, color, position on the screen, etc. There were times that the information for an object was stored not based on what made sense for that object vacuously, but the information was stored with regards to the way PowerPoint needed to be given the information. One particularly troublesome example was lines. PowerPoint draws lines by keeping track of what quadrant of the line. JS however doesn't render lines according to quadrant, so the logic needed to be translated before it is output. 
 
 \section{Future Work}
 
 \subsection{Full JavaPPTX Support} 
 
-The JavaScript compilation is not fully completed, not all of the features in JavaPPTX are supported in the JavaScript compilation. The main structure for the JS compilation is complete though. As an example of what that means, I'll explain how the program process a presentation with one slide that has a circle and a star on it. The program starts by storing all of boilerplate information, number of slides, height and width of slides, etc. The program then goes and tries to process all of the objects on a given slide. Since all of the objects are not yet supported, some objects will be skipped. In this step, because circles are supported, a circle would be processed and added to the presentation. A star object is not supported, and so it would be skipped over during this phase. All of the information would then be exported to JavaScript and rely on the JavaScript framework that I built to display the objects on the screen. The main infrastructure of processing, storing and building objects in JavaScript is done. Multiple slides can be added. Various types of motion are available for the supported for objects. 
+Although not all of the features in JavaPPTX are supported in the JavaScript compilation, the main structure for the JS compilation is complete. As an example of what that means, I'll explain how the program process a presentation with one slide that has a circle and a star on it. The program starts by storing all of boilerplate information, number of slides, height and width of slides, etc. The program then goes and tries to process all of the objects on a given slide. Since all of the objects are not yet supported, some objects will be skipped. In this step, because circles are supported, a circle would be processed and added to the presentation. A star object is not supported, and so it would be skipped over during this phase. All of the information would then be exported to JavaScript and rely on the JavaScript framework that I built to display the objects on the screen. The main infrastructure of processing, storing and building objects in JavaScript is done. Multiple slides can be added. Various types of motion are available for the supported for objects. 
 
 In order to finish the JS compilation, some objects, properties and features need to be added. If a star object was to be added, the logic for processing stars specifically would be added during the object processing phase. For adding motions and background colors, the JavaScript framework needs to be extended. Figure 3.2 shows all of the classes supported by JavaPPTX and my JS extension. 
 \begin{figure}[htbp]
@@ -369,7 +371,7 @@ PPOvalCallout & Yes & No\\
 \hline
 \end{tabular}
 \end{figure}
-Figure 3.3 shows all of the animations supported by JavaPPTX and my JS extension. For the currently supported animations, there are three triggers supported for all of them in JavaPPTX and the JS extension. The triggers supported are "On Click", "After Previous", and "With Delay". 
+Figure 3.3 shows all of the animations supported by JavaPPTX and my JS extension. For the currently supported animations, there are three triggers supported for all of them in JavaPPTX and the JS extension. The triggers supported are "onClick", "afterPrev", and "withPrev". 
 \begin{figure}[htbp]
 \centering
 \caption{Supported Animations in JavaPPTX and JS Extension}
@@ -406,7 +408,7 @@ ChangeLineColor & Yes & No\\
 \end{tabular}
 \end{figure}
 
-Take making a insertion sort presentation as an example. Figure 3.4 shows the code required to make a presentation that sorts the array [5,4,3,2,1] to [1,2,3,4,5] in PowerPoint and JavaScript.
+Take making an insertion sort presentation as an example. Figure 3.4 shows the code required to make a presentation that sorts the array [5,4,3,2,1] to [1,2,3,4,5] in PowerPoint and JavaScript.
 \begin{figure}[h!tbp]
 \caption{Current Features Code Example} 
 \begin{lstlisting}[escapechar=!]
@@ -459,7 +461,7 @@ Figure 3.5 shows the webpage that is made from the code in Figure 3.4 before any
 \label{subd}
 \end{centering} 
 \end{figure}
-After someone clicks on the webpage, as selection sort would dictate, one gets moved to the first position and all of the other numbers are shifted over by one position. Figure 3.6 shows the same webpage after a click. 
+After someone clicks on the webpage, as insertion sort would dictate, one gets moved to the first position and all of the other numbers are shifted over by one position. Figure 3.6 shows the same webpage after a click. 
 \begin{figure}[htbp] 
 \begin{centering} 
 \caption{JavaScript Insertion Sort Example, After Click} 
@@ -471,7 +473,7 @@ This example shows how the general infrastructure is made for slides, presentati
 
 
 \subsection{Realtime JS Animation}
-As this work stands, the animations that can be made are not real time and aren't reflecting algorithms that a student makes. A meta study has shown that it maybe more effective to have the animations reflect the students algorithms rather than having a teacher animate an algorithm and use it in a lecture, but this is contentious.\footnote{\cite{hundhausen_meta-study_2002}} A major contribution of this thesis is a JavaScript framework that allows for animations to be created more easily. In its current state, the animations are built based off of the logic given by the person creating the animation, which is intended to be an instructor. This framework could be used to reflect animations in real time that students create. Since the visual framework has been built, someone expanding on this work would have to figure out the logic behind creating animating the algorithms. The easiest expansion could be animating JS algorithms. Since JS is native to the web, it also maybe worthwhile to have other languages have animations done with this framework since the animations could easily be made into websites and shared. Since this package is written in Java, Java would be a logical language to expand this to. 
+As this work stands, the animations that can be made are not real time and aren't reflecting algorithms that a student makes. A meta study has shown that it may be more effective to have the animations reflect the students algorithms rather than having a teacher animate an algorithm and use it in a lecture, but this conclusion is contentious.\footnote{\cite{hundhausen_meta-study_2002}} A major contribution of this thesis is a JavaScript framework that allows for animations to be created more easily. In its current state, the animations are built using the logic given by the person creating the animation, which is intended to be an instructor. This framework could be used to reflect animations in real time that students create. Since the visual framework has been built, someone expanding on this work would have to figure out the logic behind creating animating the algorithms. The easiest expansion could be animating JS algorithms. Since JS is native to the web, it also maybe worthwhile to have other languages have animations done with this framework since the animations could easily be made into websites and shared. Since this package is written in Java, Java would be a logical language to expand this to. 
 
 
 	

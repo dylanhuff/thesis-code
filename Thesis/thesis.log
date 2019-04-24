@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 APR 2019 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 APR 2019 12:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,24 +485,24 @@ Chapter 3.
 <insbefore.png, id=119, 627.34375pt x 321.2pt>
 File: insbefore.png Graphic file (type png)
 <use insbefore.png>
-Package pdftex.def Info: insbefore.png  used on input line 458.
+Package pdftex.def Info: insbefore.png  used on input line 460.
 (pdftex.def)             Requested size: 439.13762pt x 224.83847pt.
 
-Overfull \hbox (5.51762pt too wide) in paragraph at lines 458--461
+Overfull \hbox (5.51762pt too wide) in paragraph at lines 460--463
 [][]
  []
 
 <insafter.png, id=120, 630.355pt x 317.185pt>
 File: insafter.png Graphic file (type png)
 <use insafter.png>
-Package pdftex.def Info: insafter.png  used on input line 466.
+Package pdftex.def Info: insafter.png  used on input line 468.
 (pdftex.def)             Requested size: 441.24548pt x 222.02797pt.
 
-Overfull \hbox (7.62549pt too wide) in paragraph at lines 466--469
+Overfull \hbox (7.62549pt too wide) in paragraph at lines 468--471
 [][]
  []
 
-[16] [17] [18 <./insbefore.png>] [19 <./insafter.png>] [20
+[16] [17] [18] [19 <./insbefore.png> <./insafter.png>] [20
 
 ] [21] [22
 
@@ -515,10 +515,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5233 strings out of 492649
- 69710 string characters out of 6129622
- 188309 words of memory out of 5000000
- 8992 multiletter control sequences out of 15000+600000
+ 5236 strings out of 492649
+ 69806 string characters out of 6129622
+ 190309 words of memory out of 5000000
+ 8995 multiletter control sequences out of 15000+600000
  14080 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,45p,1745b,1282s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -533,7 +533,7 @@ exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (39 pages, 740932 bytes).
+Output written on thesis.pdf (39 pages, 741557 bytes).
 PDF statistics:
  189 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams

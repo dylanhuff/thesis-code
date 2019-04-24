@@ -3,53 +3,57 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: APA/apa-good.bst
 Database file #1: thesis.bib
-Warning--I didn't find a database entry for "roberts_history_nodate"
+Illegal end of database file---line 144 of file thesis.bib
+ :  file = {Piech and Roberts - Informatics Education Using Nothing But a Browser.pdf:/Users/dylanhuff/Zotero/storage/Q8P24JHM/Piech and Roberts - Informatics Education Using Nothing But a Browser.pdf:application/pdf}
+ :                                                                                                                                                                                                                       
+I'm skipping whatever remains of this entry
 Warning--empty journal in BLS
 Warning--empty journal in hundhausen_meta-study_2002
 Warning--empty journal in kucera_visualization_2018
 Warning--empty journal in levy_we_2007
 Warning--empty journal in najork_library_1994
+Warning--empty journal in piech_informatics_nodate
 Warning--empty journal in roberts_history
 Warning--empty journal in zweben_another_2018
-You've used 10 entries,
+You've used 11 entries,
             2804 wiz_defined-function locations,
-            645 strings with 6841 characters,
-and the built_in function-call counts, 5463 in all, are:
-= -- 447
-> -- 194
-< -- 13
-+ -- 79
-- -- 63
-* -- 376
-:= -- 848
-add.period$ -- 31
-call.type$ -- 10
-change.case$ -- 72
-chr.to.int$ -- 10
-cite$ -- 17
-duplicate$ -- 421
-empty$ -- 391
-format.name$ -- 93
-if$ -- 1068
+            649 strings with 6980 characters,
+and the built_in function-call counts, 5928 in all, are:
+= -- 484
+> -- 213
+< -- 14
++ -- 86
+- -- 69
+* -- 411
+:= -- 924
+add.period$ -- 33
+call.type$ -- 11
+change.case$ -- 79
+chr.to.int$ -- 11
+cite$ -- 19
+duplicate$ -- 457
+empty$ -- 423
+format.name$ -- 104
+if$ -- 1155
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 81
-newline$ -- 64
-num.names$ -- 40
-pop$ -- 200
+missing$ -- 88
+newline$ -- 69
+num.names$ -- 44
+pop$ -- 221
 preamble$ -- 1
-purify$ -- 61
+purify$ -- 67
 quote$ -- 0
-skip$ -- 183
+skip$ -- 197
 stack$ -- 0
-substring$ -- 219
-swap$ -- 204
+substring$ -- 230
+swap$ -- 217
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 87
-warning$ -- 7
-while$ -- 41
+type$ -- 96
+warning$ -- 8
+while$ -- 44
 width$ -- 0
-write$ -- 135
-(There were 8 warnings)
+write$ -- 146
+(There was 1 error message)
